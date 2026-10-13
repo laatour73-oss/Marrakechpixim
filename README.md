@@ -1,7 +1,6 @@
-# Marrakechpixim
 
-Welcome to Marrakechpixim!
+Marrakechpixim
 
-Marrakechpixim is a project dedicated to Marrakech and its creative digital identity.
+Marrakechpixim is dedicated to Marrakech and creative digital identity.
 
 More information coming soon.
