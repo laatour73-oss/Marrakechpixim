@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Marrakechpixim - Find What You Need, Easily</title>
+
   <meta name="description" content="Discover travel, shopping, restaurants, services and experiences around the world with Marrakechpixim.">
+
+  <meta name="theme-color" content="#173f35">
+
   <style>
     * {
       box-sizing: border-box;
@@ -15,18 +20,20 @@
       font-family: Arial, sans-serif;
       background: #f7f5f0;
       color: #222;
+      line-height: 1.6;
     }
 
     header {
       background: #173f35;
       color: white;
-      padding: 24px 18px;
+      padding: 28px 18px;
       text-align: center;
     }
 
     header h1 {
-      margin: 0 0 10px;
-      font-size: 32px;
+      margin: 0 0 8px;
+      font-size: clamp(28px, 5vw, 40px);
+      letter-spacing: 0.5px;
     }
 
     header p {
@@ -34,92 +41,335 @@
       font-size: 16px;
     }
 
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+      padding: 14px;
+      background: #fff;
+      border-bottom: 1px solid #e7e4dc;
+    }
+
+    nav a {
+      color: #173f35;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
     main {
-      max-width: 900px;
-      margin: 35px auto;
+      max-width: 1050px;
+      margin: 30px auto;
       padding: 0 18px;
     }
 
     .intro {
       text-align: center;
-      padding: 25px 10px;
+      padding: 35px 10px;
     }
 
     .intro h2 {
-      font-size: 28px;
+      margin: 0 0 12px;
+      font-size: clamp(25px, 4vw, 34px);
+      color: #173f35;
     }
 
     .intro p {
-      line-height: 1.7;
+      max-width: 650px;
+      margin: 0 auto;
+      color: #555;
+    }
+
+    .search-section {
+      max-width: 700px;
+      margin: 0 auto 35px;
+    }
+
+    .search-section h2 {
+      text-align: center;
+      font-size: 22px;
+      color: #173f35;
+    }
+
+    .search-form {
+      display: flex;
+      gap: 10px;
+    }
+
+    .search-form input {
+      flex: 1;
+      min-width: 0;
+      padding: 13px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .search-form button {
+      padding: 13px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #173f35;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .search-form button:hover {
+      background: #245b4c;
+    }
+
+    .categories-title {
+      text-align: center;
+      color: #173f35;
+      margin-bottom: 20px;
     }
 
     .categories {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 16px;
-      margin-top: 25px;
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(220px, 1fr)
+      );
+      gap: 18px;
     }
 
     .category {
       background: white;
-      padding: 22px;
+      padding: 24px;
       border-radius: 12px;
       box-shadow: 0 2px 8px #00000010;
+      border: 1px solid #eee;
+      transition: transform 0.2s ease;
+    }
+
+    .category:hover {
+      transform: translateY(-3px);
+    }
+
+    .category .icon {
+      font-size: 32px;
     }
 
     .category h3 {
+      color: #173f35;
+      margin: 10px 0;
+    }
+
+    .category p {
+      color: #555;
+      margin-bottom: 16px;
+    }
+
+    .category a {
+      color: #173f35;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .category a:hover {
+      text-decoration: underline;
+    }
+
+    .message {
+      text-align: center;
+      margin: 18px 0;
+      color: #173f35;
+      min-height: 24px;
+    }
+
+    .about {
+      margin-top: 45px;
+      padding: 28px;
+      background: #e9eee9;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .about h2 {
       color: #173f35;
     }
 
     footer {
       text-align: center;
-      padding: 24px;
+      padding: 25px 18px;
       background: #173f35;
       color: white;
-      margin-top: 40px;
+      margin-top: 45px;
+    }
+
+    footer p {
+      margin: 5px 0;
+    }
+
+    @media (max-width: 520px) {
+      .search-form {
+        flex-direction: column;
+      }
+
+      .search-form button {
+        width: 100%;
+      }
+
+      .category {
+        padding: 20px;
+      }
     }
   </style>
 </head>
+
 <body>
+
   <header>
     <h1>Marrakechpixim</h1>
     <p>Find What You Need, Easily</p>
   </header>
 
+  <nav aria-label="Main navigation">
+    <a href="#home">Home</a>
+    <a href="#categories">Categories</a>
+    <a href="#about">About Us</a>
+  </nav>
+
   <main>
-    <section class="intro">
+
+    <section class="intro" id="home">
       <h2>Discover a World of Possibilities</h2>
+
       <p>
         Explore places, shops, restaurants, services and experiences
-        in one simple destination.
+        in one simple destination. Discover what the world has to offer
+        with Marrakechpixim.
       </p>
     </section>
 
-    <section class="categories">
-      <article class="category">
-        <h3>Travel & Tourism</h3>
-        <p>Discover hotels, beaches, tours and memorable experiences.</p>
-      </article>
+    <section class="search-section" aria-label="Search">
+      <h2>What Are You Looking For?</h2>
 
-      <article class="category">
-        <h3>Shopping & Trade</h3>
-        <p>Explore shops, products and business opportunities.</p>
-      </article>
+      <form class="search-form" id="searchForm">
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Search places, shops, restaurants..."
+          aria-label="Search categories"
+        >
 
-      <article class="category">
-        <h3>Restaurants & Food</h3>
-        <p>Find restaurants, cafés and food experiences.</p>
-      </article>
+        <button type="submit">Search</button>
+      </form>
 
-      <article class="category">
-        <h3>Services & Activities</h3>
-        <p>Discover useful services and activities around the world.</p>
-      </article>
+      <p class="message" id="searchMessage" aria-live="polite"></p>
     </section>
+
+    <section id="categories">
+      <h2 class="categories-title">Explore Our Categories</h2>
+
+      <div class="categories">
+
+        <article class="category" data-keywords="travel tourism hotels beaches tours">
+          <div class="icon" aria-hidden="true">🌍</div>
+          <h3>Travel &amp; Tourism</h3>
+          <p>
+            Discover hotels, beaches, tours and memorable
+            experiences around the world.
+          </p>
+          <a href="#about">Discover More</a>
+        </article>
+
+        <article class="category" data-keywords="shopping trade shops products business">
+          <div class="icon" aria-hidden="true">🛍️</div>
+          <h3>Shopping &amp; Trade</h3>
+          <p>
+            Explore shops, products, businesses and
+            commercial opportunities.
+          </p>
+          <a href="#about">Discover More</a>
+        </article>
+
+        <article class="category" data-keywords="restaurants food cafes dining">
+          <div class="icon" aria-hidden="true">🍽️</div>
+          <h3>Restaurants &amp; Food</h3>
+          <p>
+            Find restaurants, cafés, local cuisine and
+            unforgettable food experiences.
+          </p>
+          <a href="#about">Discover More</a>
+        </article>
+
+        <article class="category" data-keywords="services activities experiences">
+          <div class="icon" aria-hidden="true">✨</div>
+          <h3>Services &amp; Activities</h3>
+          <p>
+            Discover useful services, exciting activities
+            and experiences for every interest.
+          </p>
+          <a href="#about">Discover More</a>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <h2>About Marrakechpixim</h2>
+
+      <p>
+        Marrakechpixim aims to make discovering places, products,
+        businesses and services around the world easier.
+        Our goal is to bring useful information together in
+        one simple, accessible platform.
+      </p>
+    </section>
+
   </main>
 
   <footer>
     <p>&copy; 2026 Marrakechpixim. All rights reserved.</p>
+    <p>Find What You Need, Easily.</p>
   </footer>
+
+  <script>
+    const searchForm = document.getElementById("searchForm");
+    const searchInput = document.getElementById("searchInput");
+    const searchMessage = document.getElementById("searchMessage");
+    const categories = document.querySelectorAll(".category");
+
+    searchForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const query = searchInput.value.trim().toLowerCase();
+      let matches = 0;
+
+      categories.forEach(function (category) {
+        const text = (
+          category.innerText + " " +
+          category.dataset.keywords
+        ).toLowerCase();
+
+        const isMatch = query === "" || text.includes(query);
+
+        category.hidden = !isMatch;
+
+        if (isMatch) {
+          matches++;
+        }
+      });
+
+      if (query === "") {
+        searchMessage.textContent =
+          "Showing all categories.";
+      } else if (matches > 0) {
+        searchMessage.textContent =
+          matches + " matching categor" +
+          (matches === 1 ? "y found." : "ies found.");
+      } else {
+        searchMessage.textContent =
+          "No matching categories found. Try another search.";
+      }
+    });
+  </script>
+
 </body>
 </html>
