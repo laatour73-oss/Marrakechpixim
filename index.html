@@ -1,1176 +1,1383 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#173f35">
-  <meta name="description" content="Marrakechpixim — discover businesses, luxury products, travel, real estate, technology and services worldwide.">
-  <title>Marrakechpixim | Global Discovery</title>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#12213a">
+  <title>Marrakechpixim — Find What You Need, Easily</title>
+  <meta name="description" content="Discover global businesses, travel, luxury products, suppliers, services and experiences with Marrakechpixim.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="Marrakechpixim — Find What You Need, Easily">
+  <meta property="og:description" 
+content="Discover businesses, products, services and experiences worldwide. Marrakechpixim is preparing for global launch.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    /* ==============================================================
+       MARRAKECHPIXIM — RESPONSIVE MARKETPLACE LANDING PAGE
+       Single-file prototype. Real photo URLs are used for category art.
+       ============================================================== */
     :root {
-      --green: #173f35;
-      --green-light: #245b4c;
-      --gold: #bd9b5b;
-      --cream: #f7f5f0;
-      --white: #fff;
-      --text: #242824;
-      --muted: #626861;
-      --border: #e6e3da;
+      --navy: #12213a;
+      --navy-2: #1b3153;
+      --blue: #315efb;
+      --blue-dark: #2149dd;
+      --teal: #2ec5a7;
+      --ink: #18243b;
+      --muted: #69758b;
+      --line: #e6ebf2;
+      --surface: #ffffff;
+      --background: #f7f9fc;
+      --soft-blue: #edf2ff;
+      --radius: 18px;
+      --shadow: 0 12px 35px rgba(20, 38, 72, .08);
+      --content: 1240px;
     }
 
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--ink);
+      font-family: "DM Sans", Arial, sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    button, a, input, select { -webkit-tap-highlight-color: transparent; }
+    button { cursor: pointer; }
+    .container { width: min(var(--content), calc(100% - 48px)); margin-inline: auto; }
+    .skip-link {
+      position: absolute; left: -9999px; top: 8px; z-index: 100;
+      background: white; color: var(--navy); padding: 12px 16px; border-radius: 8px;
+    }
+    .skip-link:focus { left: 8px; }
+
+    /* Header and navigation */
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(230,235,242,.9);
+    }
+    .header-inner {
+      min-height: 78px; display: flex; 
+align-items: center;
+      justify-content: space-between; gap: 24px;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 11px; flex-shrink: 0; }
+    .brand-mark {
+      width: 43px; height: 43px; display: grid; place-items: center;
+      border-radius: 14px; color: white; font-weight: 800; font-size: 21px;
+      background: linear-gradient(135deg, var(--blue), #6b7cff);
+      box-shadow: 0 8px 20px rgba(49,94,251,.25);
+    }
+    .brand-name { display: inline-block; white-space: nowrap; font-family: Manrope, sans-serif; font-size: 20px; font-weight: 800; letter-spacing: -.7px; }
+    .brand-name { color: var(--navy); }
+    .footer-brand .brand-name { color: #fff; }
+    .main-nav { display: flex; align-items: center; gap: 26px; color: #4e5b70; font-size: 14px; font-weight: 700; }
+    .main-nav a:hover, .main-nav a:focus-visible { color: var(--blue); }
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+    .language-select {
+      border: 1px solid var(--line); background: white; color: var(--ink);
+      padding: 10px 11px; border-radius: 11px; max-width: 118px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border: 1px solid transparent; border-radius: 12px; padding: 12px 
+17px;
+      font-weight: 800; font-size: 14px; transition: transform .18s ease, background .18s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { color: white; background: var(--blue); box-shadow: 0 7px 18px rgba(49,94,251,.18); }
+    .btn-primary:hover { background: var(--blue-dark); }
+    .btn-light { color: var(--navy); background: white; border-color: var(--line); }
+    .btn-quiet { color: var(--blue); background: var(--soft-blue); }
+    .mobile-menu { display: none; border: 1px solid var(--line); background: white; border-radius: 10px; padding: 9px 12px; }
+
+    /* Hero */
+    .hero { padding: 62px 0 34px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; align-items: center; gap: 50px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px; color: var(--blue);
+      background: var(--soft-blue); padding: 7px 12px; border-radius: 999px;
+      font-size: 12px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase;
+    }
+    .eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: Manrope, "DM Sans", sans-serif; }
+    .hero h1 { margin: 18px 0 17px; max-width: 640px; font-size: clamp(38px, 5vw, 62px); line-height: 1.08; letter-spacing: -2.8px; }
+    .hero h1 span { color: var(--blue); }
+    .hero-copy { max-width: 580px; color: var(--muted); font-size: 17px; line-height: 1.75; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 25px 0 27px; }
+    .trust-row { display: flex; flex-wrap: wrap; gap: 17px; color: #647188; font-size: 12px; font-weight: 700; }
+    .trust-item { display: inline-flex; align-items: center; gap: 7px; }
+    .check { display: inline-grid; place-items: center; width: 19px; height: 19px; border-radius: 50%; background: #dcf8ed; color: #087b59; font-size: 12px; }
+    .hero-visual { position: relative; 
+min-height: 420px; }
+    .hero-photo {
+      position: absolute; inset: 8px 10px 18px 30px; overflow: hidden;
+      border-radius: 28px; box-shadow: 0 24px 65px rgba(24,36,59,.18);
+      background: #dce4ef;
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-photo::after { content: ""; position: absolute; inset: 40% 0 0; background: linear-gradient(transparent, rgba(12,25,47,.65)); }
+    .photo-caption { position: absolute; z-index: 1; left: 28px; right: 28px; bottom: 25px; color: white; }
+    .photo-caption strong { display: block; font: 800 21px Manrope, sans-serif; }
+    .photo-caption span { font-size: 13px; 
+color: #e7ecf5; }
+    .floating-card {
+      position: absolute; z-index: 2; background: white; border: 1px solid rgba(230,235,242,.8);
+      border-radius: 16px; padding: 15px 17px; box-shadow: var(--shadow);
+    }
+    .floating-card.top-card { top: 0; left: 0; }
+    .floating-card.bottom-card { right: 0; bottom: 0; display: flex; align-items: center; gap: 11px; }
+    .floating-label { color: var(--muted); font-size: 11px; font-weight: 700; }
+    .floating-value { margin-top: 3px; font: 800 18px Manrope, sans-serif; }
+    .floating-icon { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 12px; background: #e4fbf4; color: #087b59; font-size: 20px; }
+
+    /* Search bar */
+    .search-wrap { position: relative; z-index: 4; margin: 16px auto 54px; }
+    .search-panel {
+      display: grid; grid-template-columns: 1.4fr .8fr .8fr auto; align-items: end; gap: 12px;
+      background: white; border: 1px solid var(--line); border-radius: 18px; padding: 17px;
+      box-shadow: var(--shadow);
+    }
+    .field { min-width: 0; }
+    .field label { display: block; margin: 0 0 7px 2px; color: #56647a; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
+    .field-control { display: flex; align-items: center; gap: 9px; min-height: 45px; padding: 0 12px; background: #f8faff; border: 1px solid 
+#edf0f6; border-radius: 11px; }
+    .field-control input, .field-control select { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink); }
+    .field-control input::placeholder { color: #98a2b3; }
+    .search-panel .btn { min-height: 45px; white-space: nowrap; }
+
+    /* General sections */
+    .section { padding: 35px 0 48px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 22px; }
+    .section-heading h2 { margin: 7px 0 0; font-size: clamp(25px, 3vw, 34px); letter-spacing: -1.2px; }
+    .section-heading p { margin: 8px 0 0; color: var(--muted); max-width: 610px; }
+    .text-link { color: var(--blue); font-weight: 800; font-size: 13px; white-space: nowrap; }
+    .text-link:hover { text-decoration: underline; }
+    .category-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 17px; }
+    .category-card {
+      min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius);
+      background: white; transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .category-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .category-image { position: relative; height: 204px; overflow: hidden; background: linear-gradient(135
+deg,#dbe8e7,#f3e8d6); isolation: isolate; }
+    .category-image::after { content: ""; position: absolute; inset: 35% 0 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, transparent 0%, rgba(10,20,35,.30) 100%); }
+    .category-image img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .6s cubic-bezier(.2,.7,.2,1), filter .4s ease; }
+    .category-card:hover .category-image img { transform: scale(1.075); filter: saturate(1.08); }
+    .category-image img[loading="lazy"] { background: linear-gradient(135deg,#dbe8e7,#f3e8d6); }
+    .category-image.image-fallback::before { content: "Marrakechpixim"; position: absolute; inset: 0; 
+display: grid; place-items: center; color: #536878; font-weight: 800; letter-spacing: .04em; }
+    .category-tag { position: absolute; top: 12px; left: 12px; padding: 5px 9px; border-radius: 999px; background: rgba(255,255,255,.94); color: var(--navy); font-size: 10px; font-weight: 800; }
+    .category-body { padding: 16px; }
+    .category-body h3 { margin: 0 0 7px; font-size: 16px; letter-spacing: -.35px; }
+    .category-body p { min-height: 42px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
+    .category-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 13px; padding-top: 12px; border-top: 1px solid #f0f2f6; }
+    .category-footer span { color: #778399; font-size: 11px; font-weight: 
+700; }
+    .circle-arrow { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; color: var(--blue); background: var(--soft-blue); font-size: 17px; }
+    .empty-state { grid-column: 1 / -1; padding: 35px; text-align: center; color: var(--muted); background: white; border: 1px dashed #cfd7e4; border-radius: 16px; }
+
+    /* Business callout */
+    .business-band { padding: 20px 0 58px; }
+    .business-panel {
+      position: relative; overflow: hidden; display: grid; grid-template-columns: 1.2fr .8fr; gap: 28px;
+      align-items: center; padding: 38px 42px; border-radius: 24px;
+      color: white; background: 
+linear-gradient(120deg, #142543, #263e69);
+    }
+    .business-panel::before { content: ""; position: absolute; width: 330px; height: 330px; right: -95px; top: -155px; border-radius: 50%; border: 1px solid rgba(255,255,255,.13); box-shadow: 0 0 0 35px rgba(255,255,255,.035), 0 0 0 75px rgba(255,255,255,.025); }
+    .business-panel h2 { position: relative; max-width: 620px; margin: 12px 0; font-size: clamp(27px, 3.2vw, 40px); line-height: 1.15; letter-spacing: -1.4px; }
+    .business-panel p { position: relative; max-width: 610px; color: #d3ddef; }
+    .business-panel .eyebrow { color: #c8d6ff; background: rgba(255,255,255,.12); }
+    .business-actions { position: relative; display: flex; flex-wrap: wrap; gap: 
+10px; margin-top: 22px; }
+    .business-benefits { position: relative; display: grid; gap: 12px; }
+    .benefit { display: flex; align-items: flex-start; gap: 12px; padding: 14px; border: 1px solid rgba(255,255,255,.13); border-radius: 14px; background: rgba(255,255,255,.06); }
+    .benefit .check { flex: 0 0 22px; }
+    .benefit strong { display: block; font-size: 13px; }
+    .benefit span:last-child { display: block; margin-top: 3px; color: #c7d2e6; font-size: 11px; }
+
+    /* How it works and trust */
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .step-card { padding: 23px; background: white; border: 1px solid var(--line); border-radius: 
+var(--radius); }
+    .step-number { width: 40px; height: 40px; display: grid; place-items: center; margin-bottom: 18px; border-radius: 13px; color: var(--blue); background: var(--soft-blue); font-weight: 800; }
+    .step-card h3 { margin-bottom: 8px; font-size: 17px; }
+    .step-card p { margin-bottom: 0; color: var(--muted); font-size: 13px; }
+    .trust-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 25px 0 45px; }
+    .trust-box { display: flex; align-items: center; gap: 12px; padding: 16px; background: white; border: 1px solid var(--line); border-radius: 14px; }
+    .trust-symbol { display: grid; place-items: center; flex: 0 0 38px; height: 38px; border-radius: 12px; color: var(--blue); background: var(--soft-blue); font-weight: 800; }
+    .trust-box strong { display: block; font-size: 12px; }
+    .trust-box span { color: var(--muted); font-size: 10px; }
+
+    /* Newsletter */
+    .newsletter { padding: 10px 0 58px; }
+    .newsletter-panel { display: flex; align-items: center; justify-content: space-between; gap: 25px; padding: 27px 30px; border-radius: 19px; background: #eaf0ff; }
+    .newsletter-panel h2 { margin: 0 0 5px; font-size: 23px; letter-spacing: -.7px; }
+    .newsletter-panel p { margin: 0; color: #65728b; font-size: 13px; }
+    .newsletter-form { display: flex; width: min(440px, 100%); gap: 8px; }
+    .newsletter-form input { flex: 1; min-width: 0; border: 1px solid #dbe3f3; border-radius: 11px; padding: 
+12px 13px; background: white; outline-color: var(--blue); }
+
+    /* Footer */
+    .site-footer { padding: 44px 0 22px; color: #d6dfef; background: #111d33; }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr repeat(4, minmax(0, 1fr)); gap: 28px; padding-bottom: 35px; }
+    .footer-brand .brand-name { color: white; }
+    .footer-brand p { max-width: 300px; margin: 16px 0; color: #aebbd0; font-size: 12px; }
+    .footer-heading { margin: 0 0 13px; color: white; font-size: 12px; font-weight: 800; }
+    .footer-links { display: grid; gap: 9px; }
+    .footer-links a { color: #b8c4d8; font-size: 12px; }
+    .footer-links a:hover { color: white; }
+    .footer-contact-short { display: grid; gap: 7px; margin-top: 14px; font-size: 12px; overflow-wrap: anywhere; }
+    .footer-contact-short a { color: #d6e0ee; text-decoration: none; }
+    .footer-contact-short a:hover { color: white; text-decoration: underline; }
+    .footer-links a { overflow-wrap: anywhere; }
+    .contact-note { display: block; color: #9eacc2; font-size: 12px; line-height: 1.6; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 15px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.12); color: #aebbd0; font-size: 11px; }
+    .disclaimer { margin-top: 12px; color: #93a2bb; font-size: 10px; line-height: 1.7; }
+
+    /* Utility / accessibility */
+    .toast { position: fixed; z-index: 100; right: 22px; bottom: 22px; max-width: min(380px, calc(100% - 44px)); padding: 14px 17px; border-radius: 13px; color: white; background: var(--navy); box-shadow: var(--shadow); opacity: 0; pointer-events: none; transform: translateY(10px); transition: all .2s ease; font-size: 13px; }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    :focus-visible { outline: 3px solid rgba(49,94,251,.55); outline-offset: 3px; }
+
+    /* Responsive layout */
+    @media (max-width: 1050px) {
+      .main-nav { gap: 15px; }
+      .hero-grid { gap: 30px; }
+      .category-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .trust-strip { grid-template-columns: repeat(2, 1fr); }
+      .search-panel { grid-template-columns: 1fr 1fr; }
+      .search-panel .btn { width: 100%; }
+    }
+    @media (max-width: 760px) {
+      .container { width: min(100% - 30px, var(--content)); }
+      .header-inner { min-height: 68px; flex-wrap: wrap; gap: 12px; padding: 11px 0; }
+      .brand-mark { width: 38px; height: 38px; }
+      .brand-name { font-size: 18px; }
+      .main-nav { display: none; order: 4; width: 100%; padding: 8px 0 5px; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .main-nav.open { display: grid; }
+      .main-nav a { padding: 9px 10px; border-radius: 9px; background: #f5f7fc; }
+      .header-actions { margin-left: auto; }
+      .header-actions .btn { display: none; }
+      .language-select { max-width: 100px; padding: 8px; font-size: 12px; }
+      .mobile-menu { display: inline-flex; align-items: center; gap: 6px; }
+      .hero { padding-top: 37px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 20px; }
+      .hero h1 { font-size: clamp(37px, 10vw, 51px); letter-spacing: -1.9px; }
+      .hero-copy { font-size: 15px; }
+      .hero-visual { min-height: 330px; }
+      .hero-photo { inset: 12px 7px 12px 18px; }
+      .floating-card { padding: 11px 12px; }
+      .floating-card.bottom-card { right: 0; }
+      .search-wrap { margin: 8px auto 30px; }
+      .search-panel { grid-template-columns: 1fr; padding: 13px; gap: 10px; }
+      .section { padding: 28px 0 34px; }
+      .section-heading { align-items: flex-start; flex-direction: column; gap: 9px; }
+      .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
+      .category-image { height: 150px; }
+      .category-body { padding: 12px; }
+      .category-body h3 { font-size: 
+14px; }
+      .category-body p { min-height: 56px; font-size: 11px; }
+      .category-tag { top: 8px; left: 8px; font-size: 9px; }
+      .category-footer span { font-size: 10px; }
+      .business-panel { grid-template-columns: 1fr; padding: 27px 22px; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .trust-strip { gap: 9px; }
+      .trust-box { padding: 12px 10px; gap: 8px; }
+      .trust-symbol { flex-basis: 32px; height: 32px; }
+      .newsletter-panel { align-items: flex-start; flex-direction: column; padding: 22px 18px; }
+      .newsletter-form { flex-direction: column; }
+      .newsletter-form .btn { width: 100%; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 26px 18px; }
+      .footer-brand { grid-column: 1 / -1; }
+      .footer-bottom { flex-direction: column; }
+    }
+    @media (max-width: 380px) {
+      .category-grid { grid-template-columns: 1fr; }
+      .category-image { height: 195px; }
+      .category-body p { min-height: 0; }
+      .trust-strip { grid-template-columns: 1fr; }
+      .header-actions { gap: 5px; }
+    }
+    /* Launch-readiness announcement and partner enquiry form */
+    .launch-notice {
+      background: 
+linear-gradient(120deg, #10233f 0%, #1d3c68 58%, #2457a6 100%);
+      color: #fff;
+      padding: 22px 0;
+    }
+    .launch-notice-inner {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 18px;
+      align-items: center;
+    }
+    .launch-notice-mark {
+      width: 48px; height: 48px; display: grid; place-items: center;
+      border: 1px solid rgba(255,255,255,.28); border-radius: 15px;
+      background: rgba(255,255,255,.10); font-size: 23px;
+    }
+    .launch-notice .eyebrow { color: 
+#b8d2ff; margin-bottom: 3px; }
+    .launch-notice h2 { margin: 0 0 5px; font: 800 clamp(18px,2.2vw,25px)/1.25 Manrope,sans-serif; }
+    .launch-notice p { margin: 0; color: #e2eafa; max-width: 850px; font-size: 14px; }
+    .launch-notice .btn { white-space: nowrap; background: #fff; color: #17355e; }
+    .partner-proposal-copy { max-width: 900px; margin: 0 auto 28px; }
+    .partner-proposal-copy p { color: var(--muted); margin: 0 0 14px; }
+    .partner-proposal-copy h3 { margin: 24px 0 8px; color: var(--navy); font: 800 20px/1.3 Manrope,sans-serif; }
+    .partner-sample-note {
+      padding: 17px 19px; border: 1px solid #dce6f5; border-left: 4px solid var(--blue);
+      border-radius: 12px; background: 
+#f6f8ff; color: #384964; margin: 20px 0;
+    }
+    .request-form {
+      display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px;
+      background: #fff; border: 1px solid var(--line); border-radius: 20px;
+      box-shadow: var(--shadow); padding: clamp(20px,4vw,34px); max-width: 1000px; margin: 28px auto 0;
+    }
+    .request-form .field { min-width: 0; }
+    .request-form .field-full { grid-column: 1 / -1; }
+    .request-form label { display: block; font-size: 13px; font-weight: 800; margin-bottom: 7px; color: var(--ink); }
+    .request-form input, .request-form select, .request-form textarea {
+      width: 100%; border: 1px solid 
+#d8dfeb; border-radius: 11px; padding: 12px 13px;
+      background: #fff; color: var(--ink); outline-offset: 2px;
+    }
+    .request-form textarea { min-height: 135px; resize: vertical; }
+    .request-form .form-actions { grid-column: 1 / -1; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+    .request-form .form-note { flex: 1 1 280px; color: var(--muted); font-size: 12px; margin: 0; }
+    .request-form-status { grid-column: 1 / -1; color: var(--navy); font-weight: 700; }
+    @media (max-width: 760px) {
+      .launch-notice-inner { grid-template-columns: auto 1fr; }
+      .launch-notice-inner > .btn { grid-column: 1 / -1; justify-self: start; }
+      .request-form { grid-template-columns: 1fr; }
+      .request-form .field-full, .request-form .form-actions, .request-form-status { grid-column: auto; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+
+
+    /* ==============================================================
+       EXPANDED MARRAKECHPIXIM DESIGN SYSTEM
+       Additional components: global 
+sectors, partner pathways, trust,
+       contact cards, accessibility, responsive layouts and notices.
+       ============================================================== */
+    :root {
+      --gold: #d9a441;
+      --gold-soft: #fff5df;
+      --green-soft: #eaf8f2;
+      --rose-soft: #fff0f0;
+      --violet-soft: #f2efff;
+      --card-border: #e8edf5;
+      --focus-ring: 0 0 0 4px rgba(49, 94, 251, .2);
+      --transition-fast: 160ms ease;
+      --transition-normal: 260ms ease;
+    }
 
     html { scroll-behavior: smooth; }
 
     body {
+      min-width: 320px;
+      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button,
+    a,
+    input,
+    select,
+    textarea {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :focus-visible {
+      outline: 3px solid #315efb;
+      outline-offset: 3px;
+      box-shadow: var(--focus-ring);
+    }
+
+    .container-wide {
+      width: min(100% - 40px, 1360px);
+      margin-inline: auto;
+    }
+
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--blue);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .section-kicker::before {
+      width: 22px;
+      height: 2px;
+      content: "";
+      background: currentColor;
+      border-radius: 99px;
+    }
+
+    .section-intro {
+      max-width: 760px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.8;
+    }
+
+    .section-heading--center {
+      max-width: 820px;
+      margin: 0 auto 38px;
+      text-align: center;
+    }
+
+    .section-heading--center .section-kicker {
+      justify-content: center;
+    }
+
+    .section-heading--center .section-intro {
+      margin-inline: auto;
+    }
+
+
+
+
+
+    /* Artist, singer and creator collaboration form. */
+    .artist-section { position:relative; overflow:hidden; background:linear-gradient(135deg,#f5f8ff 0%,#fff 48%,#fff7e8 100%); }
+    .artist-hero { display:grid; grid-template-columns:1.02fr .98fr; gap:28px; align-items:stretch; margin-bottom:28px; }
+    .artist-promo { position:relative; overflow:hidden; padding:clamp(26px,4vw,44px); border-radius:26px; color:#fff; background:radial-gradient(circle at 85% 15%,rgba(255,205,91,.4),transparent 
+25%),linear-gradient(135deg,#142b55,#315efb 68%,#6a5cf6); box-shadow:0 18px 40px rgba(38,67,145,.17); }
+    .artist-promo .artist-kicker { display:inline-flex; padding:8px 12px; border:1px solid rgba(255,255,255,.28); border-radius:999px; background:rgba(255,255,255,.1); font-size:.82rem; font-weight:800; letter-spacing:.03em; }
+    .artist-promo h2 { max-width:16ch; margin:20px 0 14px; font-size:clamp(28px,3.6vw,43px); line-height:1.08; letter-spacing:-1.2px; }
+    .artist-promo p { max-width:54ch; color:#e6edff; line-height:1.7; }
+    .artist-promo .artist-benefits { display:grid; gap:11px; margin:24px 0 0; padding:0; list-style:none; }
+    .artist-benefits li { display:flex; gap:10px; align-items:flex-start; color:#f4f7ff; }
+    .artist-benefits li span { display:grid; place-items:center; flex:0 0 25px; width:25px; height:25px; border-radius:50%; background:rgba(255,255,255,.17); color:#ffe08b; font-weight:900; }
+    .artist-form-card { padding:clamp(22px,3vw,34px); border:1px solid #e7ecf6; border-radius:26px; background:#fff; box-shadow:0 16px 38px rgba(27,43,76,.08); }
+    .artist-form-card h3 { margin:0 0 8px; font-size:1.45rem; color:#152444; }
+    .artist-form-card > p { margin:0 0 22px; color:#69758b; font-size:.94rem; line-height:1.6; }
+    .artist-form-card .request-form { gap:16px; }
+    .artist-consent { display:flex; gap:10px; align-items:flex-start; padding:13px 14px; 
+border-radius:13px; background:#f6f8fd; color:#48546b; font-size:.87rem; line-height:1.55; }
+    .artist-consent input { width:18px; height:18px; flex:0 0 18px; margin-top:2px; accent-color:#315efb; }
+    .artist-consent.optional { background:#fff8e8; }
+    .artist-form-note { color:#6b7587; font-size:.79rem; line-height:1.55; }
+    .artist-status { margin-top:12px; color:#183d8d; font-size:.9rem; font-weight:700; }
+    @media(max-width:850px) { .artist-hero { grid-template-columns:1fr; } .artist-promo h2 { max-width:22ch; } }
+
+    /* Youth discovery section: a colorful, mobile-friendly concept area. */
+    .youth-section {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background: radial-gradient(circle at 8% 8%, rgba(46,197,167,.24), transparent 30%),
+                  radial-gradient(circle at 92% 18%, rgba(255,174,66,.24), transparent 26%),
+                  linear-gradient(135deg, #101d36 0%, #1d3670 58%, #315efb 100%);
+    }
+    .youth-section .section-kicker { color: #bfe8ff; }
+    .youth-section .section-heading h2 { color: #fff; }
+    .youth-section .section-intro { color: #dce7ff; }
+    .youth-topline { display:flex; align-items:center; justify-content:space-between; gap:18px; margin-bottom:30px; }
+    .youth-pill { display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(255,255,255,.26); background:rgba(255,255,255,.1); color:#fff; padding:8px 13px; border-radius:999px; font-size:.85rem; font-weight:700; }
+    .youth-card-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+    .youth-card { position:relative; isolation:isolate; display:flex; min-height:245px; flex-direction:column; justify-content:flex-end; overflow:hidden; padding:22px; border:1px solid rgba(255,255,255,.2); border-radius:22px; color:#fff; background:#23395d; box-shadow:0 16px 36px rgba(0,0,0,.16); transition:transform .2s ease, 
+box-shadow .2s ease; }
+    .youth-card:hover { transform:translateY(-5px); box-shadow:0 22px 44px rgba(0,0,0,.25); }
+    .youth-card::before { content:""; position:absolute; z-index:-2; inset:0; background-image:var(--youth-image); background-size:cover; background-position:center; transition:transform .35s ease; }
+    .youth-card:hover::before { transform:scale(1.05); }
+    .youth-card::after { content:""; position:absolute; z-index:-1; inset:0; background:linear-gradient(180deg,rgba(8,17,36,.04) 0%,rgba(8,17,36,.38) 38%,rgba(8,17,36,.94) 100%); }
+    .youth-card-icon { display:grid; place-items:center; width:44px; height:44px; margin-bottom:auto; border-radius:14px; 
+background:rgba(255,255,255,.17); border:1px solid rgba(255,255,255,.35); font-size:1.35rem; backdrop-filter:blur(8px); }
+    .youth-card h3 { margin:25px 0 7px; font-size:1.25rem; line-height:1.25; }
+    .youth-card p { margin:0; color:#edf3ff; font-size:.94rem; line-height:1.55; max-width:36ch; }
+    .youth-card-link { display:inline-flex; align-items:center; gap:8px; margin-top:15px; font-size:.9rem; font-weight:800; color:#fff; }
+    .youth-card-link span { color:#8de9d6; font-size:1.15rem; }
+    .youth-footer { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-top:26px; padding:20px 22px; border:1px solid rgba(255,255,255,.18); border-radius:18px; 
+background:rgba(255,255,255,.08); }
+    .youth-footer p { margin:0; color:#e2eaff; }
+    .youth-note { margin:16px 0 0; color:#c5d3f0; font-size:.82rem; }
+    @media (max-width: 900px) { .youth-card-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media (max-width: 560px) { .youth-topline { align-items:flex-start; flex-direction:column; } .youth-card-grid { grid-template-columns:1fr; gap:13px; } .youth-card { min-height:215px; padding:20px; } .youth-footer { align-items:flex-start; flex-direction:column; } }
+
+    .expanded-section {
+      padding-block: clamp(56px, 7vw, 100px);
+    }
+
+    .expanded-section--soft {
+      background: #f4f7fc;
+      border-block: 1px solid #edf1f7;
+    }
+
+    .expanded-section--dark {
+      color: #fff;
+      background: linear-gradient(135deg, #12213a 0%, #1d3760 65%, #234a75 100%);
+    }
+
+    .expanded-section--dark .section-intro {
+      color: #d5dfef;
+    }
+
+    .sector-overview-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 
+minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .sector-overview-card {
+      position: relative;
+      display: flex;
+      min-height: 170px;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 23px;
+      overflow: hidden;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(20, 38, 72, .035);
+      transition: transform var(--transition-normal), box-shadow 
+var(--transition-normal), border-color var(--transition-normal);
+    }
+
+    .sector-overview-card:hover {
+      transform: translateY(-4px);
+      border-color: #c9d5f7;
+      box-shadow: 0 18px 35px rgba(20, 38, 72, .09);
+    }
+
+    .sector-overview-card h3 {
+      margin: 14px 0 8px;
+      font-size: 1.02rem;
+      line-height: 1.4;
+    }
+
+    .sector-overview-card p {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--cream);
-      color: var(--text);
+      color: var(--muted);
+      font-size: .88rem;
       line-height: 1.65;
     }
 
-    a { color: inherit; }
-    button, input, select { font: inherit; }
-    img { max-width: 100%; }
-
-    .container {
-      width: min(1180px, 92%);
-      margin: auto;
-    }
-
-    header {
-      background: var(--green);
-      color: white;
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      padding: 22px 0;
-    }
-
-    .brand {
-      font-size: clamp(26px, 4vw, 36px);
-      font-weight: 800;
-      letter-spacing: .4px;
-      margin: 0;
-    }
-
-    .tagline {
-      color: #e8e7dd;
-      margin: 3px 0 0;
-    }
-
-    .language {
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ffffff55;
-      background: #ffffff10;
-      color: white;
-      max-width: 180px;
-    }
-
-    .language option { color: #222; }
-
-    nav {
-      background: white;
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .nav-inner {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px 25px;
-      padding: 13px 0;
-    }
-
-    nav a {
-      color: var(--green);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    nav a:hover { color: var(--gold); }
-
-    .hero {
-      padding: 65px 0 52px;
-      text-align: center;
-      background:
-        linear-gradient(#f7f5f0dc, #f7f5f0ed),
-        url("https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1800&q=85")
-        center/cover;
-    }
-
-    .eyebrow {
-      color: var(--green-light);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .hero h2 {
-      max-width: 850px;
-      margin: 12px auto;
-      color: var(--green);
-      font-size: clamp(32px, 5.5vw, 55px);
-      line-height: 1.12;
-    }
-
-    .hero p {
-      max-width: 730px;
-      margin: 18px auto;
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .actions {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 24px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 21px;
-      border-radius: 8px;
-      border: 1px solid var(--green);
-      text-decoration: none;
-      font-weight: 700;
-      cursor: pointer;
-      transition: .2s;
-    }
-
-    .btn-primary {
-      color: white;
-      background: var(--green);
-    }
-
-    .btn-primary:hover { background: var(--green-light); }
-
-    .btn-secondary {
-      color: var(--green);
-      background: white;
-    }
-
-    .btn-secondary:hover {
-      background: #eee8d9;
-    }
-
-    .section { padding: 48px 0; }
-
-    .section-heading {
-      text-align: center;
-      margin-bottom: 28px;
-    }
-
-    .section-heading h2 {
-      color: var(--green);
-      font-size: clamp(25px, 4vw, 34px);
-      line-height: 1.2;
-      margin: 0 0 10px;
-    }
-
-    .section-heading p {
-      max-width: 720px;
-      color: var(--muted);
-      margin: auto;
-    }
-
-    .search-panel {
-      max-width: 790px;
-      margin: auto;
-      padding: 22px;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      box-shadow: 0 5px 22px #00000008;
-    }
-
-    .search-panel label {
-      display: block;
-      color: var(--green);
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .search-row {
-      display: flex;
-      gap: 10px;
-    }
-
-    .search-row input {
-      flex: 1;
-      min-width: 0;
-      padding: 13px;
-      border: 1px solid #cfcfc8;
-      border-radius: 8px;
-    }
-
-    .search-row button {
-      padding: 12px 22px;
-      border: 0;
-      border-radius: 8px;
-      color: white;
-      background: var(--green);
-      cursor: pointer;
-    }
-
-    #searchMessage {
-      min-height: 24px;
-      color: var(--green);
-      margin-bottom: 0;
-      font-size: 14px;
-    }
-
-    .category-grid {
+    .sector-card-symbol {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 18px;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      color: #2349c7;
+      background: var(--soft-blue);
+      border-radius: 13px;
+      font-size: 1.2rem;
+      font-weight: 800;
     }
 
-    .category {
-      min-width: 0;
+    .sector-overview-card:nth-child(4n + 2) .sector-card-symbol {
+      color: #087b65;
+      background: var(--green-soft);
+    }
+
+    .sector-overview-card:nth-child(4n + 3) .sector-card-symbol {
+      color: #98630a;
+      background: var(--gold-soft);
+    }
+
+    .sector-overview-card:nth-child(4n + 4) .sector-card-symbol {
+      color: #6849c6;
+      background: var(--violet-soft);
+    }
+
+    .sector-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 15px;
+      color: var(--blue);
+      font-size: .83rem;
+      font-weight: 800;
+    }
+
+    .sector-link span {
+      transition: transform 
+var(--transition-fast);
+    }
+
+    .sector-overview-card:hover .sector-link span {
+      transform: translateX(3px);
+    }
+
+    [dir="rtl"] .sector-overview-card:hover .sector-link span {
+      transform: translateX(-3px);
+    }
+
+    .global-value-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 34px;
+    }
+
+    .global-value-card {
+      padding: 28px;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+    }
+
+    .global-value-card h3 {
+      margin: 17px 0 10px;
+      font-size: 1.12rem;
+    }
+
+    .global-value-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .value-icon {
+      display: grid;
+      width: 50px;
+      height: 50px;
+      place-items: center;
+      color: #fff;
+      background: var(--blue);
+      border-radius: 15px;
+      font-size: 1.35rem;
+      font-weight: 800;
+    }
+
+    .global-value-card:nth-child(2) .value-icon {
+      background: #0e8a70;
+    }
+
+    .global-value-card:nth-child(3) .value-icon {
+      background: #bd8420;
+    }
+
+    .model-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
+      gap: 50px;
+      align-items: center;
+    }
+
+    .model-list {
+      display: grid;
+      gap: 17px;
+      margin: 28px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .model-list li {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 12px;
+      align-items: start;
+      color: #e5edf8;
+      line-height: 1.7;
+    }
+
+    .model-list li span:first-child {
+      display: grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      color: #10213b;
+      background: #a8f0dc;
+      border-radius: 50%;
+      font-weight: 900;
+    }
+
+    .model-visual {
+      min-height: 400px;
       overflow: hidden;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px;
-      transition: transform .2s, box-shadow .2s;
+      background: #d9e5f5;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 26px;
+      box-shadow: 0 28px 60px rgba(0,0,0,.2);
     }
 
-    .category:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px #00000012;
-    }
-
-    .category[hidden] { display: none; }
-
-    .category-icon {
-      width: 100%;
-      height: 165px;
-      overflow: hidden;
-      border-radius: 8px;
-      background: #e5e8e2;
-    }
-
-    .category-icon img {
+    .model-visual img {
+      display: block;
       width: 100%;
       height: 100%;
-      display: block;
+      min-height: 400px;
       object-fit: cover;
-      transition: transform .35s;
     }
 
-    .category:hover .category-icon img,
-    .luxury-card:hover .category-icon img {
-      transform: scale(1.05);
-    }
-
-    .category h3 {
-      color: var(--green);
-      font-size: 18px;
-      line-height: 1.35;
-      margin: 12px 0 8px;
-    }
-
-    .category p {
-      color: var(--muted);
-      font-size: 14px;
-      margin: 0;
-    }
-
-    .explore {
-      display: inline-block;
-      color: var(--green);
-      font-weight: 700;
-      text-decoration: none;
-      margin-top: 14px;
-      font-size: 14px;
-    }
-
-    .explore:hover {
-      color: #99783e;
-      text-decoration: underline;
-    }
-
-    .luxury-section {
-      background: #142f29;
-      color: white;
-    }
-
-    .luxury-section .section-heading h2 { color: white; }
-    .luxury-section .section-heading p { color: #d9e1da; }
-
-    .luxury-grid {
+    .partner-pathways {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-    }
-
-    .luxury-card {
-      overflow: hidden;
-      border: 1px solid #ffffff2a;
-      background: #ffffff09;
-      padding: 14px;
-      border-radius: 12px;
-    }
-
-    .luxury-card .category-icon { height: 185px; }
-
-    .luxury-card h3 {
-      color: #f3dfb1;
-      margin: 13px 0 8px;
-    }
-
-    .luxury-card p {
-      color: #e0e5df;
-      font-size: 14px;
-    }
-
-    .feature-panel {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
+      margin-top: 35px;
     }
 
-    .feature {
-      padding: 25px;
-      border-radius: 13px;
-      background: white;
-      border: 1px solid var(--border);
+    .partner-pathway {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 28px;
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
     }
 
-    .feature h3 { color: var(--green); margin-top: 0; }
-    .feature p, .feature li { color: var(--muted); font-size: 14px; }
-    .feature ul { padding-left: 20px; }
-
-    .advertise {
-      background: #e9eee9;
-      text-align: center;
-      padding: 45px 20px;
-      border-radius: 16px;
+    .partner-pathway h3 {
+      margin: 18px 0 10px;
+      font-size: 1.1rem;
     }
 
-    .advertise h2 {
-      color: var(--green);
-      font-size: clamp(26px, 4vw, 35px);
+    .partner-pathway p {
+      flex: 1;
+      margin: 0 0 22px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .partner-pathway .btn {
+      min-height: 44px;
+    }
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, .8fr);
+      gap: 35px;
+      align-items: center;
+      padding: clamp(26px, 5vw, 52px);
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-panel h2 {
+      margin: 12px 0;
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
       line-height: 1.2;
     }
 
-    .advertise p {
-      max-width: 720px;
-      margin: 12px auto;
-      color: #505b52;
+    .contact-panel p {
+      max-width: 680px;
+      color: var(--muted);
+      line-height: 1.8;
     }
 
-    .notice {
-      font-size: 12px !important;
-      color: var(--muted) !important;
-      margin-top: 18px !important;
-    }
-
-    .about-grid {
+    .contact-methods {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 20px;
+      gap: 14px;
     }
 
-    .about-item {
-      padding: 22px;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-    }
-
-    .about-item h3 { color: var(--green); margin-top: 0; }
-    .about-item p { color: var(--muted); font-size: 14px; }
-
-    .contact-section {
-      background: white;
-      border: 1px solid var(--border);
+    .contact-method {
+      display: flex;
+      gap: 13px;
+      align-items: flex-start;
+      padding: 17px;
+      background: #f7f9fd;
+      border: 1px solid #e7edf7;
       border-radius: 14px;
-      padding: 28px;
-      text-align: center;
     }
 
-    .contact-section h2 { color: var(--green); }
+    .contact-method strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: .88rem;
+    }
 
-    .email-link {
-      color: var(--green);
+    .contact-method a {
+      overflow-wrap: anywhere;
+      color: var(--blue);
       font-weight: 700;
-      overflow-wrap: anywhere;
-      text-decoration: none;
     }
 
-    .email-link:hover { text-decoration: underline; }
+    .contact-method small {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
 
-    footer {
-      margin-top: 35px;
-      padding: 32px 0;
-      color: white;
-      background: var(--green);
+    .contact-method-icon {
+      display: grid;
+      flex: 0 0 40px;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      color: var(--blue);
+      background: #e9efff;
+      border-radius: 12px;
+      font-weight: 900;
+    }
+
+    .trust-checklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .trust-check-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 18px;
+      background: #f8faff;
+      border: 1px solid #e5ebf5;
+      border-radius: 15px;
+    }
+
+    .trust-check-item strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .trust-check-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.65;
+    }
+
+    .check-mark-large {
+      display: grid;
+      flex: 0 0 28px;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      color: #087b65;
+      background: #dff7ed;
+      border-radius: 50%;
+      font-weight: 900;
+    }
+
+    .disclosure-note {
+      margin-top: 25px;
+      padding: 18px 20px;
+      color: #4e5b71;
+      background: #fff9e9;
+      border: 1px solid #f3dfad;
+      border-left: 4px solid #d9a441;
+      border-radius: 12px;
+      font-size: .9rem;
+      line-height: 1.7;
+    }
+
+    [dir="rtl"] .disclosure-note {
+      border-right: 4px solid #d9a441;
+      border-left: 1px solid #f3dfad;
+    }
+
+    .expanded-footer {
+      padding: 30px 0;
+      color: #c8d4e7;
+      background: #0d192d;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+
+    .expanded-footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px 25px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .expanded-footer a {
+      color: #fff;
+    }
+
+    .footer-contact-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+      align-items: center;
+    }
+
+    .photo-credit-note {
+      max-width: 900px;
+      margin: 20px auto 0;
+      color: #9daec6;
+      font-size: .78rem;
+      line-height: 1.6;
+    }
+
+    .image-fallback::after {
+      display: grid;
+      min-height: 180px;
+      place-items: center;
+      padding: 20px;
+      color: #64748b;
+      background: linear-gradient(135deg, #e9eef7, #dce5f2);
+      content: "Marrakechpixim · Discover globally";
+      font-weight: 800;
       text-align: center;
     }
 
-    footer p { margin: 7px 0; }
-
-    .footer-small {
-      color: #d6dfd8;
-      font-size: 13px;
+    .category-card img,
+    .hero-photo img,
+    .model-visual img {
+      transition: transform 450ms ease;
     }
 
-    footer a {
-      color: #f3dfb1;
-      overflow-wrap: anywhere;
+    .category-card:hover img {
+      transform: scale(1.035);
     }
 
-    [dir="rtl"] body { text-align: right; }
-    [dir="rtl"] .feature ul { padding-left: 0; padding-right: 20px; }
-    [dir="rtl"] .search-row { flex-direction: row; }
+    .category-image {
+      overflow: hidden;
+    }
 
-    @media (max-width: 560px) {
-      .topbar {
+    .category-image img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .expanded-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 26px;
+    }
+
+    .text-muted {
+      color: var(--muted);
+    }
+
+    .sr-only-focusable:not(:focus):not(:active) {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 1100px) {
+      .sector-overview-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .model-layout {
+        gap: 30px;
+      }
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .sector-overview-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .global-value-grid,
+      .partner-pathways {
+        grid-template-columns: 1fr;
+      }
+      .model-layout {
+        grid-template-columns: 1fr;
+      }
+      .model-visual,
+      .model-visual img {
+        min-height: 300px;
+      }
+      .trust-checklist {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container-wide {
+        width: min(100% - 28px, 1360px);
+      }
+      .expanded-section {
+        padding-block: 48px;
+      }
+      .sector-overview-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .sector-overview-card {
+        min-height: 140px;
+        padding: 20px;
+      }
+      .global-value-card,
+      .partner-pathway {
+        padding: 22px;
+      }
+      .contact-panel {
+        padding: 22px;
+      }
+      .expanded-footer-inner {
         align-items: flex-start;
         flex-direction: column;
       }
-
-      .nav-inner { gap: 12px 17px; }
-
-      .search-row { flex-direction: column; }
-      .search-row button { width: 100%; }
-
-      .hero { padding-top: 45px; }
-      .section { padding: 35px 0; }
-      .category-icon { height: 180px; }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+
+
+    /* Final polish: one-word brand, clearer launch status, and resilient mobile layout. */
+    .brand-name { white-space: nowrap; word-break: keep-all; overflow-wrap: normal; letter-spacing: -.7px; }
+    .launch-notice { position: relative; isolation: isolate; }
+    .launch-notice::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 5px; background: linear-gradient(180deg, #d9a441, #6d8cff); }
+    [dir="rtl"] .launch-notice::before { inset: 0 0 0 auto; }
+    .launch-notice h2 { max-width: 30ch; }
+    .category-card, .step-card, .trust-box, .sector-overview-card { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    .category-card:focus-within, .step-card:hover, .trust-box:hover, .sector-overview-card:hover { border-color: #d5def0; box-shadow: 0 14px 32px rgba(20,38,72,.09); }
+    .site-footer .brand-name { color: #fff; }
+    @media (max-width: 480px) {
+      .launch-notice-inner { gap: 12px; }
+      .launch-notice p { font-size: 13px; }
+      .brand { gap: 8px; }
+      .brand-name { font-size: 17px; letter-spacing: -.6px; }
+    }
+
   </style>
 </head>
-
 <body>
-<header>
-  <div class="container topbar">
-    <div>
-      <h1 class="brand">Marrakechpixim</h1>
-      <p class="tagline" data-i18n="tagline">Find What You Need, Easily</p>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <!-- Header: the official brand name 
+remains Marrakechpixim in every language. -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="Marrakechpixim home">
+        <span class="brand-mark" aria-hidden="true">M</span>
+        <span class="brand-name">Marrakechpixim</span>
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+        <a href="#categories" data-i18n="navExplore">Explore</a>
+        <a href="#business" data-i18n="navBusiness">For businesses</a>
+        <a href="#how-it-works" data-i18n="navHow">How it works</a>
+        <a href="#about" data-i18n="navAbout">About us</a>
+      </nav>
+      <div class="header-actions">
+        <label class="sr-only" for="languageSelect">Choose language</label>
+        <select class="language-select" id="languageSelect" aria-label="Choose language">
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="es">Español</option>
+          <option value="pt">Português</option>
+          <option value="ar">العربية</option>
+          <option value="ru">Русский</option>
+          <option value="zh">简体中文</option>
+        </select>
+        <a class="btn btn-primary" href="#business" data-i18n="listBusiness">List your business</a>
+      </div>
+      <button class="mobile-menu" id="mobileMenu" aria-expanded="false" aria-controls="mainNav"><span aria-hidden="true">☰</span><span data-i18n="menu">Menu</span></button>
     </div>
+  </header>
 
-    <select class="language" id="languageSelect" aria-label="Choose language">
-      <option value="en">English</option>
-      <option value="fr">Français</option>
-      <option value="es">Español</option>
-      <option value="ar">العربية</option>
-      <option value="pt">Português</option>
-      <option value="ru">Русский</option>
-      <option value="zh">简体中文</option>
-    </select>
-  </div>
-</header>
-
-<nav aria-label="Main navigation">
-  <div class="container nav-inner">
-    <a href="#home" data-i18n="navHome">Home</a>
-    <a href="#categories" data-i18n="navCategories">Categories</a>
-    <a href="#luxury" data-i18n="navLuxury">Luxury</a>
-    <a href="#partners" data-i18n="navPartners">Partnerships</a>
-    <a href="#advertise" data-i18n="navAdvertise">Advertise</a>
-    <a href="#about" data-i18n="navAbout">About Us</a>
-    <a href="#contact" data-i18n="navContact">Contact</a>
-  </div>
-</nav>
-
-<main>
-  <section class="hero" id="home">
-    <div class="container">
-      <span class="eyebrow" data-i18n="eyebrow">A World of Discovery</span>
-      <h2 data-i18n="heroTitle">Discover Products, Businesses and Opportunities Worldwide</h2>
-      <p data-i18n="heroText">
-        Explore travel, real estate, healthcare, technology, luxury brands,
-        events, shopping and services in one place. Discover businesses
-        and connect with opportunities around the world.
-      </p>
-      <div class="actions">
-        <a class="btn btn-primary" href="#categories" data-i18n="exploreButton">Explore Categories</a>
-        <a class="btn btn-secondary" href="#advertise" data-i18n="advertiseButton">Promote Your Business</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="search">
-    <div class="container">
-      <div class="search-panel">
-        <label for="searchInput" data-i18n="searchTitle">What Are You Looking For?</label>
-        <form class="search-row" id="searchForm">
-          <input type="search" id="searchInput"
-            placeholder="Search categories, products or services..."
-            data-i18n-placeholder="searchPlaceholder"
-            aria-label="Search categories and services">
-          <button type="submit" data-i18n="searchButton">Search</button>
-        </form>
-        <p id="searchMessage" aria-live="polite"></p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="categories">
-    <div class="container">
-      <div class="section-heading">
-        <h2 data-i18n="categoriesTitle">Explore Our Categories</h2>
-        <p data-i18n="categoriesText">A broad world of products, services, businesses and experiences.</p>
-      </div>
-
-      <div class="category-grid" id="categoryGrid">
-
-        <article class="category" data-keywords="travel tourism flights airlines aviation hotels resorts beaches tours السفر السياحة الطيران voyage tourisme">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=800&q=80" alt="Travel and tourism" loading="lazy"></div>
-          <h3 data-i18n="c1">Travel, Tourism & Aviation</h3>
-          <p data-i18n="d1">Airlines, flights, hotels, resorts, beaches, tours and destinations worldwide.</p>
-          <a class="explore" href="#partners" data-i18n="exploreLink">Explore opportunities →</a>
-        </article>
-
-        <article class="category" data-keywords="real estate property houses apartments buildings العقارات immobilier maisons">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" alt="Real estate and properties" loading="lazy"></div>
-          <h3 data-i18n="c2">Real Estate & Property</h3>
-          <p data-i18n="d2">Residential and commercial properties, developments and real estate services.</p>
-          <a class="explore" href="#partners" data-i18n="exploreLink">Explore opportunities →</a>
-        </article>
-
-        <article class="category" data-keywords="investment business companies entrepreneurship finance investments استثمار أعمال investissement">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Business and investment" loading="lazy"></div>
-          <h3 data-i18n="c3">Investment & Business</h3>
-          <p data-i18n="d3">Business services, investment information and commercial opportunities.</p>
-          <a class="explore" href="#partners" data-i18n="exploreLink">Explore opportunities →</a>
-        </article>
-
-        <article class="category" data-keywords="cars automotive vehicles electric cars automobiles سيارات voitures">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=80" alt="Automotive vehicles" loading="lazy"></div>
-          <h3 data-i18n="c4">Cars & Automotive</h3>
-          <p data-i18n="d4">Automotive brands, vehicles, mobility services and related products.</p>
-          <a class="explore" href="#partners" data-i18n="exploreLink">Explore opportunities →</a>
-        </article>
-
-        <article class="category" data-keywords="healthcare medicine medical equipment hospitals clinics health طب طبي santé">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" alt="Healthcare and medical services" loading="lazy"></div>
-          <h3 data-i18n="c5">Healthcare & Medical Equipment</h3>
-          <p data-i18n="d5">Healthcare providers, clinics, medical devices and health technology.</p>
-          <a class="explore" href="#partners" data-i18n="exploreLink">Explore opportunities →</a>
-        </article>
-
-        <article class="category" data-keywords="bank banking credit debit cards payment finance بنوك بطاقات banque paiement">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80" alt="Banking and payment services" loading="lazy"></div>
-          <h3 data-i18n="c6">Banking & Financial Products</h3>
-          <p data-i18n="d6">Bank cards, payment products and financial services.</p>
-          <a class="explore" href="#partners" data-i18n="exploreLink">Explore opportunities →</a>
-        </article>
-
-        <article class="category" data-keywords="luxury fashion designer clothing couture clothes أزياء فاخرة mode luxe">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80" alt="Fashion and clothing" loading="lazy"></div>
-          <h3 data-i18n="c7">Luxury Fashion & Designer Brands</h3>
-          <p data-i18n="d7">Premium clothing, fashion houses, accessories and designer collections.</p>
-          <a class="explore" href="#luxury" data-i18n="luxuryLink">Discover luxury →</a>
-        </article>
-
-        <article class="category" data-keywords="watches jewelry diamonds precious stones jewellery مجوهرات ألماس ساعات bijoux">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=800&q=80" alt="Jewelry and luxury accessories" loading="lazy"></div>
-          <h3 data-i18n="c8">Watches, Jewelry & Diamonds</h3>
-          <p data-i18n="d8">Fine watches, precious stones, jewelry and premium accessories.</p>
-          <a class="explore" href="#luxury" data-i18n="luxuryLink">Discover luxury →</a>
-        </article>
-
-        <article class="category" data-keywords="luxury packaging gift boxes premium packaging تغليف فاخر emballage cadeaux">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80" alt="Gift packaging" loading="lazy"></div>
-          <h3 data-i18n="c9">Luxury Packaging & Gift Boxes</h3>
-          <p data-i18n="d9">Premium boxes and packaging for watches, jewelry, gifts and luxury products.</p>
-          <a class="explore" href="#luxury" data-i18n="luxuryLink">Discover luxury →</a>
-        </article>
-
-        <article class="category" data-keywords="shopping retail stores products ecommerce trade تسوق تجارة shopping">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80" alt="Retail shopping" loading="lazy"></div>
-          <h3 data-i18n="c10">Shopping & Retail</h3>
-          <p data-i18n="d10">Retailers, shops, product brands and businesses presenting their offers.</p>
-          <a class="explore" href="#partners" data-i18n="exploreLink">Explore opportunities →</a>
-        </article>
-
-        <article class="category" data-keywords="restaurants food cafes dining cuisine catering مطاعم أكل restaurants cuisine">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Restaurant dining" loading="lazy"></div>
-          <h3 data-i18n="c11">Restaurants & Food</h3>
-          <p data-i18n="d11">Restaurants, cafés, cuisine, food brands and dining experiences.</p>
-          <a class="explore" href="#partners" data-i18n="exploreLink">Explore opportunities →</a>
-        </article>
-
-        <article class="category" data-keywords="entertainment leisure attractions experiences الترفيه divertissement">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=800&q=80" alt="Entertainment and live events" loading="lazy"></div>
-          <h3 data-i18n="c12">Entertainment & Leisure</h3>
-          <p data-i18n="d12">Attractions, leisure venues, entertainment services and experiences.</p>
-          <a class="explore" href="#partners" data-i18n="exploreLink">Explore opportunities →</a>
-        </article>
-
-        <article class="category" data-keywords="events fairs trade shows exhibitions conferences festivals معارض أحداث événements">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80" alt="Business conferences and exhibitions" loading="lazy"></div>
-          <h3 data-i18n="c13">Events, Fairs & Exhibitions</h3>
-          <p data-i18n="d13">Trade fairs, professional exhibitions, conferences and festivals.</p>
-          <a class="explore" href="#partners" data-i18n="exploreLink">Explore opportunities →</a>
-        </article>
-
-        <article class="category" data-keywords="sports fitness athletes stadiums gyms sporting goods رياضة sport">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80" alt="Sports and fitness" loading="lazy"></div>
-          <h3 data-i18n="c14">Sports & Fitness</h3>
-          <p data-i18n="d14">Sports brands, fitness services, sporting venues and athletic experiences.</p>
-          <a class="explore" href="#partners" data-i18n="partnerLink">Partnership opportunities →</a>
-        </article>
-
-        <article class="category" data-keywords="technology electronics computers phones software gadgets إلكترونيات technologie">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80" alt="Technology and electronics" loading="lazy"></div>
-          <h3 data-i18n="c15">Technology & Electronics</h3>
-          <p data-i18n="d15">Computers, mobile devices, electronics, software and technology manufacturers.</p>
-          <a class="explore" href="#partners" data-i18n="exploreLink">Explore opportunities →</a>
-        </article>
-
-        <article class="category" data-keywords="industrial manufacturing factories suppliers machinery industry صناعة industrie">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&w=800&q=80" alt="Industrial manufacturing" loading="lazy"></div>
-          <h3 data-i18n="c16">Industry & Manufacturing</h3>
-          <p data-i18n="d16">Manufacturers, suppliers, machinery, industrial products and B2B services.</p>
-          <a class="explore" href="#partners" data-i18n="partnerLink">Partnership opportunities →</a>
-        </article>
-
-        <article class="category" data-keywords="promotional merchandise thermos power banks cups keychains bracelets caps tshirts gifts هدايا cadeaux">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=800&q=80" alt="Promotional gifts and merchandise" loading="lazy"></div>
-          <h3 data-i18n="c17">Promotional Products & Merchandise</h3>
-          <p data-i18n="d17">Branded bottles, power banks, cups, keychains, clothing and corporate gifts.</p>
-          <a class="explore" href="#partners" data-i18n="partnerLink">Partnership opportunities →</a>
-        </article>
-
-        <article class="category" data-keywords="beauty wellness cosmetics skincare perfume personal care جمال beauté parfum">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=800&q=80" alt="Beauty and cosmetics" loading="lazy"></div>
-          <h3 data-i18n="c18">Beauty, Wellness & Perfumes</h3>
-          <p data-i18n="d18">Beauty products, cosmetics, fragrances, personal care and wellness services.</p>
-          <a class="explore" href="#partners" data-i18n="exploreLink">Explore opportunities →</a>
-        </article>
-
-        <article class="category" data-keywords="home living furniture decoration appliances interior design منزل أثاث maison">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" alt="Home furniture and interior design" loading="lazy"></div>
-          <h3 data-i18n="c19">Home, Furniture & Living</h3>
-          <p data-i18n="d19">Furniture, home appliances, interiors, decoration and lifestyle products.</p>
-          <a class="explore" href="#partners" data-i18n="exploreLink">Explore opportunities →</a>
-        </article>
-
-        <article class="category" data-keywords="professional services consulting legal accounting business services خدمات services professionnels">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80" alt="Professional office and business services" loading="lazy"></div>
-          <h3 data-i18n="c20">Professional & Business Services</h3>
-          <p data-i18n="d20">Consultants, agencies and service providers for individuals and companies.</p>
-          <a class="explore" href="#partners" data-i18n="exploreLink">Explore opportunities →</a>
-        </article>
-
-        <article class="category" data-keywords="education learning training universities courses education تعليم éducation">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80" alt="Education and university" loading="lazy"></div>
-          <h3 data-i18n="c21">Education & Learning</h3>
-          <p data-i18n="d21">Schools, training providers, educational services and learning opportunities.</p>
-          <a class="explore" href="#partners" data-i18n="exploreLink">Explore opportunities →</a>
-        </article>
-
-        <article class="category" data-keywords="logistics transport shipping freight delivery transportation نقل transport">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="Logistics and shipping" loading="lazy"></div>
-          <h3 data-i18n="c22">Transport, Logistics & Shipping</h3>
-          <p data-i18n="d22">Transport providers, shipping, logistics and delivery services.</p>
-          <a class="explore" href="#partners" data-i18n="exploreLink">Explore opportunities →</a>
-        </article>
-
-        <article class="category" data-keywords="art culture music artists musicians cinema film فن ثقافة art culture">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=800&q=80" alt="Art music and culture" loading="lazy"></div>
-          <h3 data-i18n="c23">Art, Culture & Music</h3>
-          <p data-i18n="d23">Artists, music, cultural venues, film and creative experiences.</p>
-          <a class="explore" href="#partners" data-i18n="partnerLink">Partnership opportunities →</a>
-        </article>
-
-        <article class="category" data-keywords="agriculture farming agricultural equipment food production فلاحة agriculture">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80" alt="Agriculture and farming" loading="lazy"></div>
-          <h3 data-i18n="c24">Agriculture & Food Production</h3>
-          <p data-i18n="d24">Agricultural businesses, equipment, food producers and related services.</p>
-          <a class="explore" href="#partners" data-i18n="exploreLink">Explore opportunities →</a>
-        </article>
-
-        <article class="category" data-keywords="energy renewable solar electricity sustainability طاقة énergie">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=80" alt="Solar energy and sustainability" loading="lazy"></div>
-          <h3 data-i18n="c25">Energy & Sustainability</h3>
-          <p data-i18n="d25">Energy providers, renewable technology and sustainability-related businesses.</p>
-          <a class="explore" href="#partners" data-i18n="exploreLink">Explore opportunities →</a>
-        </article>
-
-        <article class="category" data-keywords="security cybersecurity digital protection safety أمن cybersécurité">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" alt="Cybersecurity and digital protection" loading="lazy"></div>
-          <h3 data-i18n="c26">Security & Digital Solutions</h3>
-          <p data-i18n="d26">Security services, cybersecurity providers and digital protection solutions.</p>
-          <a class="explore" href="#partners" data-i18n="exploreLink">Explore opportunities →</a>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="section luxury-section" id="luxury">
-    <div class="container">
-      <div class="section-heading">
-        <h2 data-i18n="luxuryTitle">Luxury & Premium Showcase</h2>
-        <p data-i18n="luxuryText">A dedicated space for premium brands, refined products, luxury packaging and high-quality business presentations.</p>
-      </div>
-
-      <div class="luxury-grid">
-        <article class="luxury-card">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80" alt="Designer fashion" loading="lazy"></div>
-          <h3 data-i18n="lux1">Designer Fashion</h3>
-          <p data-i18n="luxd1">Premium clothing, designer collections, bags and accessories.</p>
-        </article>
-
-        <article class="luxury-card">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=800&q=80" alt="Luxury watch" loading="lazy"></div>
-          <h3 data-i18n="lux2">Luxury Watches</h3>
-          <p data-i18n="luxd2">Watch brands, refined presentation and premium watch packaging.</p>
-        </article>
-
-        <article class="luxury-card">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=800&q=80" alt="Fine jewelry" loading="lazy"></div>
-          <h3 data-i18n="lux3">Jewelry & Diamonds</h3>
-          <p data-i18n="luxd3">Jewelry houses, precious stones and elegant product presentation.</p>
-        </article>
-
-        <article class="luxury-card">
-          <div class="category-icon"><img src="https://images.unsplash.com/photo-1607344645866-009c320b63e0?auto=format&fit=crop&w=800&q=80" alt="Premium gift packaging" loading="lazy"></div>
-          <h3 data-i18n="lux4">Premium Packaging</h3>
-          <p data-i18n="luxd4">Luxury boxes, gift packaging and presentation solutions for premium brands.</p>
-        </article>
-      </div>
-
-      <p class="notice" style="color:#d9e1da !important" data-i18n="brandNotice">
-        Brand names and logos require appropriate authorization. This showcase does not claim existing brand partnerships.
-      </p>
-    </div>
-  </section>
-
-  <section class="section" id="partners">
-    <div class="container">
-      <div class="section-heading">
-        <h2 data-i18n="partnersTitle">Partnerships & Brand Promotion</h2>
-        <p data-i18n="partnersText">Build relationships with manufacturers, businesses, creators and potential brand ambassadors around the world.</p>
-      </div>
-
-      <div class="feature-panel">
-        <article class="feature">
-          <h3 data-i18n="f1">Manufacturers & Suppliers</h3>
-          <p data-i18n="fp1">Explore potential partnerships with companies that manufacture quality promotional merchandise.</p>
-          <ul>
-            <li>Reusable bottles and thermoses</li>
-            <li>Power banks and electronic accessories</li>
-            <li>Metal and quality plastic cups</li>
-            <li>Keychains, bracelets and branded clothing</li>
-            <li>Premium gifts and custom packaging</li>
-          </ul>
-          <p data-i18n="fp2">Potential arrangements may include samples, branded products, demonstrations or agreed advertising exchanges.</p>
-        </article>
-
-        <article class="feature">
-          <h3 data-i18n="f2">Artists & Brand Ambassadors</h3>
-          <p data-i18n="fp3">Explore future collaborations with musicians, athletes, actors and other public figures.</p>
-          <ul>
-            <li>Brand awareness campaigns</li>
-            <li>Authorized promotional images</li>
-            <li>Celebrity and sports collaborations</li>
-            <li>Content and campaign partnerships</li>
-          </ul>
-          <p data-i18n="fp4">Participation, image use and compensation require agreement and suitable contracts.</p>
-        </article>
-
-        <article class="feature">
-          <h3 data-i18n="f3">Business Advertising</h3>
-          <p data-i18n="fp5">Businesses and brands may present their products and services to relevant audiences across international markets.</p>
-          <ul>
-            <li>Promoted business listings</li>
-            <li>Product and service showcases</li>
-            <li>Advertising campaigns</li>
-            <li>Referral and commission arrangements</li>
-          </ul>
-          <p data-i18n="fp6">Commercial terms would be agreed with each partner.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="advertise">
-    <div class="container">
-      <div class="advertise">
-        <span class="eyebrow" data-i18n="forBusiness">For Businesses & Brands</span>
-        <h2 data-i18n="adTitle">Promote Your Products to the World</h2>
-        <p data-i18n="adText">Marrakechpixim aims to help businesses showcase products, services and commercial offers to people discovering opportunities around the world.</p>
-        <p data-i18n="adText2">Our intended business model includes advertising, referral partnerships and percentage-based commissions under agreed commercial terms.</p>
-
-        <div class="actions">
-          <a class="btn btn-primary" href="#partners" data-i18n="adButton">Explore Partnership Ideas</a>
-          <a class="btn btn-secondary" href="#contact" data-i18n="contactButton">Contact Us</a>
+  <main id="main-content">
+    <!-- Hero section -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy-block">
+          <span class="eyebrow"><span class="eyebrow-dot"></span><span data-i18n="heroEyebrow">A world of possibilities</span></span>
+          <h1 data-i18n="heroTitle">Find what you need, <span>easily.</span></h1>
+          <p class="hero-copy" data-i18n="heroCopy">Discover trusted businesses, remarkable places, products and services from around the world — all in one easy-to-explore destination.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#categories" data-i18n="exploreCategories">Explore categories <span aria-hidden="true">→</span></a>
+            <a class="btn btn-light" href="#business" 
+data-i18n="growBusiness">Grow your business</a>
+          </div>
+          <div class="trust-row">
+            <span class="trust-item"><span class="check">✓</span><span data-i18n="globalDiscovery">Global discovery</span></span>
+            <span class="trust-item"><span class="check">✓</span><span data-i18n="manyCategories">Many categories</span></span>
+            <span class="trust-item"><span class="check">✓</span><span data-i18n="madeForEveryone">Made for everyone</span></span>
+          </div>
         </div>
-
-        <p class="notice" data-i18n="prototypeNotice">This is a prototype. Advertiser registration, campaign booking, commission tracking and payments are not connected yet.</p>
+        <div class="hero-visual" aria-label="Travel destination photograph">
+          <div class="hero-photo">
+            <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=2000&q=92" alt="Beautiful coastal destination representing worldwide travel and discovery" fetchpriority="high" decoding="async">
+            <div class="photo-caption"><strong data-i18n="heroPhotoTitle">Your next discovery starts here</strong><span data-i18n="heroPhotoCopy">Places, people, brands and experiences</span></div>
+          </div>
+          <div class="floating-card top-card"><div class="floating-label" data-i18n="discoverMore">Discover more</div><div class="floating-value" data-i18n="worldwide">Worldwide</div></div>
+          <div class="floating-card 
+bottom-card"><div class="floating-icon" aria-hidden="true">↗</div><div><div class="floating-label" data-i18n="onePlatform">One platform</div><div class="floating-value" data-i18n="manyPossibilities">Many possibilities</div></div></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section" id="about">
-    <div class="container">
-      <div class="section-heading">
-        <h2 data-i18n="aboutTitle">About Marrakechpixim</h2>
-        <p data-i18n="aboutText">A global vision for discovering businesses, products, services and experiences across many industries.</p>
+    <!-- Official launch-preparation announcement: do not imply live payments or transactions. -->
+    <section class="launch-notice" aria-labelledby="launchNoticeTitle">
+      <div class="container launch-notice-inner">
+        <div class="launch-notice-mark" aria-hidden="true">✦</div>
+        <div>
+          <span class="eyebrow">Preparing for a global launch</span>
+          <h2 id="launchNoticeTitle">Marrakechpixim is preparing for global launch.</h2>
+          <p>We are preparing a multilingual, technology-led discovery and advertising platform with the ambition to compete on quality with established global platforms. Our goal is to help people discover businesses, products, services and experiences worldwide. Explore this early concept or contact us to propose a listing or partnership. Live listings, online payments and transaction processing are not enabled at this stage.</p>
+        </div>
+        <a class="btn" href="#contact-marrakechpixim">Discuss a partnership <span aria-hidden="true">→</span></a>
       </div>
+    </section>
 
-      <div class="about-grid">
-        <article class="about-item">
-          <h3 data-i18n="a1">Global Discovery</h3>
-          <p data-i18n="ad1">A platform concept designed for international audiences and businesses across countries and industries.</p>
-        </article>
-        <article class="about-item">
-          <h3 data-i18n="a2">Easy to Explore</h3>
-          <p data-i18n="ad2">Organized categories and a simple search experience help visitors explore areas that interest them.</p>
-        </article>
-        <article class="about-item">
-          <h3 data-i18n="a3">Business Connections</h3>
-          <p data-i18n="ad3">The goal is to connect audiences with brands and service providers through advertising and partnerships.</p>
-        </article>
-        <article class="about-item">
-          <h3 data-i18n="a4">Multilingual Vision</h3>
-          <p data-i18n="ad4">Planned language markets include English, French, Spanish, Arabic, Portuguese, Russian and Simplified Chinese.</p>
-        </article>
+    <!-- Search: functional local filtering, no external service required. -->
+    <section class="container search-wrap" aria-label="Search marketplace">
+      <form class="search-panel" id="searchForm">
+        <div class="field">
+          <label for="searchInput" data-i18n="searchLabel">What are you looking for?</label>
+          <div class="field-control"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Hotels, restaurants, fashion..." data-i18n-placeholder="searchPlaceholder"></div>
+        </div>
+        <div class="field">
+          <label for="categoryFilter" data-i18n="categoryLabel">Category</label>
+          <div class="field-control"><span aria-hidden="true">▦</span><select id="categoryFilter"><option value="" data-i18n="allCategories">All categories</option></select></div>
+        </div>
+        <div class="field">
+          <label for="locationInput" data-i18n="locationLabel">Location</label>
+          <div class="field-control"><span aria-hidden="true">⌖</span><input id="locationInput" type="text" placeholder="City or country" data-i18n-placeholder="locationPlaceholder"></div>
+        </div>
+        <button class="btn btn-primary" type="submit"><span aria-hidden="true">⌕</span><span data-i18n="searchButton">Search</span></button>
+      </form>
+    </section>
+
+    <!-- Categories are rendered from the data array below; each uses a real photographic URL. -->
+    <section class="section" id="categories">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow" data-i18n="exploreEyebrow">Explore the world</span><h2 data-i18n="categoriesTitle">Discover by category</h2><p data-i18n="categoriesCopy">From travel and dining to shopping, 
+professional services and luxury products, start with what matters to you.</p></div>
+          <a class="text-link" href="#business" data-i18n="businessDirectory">Business directory <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="category-grid" id="categoryGrid" aria-live="polite"></div>
+        <p class="sr-only" id="resultsAnnouncement" aria-live="polite"></p>
       </div>
+    </section>
 
-      <p class="notice" data-i18n="aboutNotice">Marrakechpixim is a developing concept. Listings, advertisers, partnerships and commercial services must be established and verified before being presented as active.</p>
-    </div>
-  </section>
 
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="contact-section">
-        <h2 data-i18n="contactTitle">Contact Marrakechpixim</h2>
-        <p data-i18n="contactText">For business inquiries, advertising, partnerships and general questions, contact us by email.</p>
-        <p>
-          <a class="email-link" href="mailto:marrakechpixim@gmail.com">marrakechpixim@gmail.com</a>
-        </p>
-        <a class="btn btn-primary" href="mailto:marrakechpixim@gmail.com?subject=Marrakechpixim%20Business%20Inquiry" data-i18n="emailButton">Send Us an Email</a>
+
+
+
+    <!-- Youth discovery: an illustrative 
+concept for interests, trends and partner offers young people may enjoy. -->
+    <section class="expanded-section youth-section" id="youth-discovery" aria-labelledby="youthTitle">
+      <div class="container-wide">
+        <div class="youth-topline">
+          <span class="youth-pill"><span aria-hidden="true">✦</span> For the next generation</span>
+          <span class="youth-pill">Music · Style · Tech · Sport · Travel</span>
+        </div>
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">Discover what moves you</span>
+            <h2 id="youthTitle">Your world. Your interests. Your next discovery.</h2>
+            <p class="section-intro">Explore inspiring ideas, creative talent, fresh styles, technology, sport and experiences—all in one colorful space built around the things young people love.</p>
+          </div>
+        </div>
+        <div class="youth-card-grid">
+          <a class="youth-card" href="#artist-collaboration" style="--youth-image:url('https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1000&q=85')">
+            <span class="youth-card-icon" aria-hidden="true">🎤</span><h3>Music & Creators</h3><p>Discover artists, new voices, live events and creative talent.</p><span class="youth-card-link">Explore music <span aria-hidden="true">→</span></
+span>
+          </a>
+          <a class="youth-card" href="#categories" style="--youth-image:url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1000&q=85')">
+            <span class="youth-card-icon" aria-hidden="true">👟</span><h3>Fashion & Street Style</h3><p>Find fresh looks, sneakers, accessories and brands to explore.</p><span class="youth-card-link">Find your style <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="youth-card" href="#categories" style="--youth-image:url('https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&
+w=1000&q=85')">
+            <span class="youth-card-icon" aria-hidden="true">🎮</span><h3>Gaming & Technology</h3><p>Explore gaming culture, devices, electronics and digital ideas.</p><span class="youth-card-link">Explore tech <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="youth-card" href="#categories" style="--youth-image:url('https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1000&q=85')">
+            <span class="youth-card-icon" aria-hidden="true">⚽</span><h3>Sport & Fitness</h3><p>Discover activities, sports clubs, fitness ideas and challenges.</p><span 
+class="youth-card-link">Get moving <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="youth-card" href="#categories" style="--youth-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=85')">
+            <span class="youth-card-icon" aria-hidden="true">✈️</span><h3>Travel & Adventure</h3><p>Get inspired by new destinations, outdoor escapes and experiences.</p><span class="youth-card-link">Find an adventure <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="youth-card" href="#partner-pathways" style=
+"--youth-image:url('https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=1000&q=85')">
+            <span class="youth-card-icon" aria-hidden="true">🎁</span><h3>Offers & New Finds</h3><p>Discover partner offers and useful products as verified listings become available.</p><span class="youth-card-link">Discover opportunities <span aria-hidden="true">→</span></span>
+          </a>
+        </div>
+        <div class="youth-footer">
+          <p><strong>Have a brand, talent or idea for young audiences?</strong><br>Let's explore a creative partnership.</p>
+          <a class="btn btn-light" href="#partner-pathways">Explore 
+partnerships <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="youth-note">Concept preview: categories and visuals are illustrative. Offers, events and creator profiles will only be shown when details and permissions have been confirmed.</p>
       </div>
-    </div>
-  </section>
-</main>
+    </section>
 
-<footer>
-  <div class="container">
-    <p><strong>Marrakechpixim</strong></p>
-    <p data-i18n="tagline">Find What You Need, Easily</p>
-    <p>
-      <a href="mailto:marrakechpixim@gmail.com">marrakechpixim@gmail.com</a>
-    </p>
-    <p class="footer-small">© <span id="year"></span> Marrakechpixim. All rights reserved.</p>
-    <p class="footer-small" data-i18n="footerLine">Global discovery • Advertising • Business partnerships</p>
-  </div>
-</footer>
 
-<script>
-  const $ = (selector) => document.querySelector(selector);
-  const $$ = (selector) => Array.from(document.querySelectorAll(selector));
+    <!-- Extended global sectors: broad discovery beyond travel and shopping. -->
+    <section class="expanded-section expanded-section--soft" id="global-sectors">
+      <div class="container-wide">
+        <div class="section-heading section-heading--center">
+          <span class="section-kicker">A global directory vision</span>
+          <h2>One destination. A world of industries.</h2>
+          <p class="section-intro">Marrakechpixim is designed to help people discover companies, makers, services, destinations and experiences across many industries—not only one city or one product type.</p>
+        </div>
+        <div class="sector-overview-grid" id="expandedSectorGrid" aria-live="polite">
+          <!-- Sector cards are populated from the expandedSectors data below. -->
+        </div>
+        <div class="disclosure-note">Directory content shown in this prototype is 
+illustrative. Business names, prices, reviews, stock, ratings and availability must be supplied and verified before any listing is presented as real.</div>
+      </div>
+    </section>
 
-  $("#year").textContent = new Date().getFullYear();
+    <!-- The commercial model is promotion and agreed referrals, not reselling stock. -->
+    <section class="expanded-section expanded-section--dark" id="business-model">
+      <div class="container-wide model-layout">
+        <div>
+          <span class="section-kicker">A partnership-first platform</span>
+          <h2>Help great businesses get discovered.</h2>
+          <p class="section-intro">The planned business model is to connect 
+interested audiences with businesses and brands through advertising, sponsored visibility and agreed referral partnerships.</p>
+          <ul class="model-list">
+            <li><span aria-hidden="true">✓</span><span><strong>Advertising opportunities:</strong> businesses may promote relevant products, services, destinations or campaigns under clearly disclosed terms.</span></li>
+            <li><span aria-hidden="true">✓</span><span><strong>Referral partnerships:</strong> Marrakechpixim may earn a commission when a qualified referral or conversion is tracked under an agreed partner contract.</span></li>
+            <li><span 
+aria-hidden="true">✓</span><span><strong>No inventory resale assumption:</strong> the concept does not require Marrakechpixim to purchase goods, store inventory or resell products.</span></li>
+            <li><span aria-hidden="true">✓</span><span><strong>Transparent commercial relationships:</strong> paid placements and affiliate links should be disclosed to visitors, with clear partner terms.</span></li>
+          </ul>
+          <div class="expanded-cta-row">
+            <a class="btn btn-primary" href="#partner-pathways">Explore partnerships <span aria-hidden="true">→</span></a>
+            <a class="btn btn-light" href="#contact-marrakechpixim">Contact the 
+team</a>
+          </div>
+        </div>
+        <div class="model-visual">
+          <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=88" alt="Professionals discussing a business partnership at a table" loading="lazy" decoding="async" onerror="this.onerror=null;this.style.display='none';this.parentElement.classList.add('image-fallback');">
+        </div>
+      </div>
+    </section>
 
-  const translations = {
-    en: {
-      tagline:"Find What You Need, Easily",navHome:"Home",navCategories:"Categories",
-      navLuxury:"Luxury",navPartners:"Partnerships",navAdvertise:"Advertise",
-      navAbout:"About Us",navContact:"Contact",eyebrow:"A World of Discovery",
-      heroTitle:"Discover Products, Businesses and Opportunities Worldwide",
-      heroText:"Explore travel, real estate, healthcare, technology, luxury brands, events, shopping and services in one place. Discover businesses and connect with opportunities around the world.",
-      exploreButton:"Explore Categories",advertiseButton:"Promote Your Business",
-      searchTitle:"What Are You Looking For?",searchPlaceholder:"Search categories, products or services...",
-      searchButton:"Search",categoriesTitle:"Explore Our Categories",
-      categoriesText:"A broad world of products, services, businesses and experiences.",
-      exploreLink:"Explore opportunities →",luxuryLink:"Discover luxury →",
-      partnerLink:"Partnership opportunities →",
-      luxuryTitle:"Luxury & Premium Showcase",
-      luxuryText:"A dedicated space for premium brands, refined products, luxury packaging and high-quality business presentations.",
-      lux1:"Designer Fashion",luxd1:"Premium clothing, designer collections, bags and accessories.",
-      lux2:"Luxury Watches",luxd2:"Watch brands, refined presentation and premium watch packaging.",
-      lux3:"Jewelry & Diamonds",luxd3:"Jewelry houses, precious stones and elegant product presentation.",
-      lux4:"Premium Packaging",luxd4:"Luxury boxes, gift packaging and presentation solutions for premium brands.",
-      brandNotice:"Brand names and logos require appropriate authorization. This showcase does not claim existing brand partnerships.",
-      partnersTitle:"Partnerships & Brand Promotion",
-      partnersText:"Build relationships with manufacturers, businesses, creators and potential brand ambassadors around the world.",
-      f1:"Manufacturers & Suppliers",fp1:"Explore potential partnerships with companies that manufacture quality promotional merchandise.",
-      fp2:"Potential arrangements may include samples, branded products, demonstrations or agreed advertising exchanges.",
-      f2:"Artists & Brand Ambassadors",fp3:"Explore future collaborations with musicians, athletes, actors and other public figures.",
-      fp4:"Participation, image use and compensation require agreement and suitable contracts.",
-      f3:"Business Advertising",fp5:"Businesses and brands may present their products and services to relevant audiences across international markets.",
-      fp6:"Commercial terms would be agreed with each partner.",
-      forBusiness:"For Businesses & Brands",adTitle:"Promote Your Products to the World",
-      adText:"Marrakechpixim aims to help businesses showcase products, services and commercial offers to people discovering opportunities around the world.",
-      adText2:"Our intended business model includes advertising, referral partnerships and percentage-based commissions under agreed commercial terms.",
-      adButton:"Explore Partnership Ideas",contactButton:"Contact Us",
-      prototypeNotice:"This is a prototype. Advertiser registration, campaign booking, commission tracking and payments are not connected yet.",
-      aboutTitle:"About Marrakechpixim",aboutText:"A global vision for discovering businesses, products, services and experiences across many industries.",
-      a1:"Global Discovery",ad1:"A platform concept designed for international audiences and businesses across countries and industries.",
-      a2:"Easy to Explore",ad2:"Organized categories and a simple search experience help visitors explore areas that interest them.",
-      a3:"Business Connections",ad3:"The goal is to connect audiences with brands and service providers through advertising and partnerships.",
-      a4:"Multilingual Vision",ad4:"Planned language markets include English, French, Spanish, Arabic, Portuguese, Russian and Simplified Chinese.",
-      aboutNotice:"Marrakechpixim is a developing concept. Listings, advertisers, partnerships and commercial services must be established and verified before being presented as active.",
-      contactTitle:"Contact Marrakechpixim",contactText:"For business inquiries, advertising, partnerships and general questions, contact us by email.",
-      emailButton:"Send Us an Email",footerLine:"Global discovery • Advertising • Business partnerships",
-      emptySearch:"Showing all categories.",noResults:"No matching categories found. Try another search.",
-      oneResult:"matching category found.",manyResults:"matching categories found.",
-      c1:"Travel, Tourism & Aviation",d1:"Airlines, flights, hotels, resorts, beaches, tours and destinations worldwide.",
-      c2:"Real Estate & Property",d2:"Residential and commercial properties, developments and real estate services.",
-      c3:"Investment & Business",d3:"Business services, investment information and commercial opportunities.",
-      c4:"Cars & Automotive",d4:"Automotive brands, vehicles, mobility services and related products.",
-      c5:"Healthcare & Medical Equipment",d5:"Healthcare providers, clinics, medical devices and health technology.",
-      c6:"Banking & Financial Products",d6:"Bank cards, payment products and financial services.",
-      c7:"Luxury Fashion & Designer Brands",d7:"Premium clothing, fashion houses, accessories and designer collections.",
-      c8:"Watches, Jewelry & Diamonds",d8:"Fine watches, precious stones, jewelry and premium accessories.",
-      c9:"Luxury Packaging & Gift Boxes",d9:"Premium boxes and packaging for watches, jewelry, gifts and luxury products.",
-      c10:"Shopping & Retail",d10:"Retailers, shops, product brands and businesses presenting their offers.",
-      c11:"Restaurants & Food",d11:"Restaurants, cafés, cuisine, food brands and dining experiences.",
-      c12:"Entertainment & Leisure",d12:"Attractions, leisure venues, entertainment services and experiences.",
-      c13:"Events, Fairs & Exhibitions",d13:"Trade fairs, professional exhibitions, conferences and festivals.",
-      c14:"Sports & Fitness",d14:"Sports brands, fitness services, sporting venues and athletic experiences.",
-      c15:"Technology & Electronics",d15:"Computers, mobile devices, electronics, software and technology manufacturers.",
-      c16:"Industry & Manufacturing",d16:"Manufacturers, suppliers, machinery, industrial products and B2B services.",
-      c17:"Promotional Products & Merchandise",d17:"Branded bottles, power banks, cups, keychains, clothing and corporate gifts.",
-      c18:"Beauty, Wellness & Perfumes",d18:"Beauty products, cosmetics, fragrances, personal care and wellness services.",
-      c19:"Home, Furniture & Living",d19:"Furniture, home appliances, interiors, decoration and lifestyle products.",
-      c20:"Professional & Business Services",d20:"Consultants, agencies and service providers for individuals and companies.",
-      c21:"Education & Learning",d21:"Schools, training providers, educational services and learning opportunities.",
-      c22:"Transport, Logistics & Shipping",d22:"Transport providers, shipping, logistics and delivery services.",
-      c23:"Art, Culture & Music",d23:"Artists, music, cultural venues, film and creative experiences.",
-      c24:"Agriculture & Food Production",d24:"Agricultural businesses, equipment, food producers and related services.",
-      c25:"Energy & Sustainability",d25:"Energy providers, renewable technology and sustainability-related businesses.",
-      c26:"Security & Digital Solutions",d26:"Security services, cybersecurity providers and digital protection solutions."
-    }
-  };
 
-  translations.fr = {
-    ...translations.en,
-    tagline:"Trouvez facilement ce dont vous avez besoin",
-    navHome:"Accueil",navCategories:"Catégories",navLuxury:"Luxe",
-    navPartners:"Partenariats",navAdvertise:"Publicité",navAbout:"À propos",navContact:"Contact",
-    eyebrow:"Un monde de découvertes",
-    heroTitle:"Découvrez des produits, entreprises et opportunités dans le monde entier",
-    heroText:"Explorez les voyages, l'immobilier, la santé, la technologie, le luxe, les événements, le shopping et les services.",
-    exploreButton:"Explorer les catégories",advertiseButton:"Promouvoir votre entreprise",
-    searchTitle:"Que recherchez-vous ?",searchPlaceholder:"Rechercher des catégories, produits ou services...",
-    searchButton:"Rechercher",categoriesTitle:"Explorez nos catégories",
-    categoriesText:"Un vaste univers de produits, services, entreprises et expériences.",
-    luxuryTitle:"Vitrine luxe et haut de gamme",luxuryText:"Un espace dédié aux marques premium et aux produits raffinés.",
-    partnersTitle:"Partenariats et promotion de marque",
-    forBusiness:"Pour les entreprises et les marques",
-    adTitle:"Faites connaître vos produits dans le monde",
-    adButton:"Découvrir les partenariats",contactButton:"Nous contacter",
-    aboutTitle:"À propos de Marrakechpixim",
-    contactTitle:"Contacter Marrakechpixim",
-    contactText:"Pour les demandes professionnelles, la publicité et les partenariats, contactez-nous par e-mail.",
-    emailButton:"Envoyer un e-mail",navContact:"Contact",
-    emptySearch:"Toutes les catégories sont affichées.",
-    noResults:"Aucune catégorie correspondante. Essayez une autre recherche."
-  };
 
-  translations.es = {
-    ...translations.en,
-    tagline:"Encuentra lo que necesitas fácilmente",
-    navHome:"Inicio",navCategories:"Categorías",navLuxury:"Lujo",
-    navPartners:"Colaboraciones",navAdvertise:"Publicidad",navAbout:"Nosotros",navContact:"Contacto",
-    eyebrow:"Un mundo por descubrir",
-    heroTitle:"Descubre productos, empresas y oportunidades en todo el mundo",
-    heroText:"Explora viajes, inmuebles, salud, tecnología, marcas de lujo, eventos, compras y servicios.",
-    exploreButton:"Explorar categorías",advertiseButton:"Promociona tu negocio",
-    searchTitle:"¿Qué estás buscando?",searchButton:"Buscar",
-    categoriesTitle:"Explora nuestras categorías",
-    categoriesText:"Un mundo de productos, servicios, empresas y experiencias.",
-    luxuryTitle:"Selección de lujo y productos premium",
-    partnersTitle:"Colaboraciones y promoción de marcas",
-    forBusiness:"Para empresas y marcas",
-    adTitle:"Promociona tus productos en todo el mundo",
-    adButton:"Explorar colaboraciones",contactButton:"Contáctanos",
-    aboutTitle:"Sobre Marrakechpixim",contactTitle:"Contacta con Marrakechpixim",
-    emailButton:"Enviar un correo",emptySearch:"Mostrando todas las categorías.",
-    noResults:"No se encontraron categorías. Prueba otra búsqueda."
-  };
+    <!-- Artist / singer / creator collaboration application. -->
+    <section class="expanded-section 
+artist-section" id="artist-collaboration" aria-labelledby="artistSectionTitle">
+      <div class="container-wide">
+        <div class="artist-hero">
+          <div class="artist-promo">
+            <span class="artist-kicker">✦ Creators · Music · Culture</span>
+            <h2 id="artistSectionTitle">Your talent deserves a wider stage.</h2>
+            <p>Are you a singer, musician, performer, actor, creator or public personality? Tell Marrakechpixim a little about yourself and the collaboration you have in mind. We welcome proposals from emerging and established talent around the world.</p>
+            <ul class="artist-benefits">
+              <li><span>✓</span><div><strong>Share your story</strong><br>Introduce your artistic work and audience.</div></li>
+              <li><span>✓</span><div><strong>Suggest a collaboration</strong><br>Tell us how you imagine working together.</div></li>
+              <li><span>✓</span><div><strong>Stay in control of your image</strong><br>Public use of your name or photo requires separate permission.</div></li>
+            </ul>
+          </div>
+          <div class="artist-form-card">
+            <h3>Apply to collaborate</h3>
+            <p>Complete the short form. It will prepare an email to our team so you can review it and send it from your own email application.</p>
+            <form class="request-form" id="artistApplicationForm">
+              <div class="field">
+                <label for="artistType">Your 
+activity *</label>
+                <select id="artistType" name="artistType" required>
+                  <option value="">Choose your activity</option>
+                  <option>Singer / musician</option><option>Actor / performer</option><option>Content creator / influencer</option><option>Artist / designer</option><option>Athlete / public personality</option><option>Other creative talent</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="artistStageName">Artist or public name *</label>
+                <input id="artistStageName" name="artistStageName" required autocomplete="nickname" 
+placeholder="Name people know you by">
+              </div>
+              <div class="field">
+                <label for="artistLegalName">Full name (private contact) *</label>
+                <input id="artistLegalName" name="artistLegalName" required autocomplete="name" placeholder="Your full name">
+              </div>
+              <div class="field">
+                <label for="artistEmail">Email address *</label>
+                <input id="artistEmail" name="artistEmail" type="email" required autocomplete="email" placeholder="you@example.com">
+              </div>
+              <div class="field">
+                <label 
+for="artistCountry">Country *</label>
+                <input id="artistCountry" name="artistCountry" required autocomplete="country-name" placeholder="Your country">
+              </div>
+              <div class="field">
+                <label for="artistProfile">Website or public profile</label>
+                <input id="artistProfile" name="artistProfile" type="url" placeholder="https://...">
+              </div>
+              <div class="field field-full">
+                <label for="artistProposal">Your idea for working together *</label>
+                <textarea id="artistProposal" name="artistProposal" required placeholder="Tell us about your work and the collaboration you would like to 
+discuss."></textarea>
+              </div>
+              <div class="field field-full">
+                <label class="artist-consent"><input type="checkbox" name="artistContactConsent" required value="yes"><span>I agree that Marrakechpixim may use the information in this application to review my proposal and contact me about it by email. *</span></label>
+              </div>
+              <div class="field field-full">
+                <label class="artist-consent optional"><input type="checkbox" name="artistPublicityConsent" value="yes"><span>I would like to discuss possible publication of my public name, photo or profile if a collaboration is agreed. This is optional and is not permission to publish by 
+itself.</span></label>
+              </div>
+              <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Prepare my application <span aria-hidden="true">→</span></button>
+                <p class="form-note">No profile, photo or partnership will be published just because an application is sent. This form does not save data on the website; it prepares an email for you to review and send.</p>
+              </div>
+              <p class="artist-status" id="artistApplicationStatus" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  translations.ar = {
-    ...translations.en,
-    tagline:"اعثر على ما تحتاج إليه بسهولة",
-    navHome:"الرئيسية",navCategories:"الأقسام",navLuxury:"الفخامة",
-    navPartners:"الشراكات",navAdvertise:"الإعلانات",navAbout:"من نحن",navContact:"اتصل بنا",
-    eyebrow:"عالم من الاكتشافات",
-    heroTitle:"اكتشف المنتجات والشركات والفرص حول العالم",
-    heroText:"اكتشف السفر والعقارات والصحة والتكنولوجيا والعلامات الفاخرة والفعاليات والتسوق والخدمات في مكان واحد.",
-    exploreButton:"استكشف الأقسام",advertiseButton:"روّج لنشاطك التجاري",
-    searchTitle:"ما الذي تبحث عنه؟",searchPlaceholder:"ابحث عن الأقسام أو المنتجات أو الخدمات...",
-    searchButton:"بحث",categoriesTitle:"استكشف أقسامنا",
-    categoriesText:"عالم متنوع من المنتجات والخدمات والشركات والتجارب.",
-    exploreLink:"اكتشف الفرص ←",luxuryLink:"اكتشف الفخامة ←",
-    partnerLink:"فرص الشراكة ←",luxuryTitle:"عرض المنتجات الفاخرة والمميزة",
-    luxuryText:"مساحة مخصصة للعلامات التجارية الفاخرة والمنتجات الراقية.",
-    lux1:"الأزياء المصممة",lux2:"الساعات الفاخرة",lux3:"المجوهرات والألماس",lux4:"التغليف الفاخر",
-    partnersTitle:"الشراكات والترويج للعلامات التجارية",
-    f1:"المصنّعون والمورّدون",f2:"الفنانون وسفراء العلامات التجارية",f3:"الإعلانات التجارية",
-    forBusiness:"للشركات والعلامات التجارية",
-    adTitle:"روّج لمنتجاتك حول العالم",
-    adText:"تهدف Marrakechpixim إلى مساعدة الشركات على عرض منتجاتها وخدماتها وفرصها التجارية.",
-    adButton:"اكتشف أفكار الشراكة",contactButton:"اتصل بنا",
-    aboutTitle:"حول Marrakechpixim",
-    contactTitle:"تواصل مع Marrakechpixim",
-    contactText:"للاستفسارات التجارية والإعلانات والشراكات، تواصل معنا عبر البريد الإلكتروني.",
-    emailButton:"أرسل بريداً إلكترونياً",
-    emptySearch:"جميع الأقسام معروضة.",
-    noResults:"لم يتم العثور على قسم مطابق. جرّب بحثاً آخر."
-  };
-
-  translations.pt = {
-    ...translations.en,
-    tagline:"Encontre facilmente o que precisa",
-    navHome:"Início",navCategories:"Categorias",navLuxury:"Luxo",
-    navPartners:"Parcerias",navAdvertise:"Publicidade",navAbout:"Sobre nós",navContact:"Contacto",
-    eyebrow:"Um mundo de descobertas",
-    heroTitle:"Descubra produtos, empresas e oportunidades em todo o mundo",
-    heroText:"Explore viagens, imóveis, saúde, tecnologia, marcas de luxo, eventos, compras e serviços.",
-    exploreButton:"Explorar categorias",advertiseButton:"Promova o seu negócio",
-    searchTitle:"O que procura?",searchButton:"Pesquisar",
-    categoriesTitle:"Explore as nossas categorias",
-    luxuryTitle:"Seleção de luxo e produtos premium",
-    partnersTitle:"Parcerias e promoção de marcas",
-    forBusiness:"Para empresas e marcas",
-    adTitle:"Promova os seus produtos para o mundo",
-    aboutTitle:"Sobre a Marrakechpixim",
-    contactTitle:"Contacte a Marrakechpixim",
-    emailButton:"Enviar um e-mail"
-  };
-
-  translations.ru = {
-    ...translations.en,
-    tagline:"Найдите всё необходимое легко",
-    navHome:"Главная",navCategories:"Категории",navLuxury:"Люкс",
-    navPartners:"Партнёрство",navAdvertise:"Реклама",navAbout:"О нас",navContact:"Контакты",
-    eyebrow:"Мир открытий",
-    heroTitle:"Откройте для себя товары, компании и возможности по всему миру",
-    heroText:"Путешествия, недвижимость, здоровье, технологии, люксовые бренды, мероприятия и услуги.",
-    exploreButton:"Категории",advertiseButton:"Продвигайте свой бизнес",
-    searchTitle:"Что вы ищете?",searchButton:"Поиск",
-    categoriesTitle:"Наши категории",
-    luxuryTitle:"Витрина роскоши и премиум-товаров",
-    partnersTitle:"Партнёрство и продвижение брендов",
-    forBusiness:"Для компаний и брендов",
-    adTitle:"Продвигайте свои товары по всему миру",
-    aboutTitle:"О Marrakechpixim",
-    contactTitle:"Связаться с Marrakechpixim",
-    emailButton:"Отправить письмо"
-  };
-
-  translations.zh = {
-    ...translations.en,
-    tagline:"轻松找到您需要的内容",
-    navHome:"首页",navCategories:"类别",navLuxury:"奢华",
-    navPartners:"合作伙伴",navAdvertise:"广告",navAbout:"关于我们",navContact:"联系我们",
-    eyebrow:"探索世界",
-    heroTitle:"发现全球产品、企业与商业机会",
-    heroText:"探索旅游、房地产、医疗、科技、奢侈品牌、活动、购物和服务。",
-    exploreButton:"浏览类别",advertiseButton:"推广您的业务",
-    searchTitle:"您在寻找什么？",searchButton:"搜索",
-    categoriesTitle:"探索我们的类别",
-    luxuryTitle:"奢华与高端产品展示",
-    partnersTitle:"合作与品牌推广",
-    forBusiness:"面向企业与品牌",
-    adTitle:"向全世界推广您的产品",
-    aboutTitle:"关于 Marrakechpixim",
-    contactTitle:"联系 Marrakechpixim",
-    emailButton:"发送电子邮件"
-  };
-
-  function applyLanguage(language) {
-    const dictionary = translations[language] || translations.en;
-
-    document.documentElement.lang = language;
-    document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
-
-    $$("[data-i18n]").forEach((element) => {
-      const key = element.dataset.i18n;
-      if (dictionary[key]) element.textContent = dictionary[key];
-    });
-
-    $$("[data-i18n-placeholder]").forEach((element) => {
-      const key = element.dataset.i18nPlaceholder;
-      if (dictionary[key]) element.placeholder = dictionary[key];
-    });
-
-    $("#searchMessage").textContent = "";
-    $("#languageSelect").value = language;
-  }
-
-  $("#languageSelect").addEventListener("change", (event) => {
-    applyLanguage(event.target.value);
-  });
-
-  const categories = $$(".category");
-
-  $("#searchForm").addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const query = $("#searchInput").value.trim().toLocaleLowerCase();
-    const language = $("#languageSelect").value;
-    const dictionary = translations[language] || translations.en;
-    let matches = 0;
-
-    categories.forEach((category) => {
-      const text = (
-        category.innerText + " " +
-        (category.dataset.keywords || "")
-      ).toLocaleLowerCase();
-
-      const match = !query || text.includes(query);
-      category.hidden = !match;
-      if (match) matches++;
-    });
-
-    if (!query) {
-      $("#searchMessage").textContent = dictionary.emptySearch || translations.en.emptySearch;
-    } else if (matches === 0) {
-      $("#searchMessage").textContent = dictionary.noResults || translations.en.noResults;
-    } else {
-      $("#searchMessage").textContent =
-        matches + " " +
-        (matches === 1
-          ? (dictionary.oneResult || translations.en.oneResult)
-          : (dictionary.manyResults || translations.en.manyResults));
-    }
-
-    $("#categories").scrollIntoView({ behavior: "smooth", block: "start" });
-  });
-
-  $("#searchInput").addEventListener("input", () => {
-    if (!$("#searchInput").value.trim()) {
-      categories.forEach((category) => category.hidden = false);
-      $("#searchMessage").textContent = "";
-    }
-  });
-
-  // Restore all categories when the user returns to the categories section.
-  $$('a[href="#categories"]').forEach((link) => {
-    link.addEventListener("click", () => {
-      categories.forEach((category) => category.hidden = false);
-      $("#searchMessage").textContent = "";
-    });
-  });
-
-  applyLanguage("en");
-</script>
-</body>
-</html>
+    <!-- Approved strategic partnership message: this supersedes earlier drafts of this same pitch. -->
+    <section class="expanded-section" id="partner-pathways">
+      <div class="container-wide">
+        <div class="section-heading">
+          <span class="section-kicker">Work with Marrakechpixim</span>
+          <h2>Strategic partnerships and professional promotion with an international outlook.</h2>
+          <p class="section-intro">Marrakechpixim aims to build a network of mutually beneficial commercial partnerships across all platform categories.</p>
+        </div>
+        <div class="partner-proposal-copy">
+          <p>Marrakechpixim seeks to build strategic partnerships with companies, manufacturers, suppliers and service providers across the industries represented on our platform. Our ambition is to become an active promotional partner: developing professional content, exploring relevant audiences and markets, and helping interested people discover our partners’ products and services.</p>
+          <p>Beyond displaying promotional information, we aim—according to our capabilities and each agreed arrangement—to identify potential collaboration opportunities, introduce relevant businesses to interested audiences, and support partners in strengthening their brand visibility and reaching prospective customers. We intend to use modern 
+digital tools, clear presentation and a multilingual, internationally minded approach.</p>
+          <p>We welcome proposals for joint campaigns, promotional offers, mutually agreed visibility, referral arrangements and other forms of cooperation that create value for both sides. The scope of work, any fe
