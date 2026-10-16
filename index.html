@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0d5b46">
+  <meta name="theme-color" content="#075b42">
   <title>Marrakechpixim — Trouvez facilement ce dont vous avez besoin</title>
   <meta name="description" content="Découvrez des entreprises, des voyages, des produits de luxe, des fournisseurs, des services et des expériences du monde entier avec Marrakechpixim."">
   <meta property="og:url" content="https://www.marrakechpixim.com/">
@@ -21,17 +21,17 @@
        Prototype à fichier unique. Les URL des photos réelles sont utilisées pour l'illustration de la catégorie.
        ================================================================ */
     :racine {
-      --marine : #12213a ;
-      --navy-2 : #1b3153 ;
-      --bleu : #315efb ;
-      --bleu foncé : #2149dd ;
-      --turquoise : #2ec5a7 ;
-      --encre : #18243b ;
-      --muted: #69758b;
-      --ligne : #e6ebf2 ;
+      --marine : #064b38 ;
+      --navy-2 : #075b42 ;
+      --bleu : #087f55 ;
+      --bleu foncé : #056443 ;
+      --turquoise : #d6a83e ;
+      --encre : #172b23 ;
+      --muted: #607268;
+      --ligne : #e1e9e3 ;
       --surface: #ffffff;
-      --arrière-plan : #f7f9fc ;
-      --bleu doux : #edf2ff ;
+      --arrière-plan : #f7faf7 ;
+      --bleu doux : #edf6ef ;
       --rayon : 18px ;
       --shadow: 0 12px 35px rgba(20, 38, 72, .08);
       --contenu : 1240px ;
@@ -112,7 +112,7 @@
     h1, h2, h3 { famille de polices : Manrope, "DM Sans", sans-serif ; }
     .hero h1 { margin: 18px 0 17px; max-width: 640px; font-size: clamp(38px, 5vw, 62px); line-height: 1.08; letter-spacing: -2.8px; }
     .hero h1 span { couleur : var(--bleu); }
-    .hero-copy { largeur maximale : 580px; couleur : var(--muted); taille de police : 17px; hauteur de ligne : 1.75; }
+    .hero-copy { max-width: 580px; color: var(--muted); font-size: 17px; line-height: 1.75; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 25px 0 27px; }
     .trust-row { display: flex; flex-wrap: wrap; gap: 17px; color: #647188; font-size: 12px; font-weight: 700; }
     .trust-item { display: inline-flex; align-items: center; gap: 7px; }
@@ -120,17 +120,17 @@
     .hero-visual { position: relative; min-height: 420px; }
     .hero-photo {
       position: absolute; inset: 8px 10px 18px 30px; overflow: hidden;
-      bordure-radius: 28px; box-shadow: 0 24px 65px rgba(24,36,59,.18);
-      arrière-plan : #dce4ef ;
+      border-radius: 28px; box-shadow: 0 24px 65px rgba(24,36,59,.18);
+      background: #dce4ef;
     }
-    .hero-photo img { largeur: 100%; hauteur: 100%; object-fit: cover; }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
     .hero-photo::after { content: ""; position: absolute; inset: 40% 0 0; background: linear-gradient(transparent, rgba(12,25,47,.65)); }
     .photo-caption { position: absolute; z-index: 1; left: 28px; right: 28px; bottom: 25px; color: white; }
     .photo-caption strong { display: block; font: 800 21px Manrope, sans-serif; }
     .photo-caption span { font-size: 13px; color: #e7ecf5; }
     .floating-card {
       position: absolute; z-index: 2; background: white; border: 1px solid rgba(230,235,242,.8);
-      bordure-radius: 16px; padding: 15px 17px; box-shadow: var(--shadow);
+      border-radius: 16px; padding: 15px 17px; box-shadow: var(--shadow);
     }
     .floating-card.top-card { top: 0; left: 0; }
     .floating-card.bottom-card { right: 0; bottom: 0; display: flex; align-items: center; gap: 11px; }
@@ -138,21 +138,21 @@
     .floating-value { margin-top: 3px; font: 800 18px Manrope, sans-serif; }
     .floating-icon { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 12px; background: #e4fbf4; color: #087b59; font-size: 20px; }
 
-    /* Barre de recherche */
+    /* Search bar */
     .search-wrap { position: relative; z-index: 4; margin: 16px auto 54px; }
-    .panneau-de-recherche {
-      affichage : grille ; colonnes du modèle de grille : 1,4fr .8fr .8fr auto ; alignement des éléments : fin ; espacement : 12px ;
-      arrière-plan : blanc ; bordure : 1 px solide var(--line) ; rayon de bordure : 18 px ; marge intérieure : 17 px ;
-      ombre portée : var(--ombre);
+    .search-panel {
+      display: grid; grid-template-columns: 1.4fr .8fr .8fr auto; align-items: end; gap: 12px;
+      background: white; border: 1px solid var(--line); border-radius: 18px; padding: 17px;
+      box-shadow: var(--shadow);
     }
-    .field { largeur-min: 0; }
+    .field { min-width: 0; }
     .field label { display: block; margin: 0 0 7px 2px; color: #56647a; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
     .field-control { display: flex; align-items: center; gap: 9px; min-height: 45px; padding: 0 12px; background: #f8faff; border: 1px solid #edf0f6; border-radius: 11px; }
     .field-control input, .field-control select { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink); }
     .field-control input::placeholder { color: #98a2b3; }
     .search-panel .btn { min-height: 45px; white-space: nowrap; }
 
-    /* Sections générales */
+    /* General sections */
     .section { padding: 35px 0 48px; }
     .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 22px; }
     .section-heading h2 { margin: 7px 0 0; font-size: clamp(25px, 3vw, 34px); letter-spacing: -1.2px; }
@@ -218,15 +218,15 @@
     .newsletter-form { display: flex; width: min(440px, 100%); gap: 8px; }
     .newsletter-form input { flex: 1; min-width: 0; border: 1px solid #dbe3f3; border-radius: 11px; padding: 12px 13px; background: white; outline-color: var(--blue); }
 
-    /* Pied de page */
+    /* Footer */
     .site-footer { padding: 44px 0 22px; color: #d6dfef; background: #111d33; }
     .footer-grid { display: grid; grid-template-columns: 1.4fr repeat(4, minmax(0, 1fr)); gap: 28px; padding-bottom: 35px; }
-    .footer-brand .brand-name { couleur: blanc; }
+    .footer-brand .brand-name { color: white; }
     .footer-brand p { max-width: 300px; margin: 16px 0; color: #aebbd0; font-size: 12px; }
     .footer-heading { margin: 0 0 13px; color: white; font-size: 12px; font-weight: 800; }
     .footer-links { display: grid; gap: 9px; }
     .footer-links a { color: #b8c4d8; font-size: 12px; }
-    .footer-links a:hover { couleur: blanc; }
+    .footer-links a:hover { color: white; }
     .footer-contact-short { display: grid; gap: 7px; margin-top: 14px; font-size: 12px; overflow-wrap: anywhere; }
     .footer-contact-short a { color: #d6e0ee; text-decoration: none; }
     .footer-contact-short a:hover { color: white; text-decoration: underline; }
@@ -235,25 +235,25 @@
     .footer-bottom { display: flex; justify-content: space-between; gap: 15px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.12); color: #aebbd0; font-size: 11px; }
     .disclaimer { margin-top: 12px; color: #93a2bb; font-size: 10px; line-height: 1.7; }
 
-    /* Utilitaires / accessibilité */
+    /* Utility / accessibility */
     .toast { position: fixed; z-index: 100; right: 22px; bottom: 22px; max-width: min(380px, calc(100% - 44px)); padding: 14px 17px; border-radius: 13px; color: white; background: var(--navy); box-shadow: var(--shadow); opacity: 0; pointer-events: none; transform: translateY(10px); transition: all .2s ease; font-size: 13px; }
-    .toast.show { opacité: 1; transform: translateY(0); }
+    .toast.show { opacity: 1; transform: translateY(0); }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-    :focus-visible { contour: 3px solide rgba(49,94,251,.55); décalage-contour: 3px; }
+    :focus-visible { outline: 3px solid rgba(49,94,251,.55); outline-offset: 3px; }
 
-    /* Mise en page adaptative */
+    /* Responsive layout */
     @media (max-width: 1050px) {
       .main-nav { gap: 15px; }
       .hero-grid { gap: 30px; }
       .category-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .trust-strip { grid-template-columns: repeat(2, 1fr); }
       .search-panel { grid-template-columns: 1fr 1fr; }
-      .search-panel .btn { largeur: 100%; }
+      .search-panel .btn { width: 100%; }
     }
     @media (max-width: 760px) {
-      .container { largeur: min(100% - 30px, var(--content)); }
+      .container { width: min(100% - 30px, var(--content)); }
       .header-inner { min-height: 68px; flex-wrap: wrap; gap: 12px; padding: 11px 0; }
-      .brand-mark { largeur: 38px; hauteur: 38px; }
+      .brand-mark { width: 38px; height: 38px; }
       .brand-name { font-size: 18px; }
       .main-nav { display: none; order: 4; width: 100%; padding: 8px 0 5px; grid-template-columns: repeat(2, 1fr); gap: 8px; }
       .main-nav.open { display: grid; }
@@ -266,7 +266,7 @@
       .hero-grid { grid-template-columns: 1fr; gap: 20px; }
       .hero h1 { font-size: clamp(37px, 10vw, 51px); letter-spacing: -1.9px; }
       .hero-copy { font-size: 15px; }
-      .hero-visual { hauteur minimale : 330px; }
+      .hero-visual { min-height: 330px; }
       .hero-photo { inset: 12px 7px 12px 18px; }
       .floating-card { padding: 11px 12px; }
       .floating-card.bottom-card { right: 0; }
@@ -275,7 +275,7 @@
       .section { padding: 28px 0 34px; }
       .section-heading { align-items: flex-start; flex-direction: column; gap: 9px; }
       .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
-      .category-image { hauteur: 150px; }
+      .category-image { height: 150px; }
       .category-body { padding: 12px; }
       .category-body h3 { font-size: 14px; }
       .category-body p { min-height: 56px; font-size: 11px; }
@@ -288,34 +288,34 @@
       .trust-symbol { flex-basis: 32px; height: 32px; }
       .newsletter-panel { align-items: flex-start; flex-direction: column; padding: 22px 18px; }
       .newsletter-form { flex-direction: column; }
-      .newsletter-form .btn { largeur: 100%; }
+      .newsletter-form .btn { width: 100%; }
       .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 26px 18px; }
       .footer-brand { grid-column: 1 / -1; }
       .footer-bottom { flex-direction: column; }
     }
     @media (max-width: 380px) {
       .category-grid { grid-template-columns: 1fr; }
-      .category-image { hauteur: 195px; }
-      .category-body p { hauteur-min: 0; }
+      .category-image { height: 195px; }
+      .category-body p { min-height: 0; }
       .trust-strip { grid-template-columns: 1fr; }
       .header-actions { gap: 5px; }
     }
-    /* Annonce de lancement et formulaire de demande de partenariat */
+    /* Launch-readiness announcement and partner enquiry form */
     .launch-notice {
-      arrière-plan : dégradé linéaire (120°, #10233f 0 %, #1d3c68 58 %, #2457a6 100 %) ;
-      couleur : #fff ;
-      marge intérieure : 22px 0 ;
+      background: linear-gradient(120deg, #10233f 0%, #1d3c68 58%, #2457a6 100%);
+      color: #fff;
+      padding: 22px 0;
     }
     .launch-notice-inner {
-      affichage : grille ;
+      display: grid;
       grid-template-columns: auto 1fr auto;
-      écart : 18 px ;
-      aligner les éléments : centrer ;
+      gap: 18px;
+      align-items: center;
     }
     .launch-notice-mark {
-      largeur : 48 px ; hauteur : 48 px ; affichage : grille ; placement des éléments : centre ;
-      bordure : 1px solide rgba(255,255,255,.28); rayon de bordure : 15px ;
-      arrière-plan : rgba(255,255,255,.10) ; taille de police : 23px ;
+      width: 48px; height: 48px; display: grid; place-items: center;
+      border: 1px solid rgba(255,255,255,.28); border-radius: 15px;
+      background: rgba(255,255,255,.10); font-size: 23px;
     }
     .launch-notice .eyebrow { color: #b8d2ff; margin-bottom: 3px; }
     .launch-notice h2 { margin: 0 0 5px; font: 800 clamp(18px,2.2vw,25px)/1.25 Manrope,sans-serif; }
@@ -484,14 +484,14 @@
     .artist-status { margin-top:12px; color:#183d8d; font-size:.9rem; font-weight:700; }
     @media(max-width:850px) { .artist-hero { grid-template-columns:1fr; } .artist-promo h2 { max-width:22ch; } }
 
-    /* Espace découverte jeunesse : un espace conceptuel coloré et adapté aux mobiles. */
-    .section jeunesse {
-      position : relative ;
-      débordement : caché ;
-      couleur : #fff ;
-      arrière-plan : dégradé radial (cercle à 8 % 8 %, rgba(46,197,167,.24), transparent 30 %),
-                  gradient radial (cercle à 92% 18%, rgba(255,174,66,.24), transparent 26%),
-                  gradient linéaire (135°, #101d36 0%, #1d3670 58%, #315efb 100%);
+    /* Youth discovery section: a colorful, mobile-friendly concept area. */
+    .youth-section {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background: radial-gradient(circle at 8% 8%, rgba(46,197,167,.24), transparent 30%),
+                  radial-gradient(circle at 92% 18%, rgba(255,174,66,.24), transparent 26%),
+                  linear-gradient(135deg, #101d36 0%, #1d3670 58%, #315efb 100%);
     }
     .youth-section .section-kicker { color: #bfe8ff; }
     .youth-section .section-heading h2 { color: #fff; }
@@ -515,105 +515,105 @@
     @media (max-width: 900px) { .youth-card-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
     @media (max-width: 560px) { .youth-topline { align-items:flex-start; flex-direction:column; } .youth-card-grid { grid-template-columns:1fr; gap:13px; } .youth-card { min-height:215px; padding:20px; } .youth-footer { align-items:flex-start; flex-direction:column; } }
 
-    .section-développée {
+    .expanded-section {
       padding-block: clamp(56px, 7vw, 100px);
     }
 
-    .section-expandée--soft {
-      arrière-plan : #f4f7fc ;
-      bordure-bloc : 1px solide #edf1f7 ;
+    .expanded-section--soft {
+      background: #f4f7fc;
+      border-block: 1px solid #edf1f7;
     }
 
-    .section-développée--sombre {
-      couleur : #fff ;
-      arrière-plan : dégradé linéaire (135°, #12213a 0 %, #1d3760 65 %, #234a75 100 %) ;
+    .expanded-section--dark {
+      color: #fff;
+      background: linear-gradient(135deg, #12213a 0%, #1d3760 65%, #234a75 100%);
     }
 
-    .section-développée--sombre .section-intro {
-      couleur : #d5dfef ;
+    .expanded-section--dark .section-intro {
+      color: #d5dfef;
     }
 
     .sector-overview-grid {
-      affichage : grille ;
+      display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      écart : 18 px ;
+      gap: 18px;
     }
 
-    .carte-vue-secteur {
-      position : relative ;
-      affichage : flexible ;
-      hauteur minimale : 170 px ;
-      direction flexible : colonne ;
+    .sector-overview-card {
+      position: relative;
+      display: flex;
+      min-height: 170px;
+      flex-direction: column;
       align-items: flex-start;
-      justificatif-contenu : espace-entre ;
-      marge intérieure : 23 px ;
-      débordement : caché ;
-      couleur : var(--encre);
-      arrière-plan : #fff ;
-      bordure : 1px solide var(--card-border);
-      bordure-radius: 18px;
+      justify-content: space-between;
+      padding: 23px;
+      overflow: hidden;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
       box-shadow: 0 8px 24px rgba(20, 38, 72, .035);
       transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
     }
 
     .sector-overview-card:hover {
       transform: translateY(-4px);
-      couleur de bordure : #c9d5f7 ;
+      border-color: #c9d5f7;
       box-shadow: 0 18px 35px rgba(20, 38, 72, .09);
     }
 
     .sector-overview-card h3 {
-      marge : 14px 0 8px ;
-      taille de police : 1,02 rem ;
-      hauteur de ligne : 1,4 ;
+      margin: 14px 0 8px;
+      font-size: 1.02rem;
+      line-height: 1.4;
     }
 
     .sector-overview-card p {
-      marge : 0 ;
-      couleur : var(--muted);
-      taille de police : 0,88rem ;
-      hauteur de ligne : 1,65 ;
+      margin: 0;
+      color: var(--muted);
+      font-size: .88rem;
+      line-height: 1.65;
     }
 
     .sector-card-symbol {
-      affichage : grille ;
-      largeur : 42 px ;
-      hauteur : 42px ;
-      place-items: centre;
-      couleur : #2349c7 ;
-      arrière-plan : var(--bleu-doux);
-      bordure-radius: 13px;
-      taille de police : 1,2 rem ;
-      police-weight: 800;
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      color: #2349c7;
+      background: var(--soft-blue);
+      border-radius: 13px;
+      font-size: 1.2rem;
+      font-weight: 800;
     }
 
     .sector-overview-card:nth-child(4n + 2) .sector-card-symbol {
-      couleur : #087b65 ;
-      arrière-plan : var(--vert-doux);
+      color: #087b65;
+      background: var(--green-soft);
     }
 
     .sector-overview-card:nth-child(4n + 3) .sector-card-symbol {
-      couleur : #98630a ;
-      arrière-plan : var(--gold-soft);
+      color: #98630a;
+      background: var(--gold-soft);
     }
 
     .sector-overview-card:nth-child(4n + 4) .sector-card-symbol {
-      couleur : #6849c6 ;
-      arrière-plan : var(--violet-soft);
+      color: #6849c6;
+      background: var(--violet-soft);
     }
 
     .sector-link {
-      affichage : flexible en ligne ;
-      aligner les éléments : centrer ;
-      écart : 7 px ;
-      marge supérieure : 15px ;
-      couleur : var(--bleu);
-      taille de police : 0,83rem ;
-      police-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 15px;
+      color: var(--blue);
+      font-size: .83rem;
+      font-weight: 800;
     }
 
     .sector-link span {
-      transition: transform var(--transition-rapide);
+      transition: transform var(--transition-fast);
     }
 
     .sector-overview-card:hover .sector-link span {
@@ -625,352 +625,352 @@
     }
 
     .global-value-grid {
-      affichage : grille ;
+      display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      écart : 22 px ;
-      marge supérieure : 34px ;
+      gap: 22px;
+      margin-top: 34px;
     }
 
     .global-value-card {
-      marge intérieure : 28 px ;
-      couleur : var(--encre);
-      arrière-plan : #fff ;
-      bordure : 1px solide var(--card-border);
-      bordure-radius: 20px;
+      padding: 28px;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
     }
 
     .global-value-card h3 {
-      marge : 17px 0 10px ;
-      taille de police : 1,12 rem ;
+      margin: 17px 0 10px;
+      font-size: 1.12rem;
     }
 
     .global-value-card p {
-      marge : 0 ;
-      couleur : var(--muted);
-      hauteur de ligne : 1,75 ;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
     }
 
     .value-icon {
-      affichage : grille ;
-      largeur : 50 px ;
-      hauteur : 50px ;
-      place-items: centre;
-      couleur : #fff ;
-      arrière-plan : var(--bleu);
-      bordure-radius: 15px;
-      taille de police : 1,35 rem ;
-      police-weight: 800;
+      display: grid;
+      width: 50px;
+      height: 50px;
+      place-items: center;
+      color: #fff;
+      background: var(--blue);
+      border-radius: 15px;
+      font-size: 1.35rem;
+      font-weight: 800;
     }
 
     .global-value-card:nth-child(2) .value-icon {
-      arrière-plan : #0e8a70 ;
+      background: #0e8a70;
     }
 
     .global-value-card:nth-child(3) .value-icon {
-      arrière-plan : #bd8420 ;
+      background: #bd8420;
     }
 
     .model-layout {
-      affichage : grille ;
+      display: grid;
       grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
-      écart : 50 px ;
-      aligner les éléments : centrer ;
+      gap: 50px;
+      align-items: center;
     }
 
     .model-list {
-      affichage : grille ;
-      écart : 17px ;
-      marge : 28px 0 0 ;
-      marge intérieure : 0 ;
-      style de liste : aucun ;
+      display: grid;
+      gap: 17px;
+      margin: 28px 0 0;
+      padding: 0;
+      list-style: none;
     }
 
     .model-list li {
-      affichage : grille ;
+      display: grid;
       grid-template-columns: 30px 1fr;
-      écart : 12 px ;
-      aligner les éléments : début ;
-      couleur : #e5edf8 ;
-      hauteur de ligne : 1,7 ;
+      gap: 12px;
+      align-items: start;
+      color: #e5edf8;
+      line-height: 1.7;
     }
 
     .model-list li span:first-child {
-      affichage : grille ;
-      largeur : 28px ;
-      hauteur : 28px ;
-      place-items: centre;
-      couleur : #10213b ;
-      arrière-plan : #a8f0dc ;
-      rayon de bordure : 50 % ;
-      police-weight: 900;
+      display: grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      color: #10213b;
+      background: #a8f0dc;
+      border-radius: 50%;
+      font-weight: 900;
     }
 
     .model-visual {
-      hauteur minimale : 400 px ;
-      débordement : caché ;
-      arrière-plan : #d9e5f5 ;
-      bordure : 1px solide rgba(255,255,255,.2);
-      bordure-radius: 26px;
+      min-height: 400px;
+      overflow: hidden;
+      background: #d9e5f5;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 26px;
       box-shadow: 0 28px 60px rgba(0,0,0,.2);
     }
 
     .model-visual img {
-      affichage : bloc ;
-      largeur : 100 % ;
-      hauteur : 100 % ;
-      hauteur minimale : 400 px ;
-      ajustement à l'objet : couverture ;
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+      object-fit: cover;
     }
 
     .partner-pathways {
-      affichage : grille ;
+      display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      écart : 20 px ;
-      marge supérieure : 35px ;
+      gap: 20px;
+      margin-top: 35px;
     }
 
-    .chemin-partenaire {
-      affichage : flexible ;
-      direction flexible : colonne ;
+    .partner-pathway {
+      display: flex;
+      flex-direction: column;
       align-items: flex-start;
-      marge intérieure : 28 px ;
-      arrière-plan : #fff ;
-      bordure : 1px solide var(--card-border);
-      bordure-radius: 20px;
+      padding: 28px;
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
     }
 
     .partner-pathway h3 {
-      marge : 18px 0 10px ;
-      taille de police : 1,1rem ;
+      margin: 18px 0 10px;
+      font-size: 1.1rem;
     }
 
     .partner-pathway p {
-      flex : 1 ;
-      marge : 0 0 22px ;
-      couleur : var(--muted);
-      hauteur de ligne : 1,75 ;
+      flex: 1;
+      margin: 0 0 22px;
+      color: var(--muted);
+      line-height: 1.75;
     }
 
     .partner-pathway .btn {
-      hauteur minimale : 44 px ;
+      min-height: 44px;
     }
 
-    .panneau-de-contact {
-      affichage : grille ;
+    .contact-panel {
+      display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(280px, .8fr);
-      écart : 35px ;
-      aligner les éléments : centrer ;
+      gap: 35px;
+      align-items: center;
       padding: clamp(26px, 5vw, 52px);
-      arrière-plan : #fff ;
-      bordure : 1px solide var(--card-border);
-      bordure-radius: 26px;
-      ombre portée : var(--ombre);
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
     }
 
-    .panneau-contact h2 {
-      marge : 12px 0 ;
-      taille de police : clamp(1,7rem, 3vw, 2,5rem);
-      hauteur de ligne : 1,2 ;
+    .contact-panel h2 {
+      margin: 12px 0;
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      line-height: 1.2;
     }
 
-    .panneau-de-contact p {
-      largeur maximale : 680 px ;
-      couleur : var(--muted);
-      hauteur de ligne : 1,8 ;
+    .contact-panel p {
+      max-width: 680px;
+      color: var(--muted);
+      line-height: 1.8;
     }
 
     .contact-methods {
-      affichage : grille ;
-      écart : 14 px ;
+      display: grid;
+      gap: 14px;
     }
 
     .contact-method {
-      affichage : flexible ;
-      écart : 13 px ;
+      display: flex;
+      gap: 13px;
       align-items: flex-start;
-      marge intérieure : 17 px ;
-      arrière-plan : #f7f9fd ;
-      bordure : 1px solide #e7edf7 ;
-      bordure-radius: 14px;
+      padding: 17px;
+      background: #f7f9fd;
+      border: 1px solid #e7edf7;
+      border-radius: 14px;
     }
 
-    .contact-method fort {
-      affichage : bloc ;
-      marge inférieure : 5 px ;
-      taille de police : 0,88rem ;
+    .contact-method strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: .88rem;
     }
 
     .contact-method a {
-      débordement-wrap : n'importe où ;
-      couleur : var(--bleu);
-      police-weight: 700;
+      overflow-wrap: anywhere;
+      color: var(--blue);
+      font-weight: 700;
     }
 
-    .contact-method petit {
-      affichage : bloc ;
-      marge supérieure : 5 px ;
-      couleur : var(--muted);
-      hauteur de ligne : 1,5 ;
+    .contact-method small {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      line-height: 1.5;
     }
 
     .contact-method-icon {
-      affichage : grille ;
+      display: grid;
       flex: 0 0 40px;
-      largeur : 40 px ;
-      hauteur : 40px ;
-      place-items: centre;
-      couleur : var(--bleu);
-      arrière-plan : #e9efff ;
-      bordure-radius: 12px;
-      police-weight: 900;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      color: var(--blue);
+      background: #e9efff;
+      border-radius: 12px;
+      font-weight: 900;
     }
 
-    .liste-de-contrôle-de-confiance {
-      affichage : grille ;
+    .trust-checklist {
+      display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      écart : 16 px ;
-      marge supérieure : 30px ;
+      gap: 16px;
+      margin-top: 30px;
     }
 
     .trust-check-item {
-      affichage : flexible ;
-      écart : 12 px ;
+      display: flex;
+      gap: 12px;
       align-items: flex-start;
-      marge intérieure : 18px ;
-      arrière-plan : #f8faff ;
-      bordure : 1px solide #e5ebf5 ;
-      bordure-radius: 15px;
+      padding: 18px;
+      background: #f8faff;
+      border: 1px solid #e5ebf5;
+      border-radius: 15px;
     }
 
-    .trust-check-item fort {
-      affichage : bloc ;
-      marge inférieure : 5 px ;
+    .trust-check-item strong {
+      display: block;
+      margin-bottom: 5px;
     }
 
     .trust-check-item p {
-      marge : 0 ;
-      couleur : var(--muted);
-      taille de police : 0,9rem ;
-      hauteur de ligne : 1,65 ;
+      margin: 0;
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.65;
     }
 
     .check-mark-large {
-      affichage : grille ;
+      display: grid;
       flex: 0 0 28px;
-      largeur : 28px ;
-      hauteur : 28px ;
-      place-items: centre;
-      couleur : #087b65 ;
-      arrière-plan : #dff7ed ;
-      rayon de bordure : 50 % ;
-      police-weight: 900;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      color: #087b65;
+      background: #dff7ed;
+      border-radius: 50%;
+      font-weight: 900;
     }
 
-    .note-de-divulgation {
-      marge supérieure : 25px ;
-      marge intérieure : 18px 20px ;
-      couleur : #4e5b71 ;
-      arrière-plan : #fff9e9 ;
-      bordure : 1px solide #f3dfad ;
-      bordure gauche : 4px solide #d9a441 ;
-      bordure-radius: 12px;
-      taille de police : 0,9rem ;
-      hauteur de ligne : 1,7 ;
+    .disclosure-note {
+      margin-top: 25px;
+      padding: 18px 20px;
+      color: #4e5b71;
+      background: #fff9e9;
+      border: 1px solid #f3dfad;
+      border-left: 4px solid #d9a441;
+      border-radius: 12px;
+      font-size: .9rem;
+      line-height: 1.7;
     }
 
-    [dir="rtl"] .note-de-divulgation {
-      bordure droite : 4px solide #d9a441 ;
-      bordure gauche : 1px solide #f3dfad ;
+    [dir="rtl"] .disclosure-note {
+      border-right: 4px solid #d9a441;
+      border-left: 1px solid #f3dfad;
     }
 
-    .pied de page-expandé {
-      marge intérieure : 30px 0 ;
-      couleur : #c8d4e7 ;
-      arrière-plan : #0d192d ;
-      bordure supérieure : 1px solide rgba(255,255,255,.1);
+    .expanded-footer {
+      padding: 30px 0;
+      color: #c8d4e7;
+      background: #0d192d;
+      border-top: 1px solid rgba(255,255,255,.1);
     }
 
-    .pied de page-développé-intérieur {
-      affichage : flexible ;
-      flex-wrap : envelopper ;
-      écart : 15px 25px ;
-      aligner les éléments : centrer ;
-      justificatif-contenu : espace-entre ;
+    .expanded-footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px 25px;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    .footer-expandé a {
-      couleur : #fff ;
+    .expanded-footer a {
+      color: #fff;
     }
 
     .footer-contact-line {
-      affichage : flexible ;
-      flex-wrap : envelopper ;
-      écart : 10px 22px ;
-      aligner les éléments : centrer ;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+      align-items: center;
     }
 
     .photo-credit-note {
-      largeur maximale : 900 px ;
-      marge : 20px auto 0 ;
-      couleur : #9daec6 ;
-      taille de police : 0,78rem ;
-      hauteur de ligne : 1,6 ;
+      max-width: 900px;
+      margin: 20px auto 0;
+      color: #9daec6;
+      font-size: .78rem;
+      line-height: 1.6;
     }
 
-    .image-fallback::après {
-      affichage : grille ;
-      hauteur minimale : 180 px ;
-      place-items: centre;
-      marge intérieure : 20px ;
-      couleur : #64748b ;
-      arrière-plan : gradient linéaire (135°, #e9eef7, #dce5f2) ;
-      contenu : « Marrakechpixim · Découvrez le monde » ;
-      police-weight: 800;
-      text-align: centre;
+    .image-fallback::after {
+      display: grid;
+      min-height: 180px;
+      place-items: center;
+      padding: 20px;
+      color: #64748b;
+      background: linear-gradient(135deg, #e9eef7, #dce5f2);
+      content: "Marrakechpixim · Discover globally";
+      font-weight: 800;
+      text-align: center;
     }
 
-    .image de carte de catégorie,
-    .image-photo-héros,
+    .category-card img,
+    .hero-photo img,
     .model-visual img {
       transition: transform 450ms ease;
     }
 
     .category-card:hover img {
-      transformation : échelle(1,035) ;
+      transform: scale(1.035);
     }
 
     .category-image {
-      débordement : caché ;
+      overflow: hidden;
     }
 
     .category-image img {
-      affichage : bloc ;
-      largeur : 100 % ;
-      ajustement à l'objet : couverture ;
+      display: block;
+      width: 100%;
+      object-fit: cover;
     }
 
     .expanded-cta-row {
-      affichage : flexible ;
-      flex-wrap : envelopper ;
-      écart : 12 px ;
-      aligner les éléments : centrer ;
-      marge supérieure : 26px ;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 26px;
     }
 
     .text-muted {
-      couleur : var(--muted);
+      color: var(--muted);
     }
 
     .sr-only-focusable:not(:focus):not(:active) {
-      position : absolue ;
-      largeur : 1 px ;
-      hauteur : 1px ;
-      marge intérieure : 0 ;
-      marge : -1px ;
-      débordement : caché ;
-      clip : rect(0, 0, 0, 0);
-      espace blanc : nowrap ;
-      bordure : 0 ;
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
 
     @media (max-width: 1100px) {
@@ -978,9 +978,9 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
       .model-layout {
-        écart : 30 px ;
+        gap: 30px;
       }
-      .panneau-de-contact {
+      .contact-panel {
         grid-template-columns: 1fr;
       }
     }
@@ -989,68 +989,68 @@
       .sector-overview-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
-      .grille-de-valeurs-globales,
+      .global-value-grid,
       .partner-pathways {
         grid-template-columns: 1fr;
       }
       .model-layout {
         grid-template-columns: 1fr;
       }
-      .modèle-visuel,
+      .model-visual,
       .model-visual img {
-        hauteur minimale : 300 px ;
+        min-height: 300px;
       }
-      .liste-de-contrôle-de-confiance {
+      .trust-checklist {
         grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 520px) {
       .container-wide {
-        largeur : min(100 % - 28 px, 1360 px) ;
+        width: min(100% - 28px, 1360px);
       }
-      .section-développée {
-        marge intérieure : 48px ;
+      .expanded-section {
+        padding-block: 48px;
       }
       .sector-overview-grid {
         grid-template-columns: 1fr;
-        écart : 12 px ;
+        gap: 12px;
       }
-      .carte-vue-secteur {
-        hauteur minimale : 140 px ;
-        marge intérieure : 20px ;
+      .sector-overview-card {
+        min-height: 140px;
+        padding: 20px;
       }
-      .carte-valeur-globale,
-      .chemin-partenaire {
-        marge intérieure : 22 px ;
+      .global-value-card,
+      .partner-pathway {
+        padding: 22px;
       }
-      .panneau-de-contact {
-        marge intérieure : 22 px ;
+      .contact-panel {
+        padding: 22px;
       }
-      .pied de page-développé-intérieur {
+      .expanded-footer-inner {
         align-items: flex-start;
-        direction flexible : colonne ;
+        flex-direction: column;
       }
     }
 
-    @media (préfère-mouvement-réduit : réduire) {
+    @media (prefers-reduced-motion: reduce) {
       *,
-      *::avant,
-      *::après {
-        comportement de défilement : auto !important ;
-        durée-animation : 0,01 ms !important ;
-        nombre d'itérations d'animation : 1 !important ;
-        durée de transition : 0,01 ms !important ;
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
       }
     }
 
 
-    /* Dernières retouches : marque en un seul mot, statut de lancement plus clair et mise en page mobile optimisée. */
+    /* Final polish: one-word brand, clearer launch status, and resilient mobile layout. */
     .brand-name { white-space: nowrap; word-break: keep-all; overflow-wrap: normal; letter-spacing: -.7px; }
     .launch-notice { position: relative; isolation: isolate; }
     .launch-notice::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 5px; background: linear-gradient(180deg, #d9a441, #6d8cff); }
     [dir="rtl"] .launch-notice::before { inset: 0 0 0 auto; }
-    .launch-notice h2 { largeur maximale : 30ch ; }
+    .launch-notice h2 { max-width: 30ch; }
     .category-card, .step-card, .trust-box, .sector-overview-card { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
     .category-card:focus-within, .step-card:hover, .trust-box:hover, .sector-overview-card:hover { border-color: #d5def0; box-shadow: 0 14px 32px rgba(20,38,72,.09); }
     .site-footer .brand-name { color: #fff; }
@@ -1062,65 +1062,73 @@
     }
 
 
-
-    /* Palette Marrakechpixim rafraîchie — émeraude, or champagne et blanc chaud.
-       Conservé comme couche de thème finale afin que la mise en page, les sections et les interactions existantes restent intactes.
-    :racine {
-      --marine : #0d5b46 ;
-      --navy-2 : #124f40 ;
-      --bleu : #0f8063 ;
-      --bleu foncé : #0b654e ;
-      --turquoise : #d5ad55 ;
-      --encre : #17352d ;
-      --muted: #64756e;
-      --ligne : #e2e9e4 ;
+    /* Final brand pass: Marrakechpixim emerald green, gold and white. */
+    :root {
+      --navy: #064b38;
+      --navy-2: #075b42;
+      --blue: #087f55;
+      --blue-dark: #056443;
+      --teal: #d6a83e;
+      --ink: #172b23;
+      --muted: #607268;
+      --line: #e1e9e3;
       --surface: #ffffff;
-      --arrière-plan : #f7faf7 ;
-      --bleu doux : #e8f4ee ;
-      --shadow: 0 12px 35px rgba(13, 91, 70, .09);
+      --background: #f7faf7;
+      --soft-blue: #edf6ef;
+      --shadow: 0 12px 35px rgba(6, 75, 56, .09);
     }
-    corps { arrière-plan: var(--arrière-plan); couleur: var(--encre); }
-    .site-header { border-bottom-color: rgba(218, 231, 222, .95); }
-    .btn-primary, .button-primary { background: linear-gradient(135deg, #0d5b46, #138363); border-color: #0d5b46; }
-    .btn-primary:hover, .button-primary:hover { background: #084b39; }
-    .brand-mark { background: linear-gradient(135deg, #0d5b46, #d5ad55); }
-    .eyebrow, .section-kicker { couleur : #0d7558; }
-    .launch-notice { background: linear-gradient(115deg, #0b4c3b, #12674f); }
-    .launch-notice::before { background: linear-gradient(180deg, #f0d48b, #bd9140); }
-    .launch-notice .btn { couleur : #0d5b46; }
-    .artist-section { background: linear-gradient(135deg, #f0f7f2 0%, #ffffff 50%, #fff9e9 100%); }
-    .artist-promo { background: radial-gradient(circle at 85% 15%, rgba(240,212,139,.38), transparent 25%), linear-gradient(135deg, #0b4c3b, #13785b 68%, #b38a37); }
-    .artist-consent input { accent-color: #0d7558; }
-    .youth-section { background: linear-gradient(135deg, #0b4c3b, #124f40 60%, #8a6a2d); }
-    .youth-card-link span { color: #f0d48b; }
-    .check { couleur : #0d7558; }
-    input:focus, select:focus, textarea:focus, button:focus-visible, a:focus-visible { outline-color: #c39a42; }
-    .category-card:hover, .sector-overview-card:hover { border-color: #c9ad6a; }
-    .section-heading h2 span, .hero h1 span { color: #b58a31; }
-    .footer, .site-footer { background-color: #0b3f32; }
-    .footer a:hover, .site-footer a:hover { color: #f0d48b; }
+    .brand-mark, .btn-primary { background: linear-gradient(135deg, #075b42, #0b815a) !important; }
+    .brand-name span, .main-nav a:hover, .main-nav a:focus-visible,
+    .hero h1 span, .eyebrow, .text-link, .btn-quiet { color: #087f55; }
+    .btn-primary { color: #fff; box-shadow: 0 8px 20px rgba(7, 91, 66, .18); }
+    .btn-primary:hover { background: linear-gradient(135deg, #064b38, #056443) !important; }
+    .btn-quiet, .floating-icon, .check { background: #edf6ef; color: #075b42; }
+    .launch-notice { background: linear-gradient(115deg, #064b38 0%, #08734f 66%, #b78a25 100%); border-color: rgba(214,168,62,.55); }
+    .launch-notice .eyebrow { color: #f5d98c; }
+    .launch-notice::before { background: linear-gradient(180deg, #f2d477, #d6a83e); }
+    .launch-notice .btn { color: #064b38; background: #fff; }
+    .partner-sample-note { background: #fff9e9; border-color: #eedca6; }
+    .contact-method-icon { background: #edf6ef; color: #075b42; }
+    .phone-line a, .footer-links a[href^="tel:"] { color: #087f55; }
+    .category-card:hover, .feature-card:hover { border-color: rgba(214,168,62,.72); box-shadow: 0 16px 36px rgba(6,75,56,.12); }
+    .technical-roadmap { background: #f2f7f2; }
+    .code-system-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; margin-top: 28px; }
+    .code-system-card { padding: 24px; border: 1px solid #dfe9df; border-radius: 18px; background: #fff; box-shadow: 0 8px 24px rgba(6,75,56,.045); }
+    .code-system-icon, .mobile-money-mark { display: grid; place-items: center; width: 46px; height: 46px; margin-bottom: 14px; border-radius: 14px; background: #edf6ef; color: #075b42; font-size: 25px; font-weight: 800; }
+    .code-system-card h3, .mobile-money-panel h3 { margin: 0 0 10px; color: #064b38; font-size: 19px; }
+    .code-system-card p { margin-bottom: 10px; color: #53665b; }
+    .code-example { padding: 12px; border-left: 3px solid #d6a83e; border-radius: 8px; background: #fff9e9; font-size: 13px; overflow-wrap: anywhere; }
+    [dir="rtl"] .code-example { border-left: 0; border-right: 3px solid #d6a83e; }
+    .mobile-money-panel { display: grid; grid-template-columns: auto 1fr; gap: 18px; margin-top: 20px; padding: 24px; border: 1px solid #e9dba9; border-radius: 18px; background: linear-gradient(135deg, #fffdf6, #fff8e6); }
+    .mobile-money-panel .mobile-money-mark { background: #f6e7b9; color: #6b5010; }
+    .mobile-money-panel p { color: #53665b; }
+    .mobile-money-panel ul { margin: 12px 0 0; padding-inline-start: 22px; color: #33483b; }
+    .mobile-money-panel li { margin: 7px 0; }
+    .technical-disclaimer { margin: 18px 0 0; padding: 14px 16px; border: 1px solid #dfe9df; border-radius: 12px; background: #fff; color: #52645a; font-size: 13px; }
+    @media (max-width: 720px) { .code-system-grid { grid-template-columns: 1fr; } .mobile-money-panel { grid-template-columns: 1fr; } }
+    ::selection { background: #f3df9f; color: #064b38; }
 
   </style>
 </head>
-<corps>
-  <a class="skip-link" href="#main-content">Passer au contenu</a>
-  <!-- Header: the official brand name remain Marrakechpixim in every language. -->
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <!-- Header: the official brand name remains Marrakechpixim in every language. -->
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#home" aria-label="Marrakechpixim home">
         <span class="brand-mark" aria-hidden="true">M</span>
         <span class="brand-name">Marrakechpixim</span>
       </a>
-      <nav class="main-nav" id="mainNav" aria-label="Navigation principale">
-        <a href="#categories" data-i18n="navExplore">Explorer</a>
-        <a href="#business" data-i18n="navBusiness">Pour les entreprises</a>
-        <a href="#how-it-works" data-i18n="navHow">Comment ça marche</a>
-        <a href="#about" data-i18n="navAbout">À propos de nous</a>
+      <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+        <a href="#categories" data-i18n="navExplore">Explore</a>
+        <a href="#business" data-i18n="navBusiness">For businesses</a>
+        <a href="#how-it-works" data-i18n="navHow">How it works</a>
+        <a href="#about" data-i18n="navAbout">About us</a>
       </nav>
       <div class="header-actions">
-        <label class="sr-only" for="languageSelect">Choisissez la langue</label>
-        <select class="language-select" id="languageSelect" aria-label="Choisissez la langue">
-          <option value="en">Anglais</option>
+        <label class="sr-only" for="languageSelect">Choose language</label>
+        <select class="language-select" id="languageSelect" aria-label="Choose language">
+          <option value="en">English</option>
           <option value="fr">Français</option>
           <option value="es">Español</option>
           <option value="pt">Português</option>
@@ -1128,79 +1136,79 @@
           <option value="ru">Русский</option>
           <option value="zh">简体中文</option>
         </select>
-        <a class="btn btn-primary" href="#business" data-i18n="listBusiness">Inscrivez votre entreprise</a>
+        <a class="btn btn-primary" href="#business" data-i18n="listBusiness">List your business</a>
       </div>
       <button class="mobile-menu" id="mobileMenu" aria-expanded="false" aria-controls="mainNav"><span aria-hidden="true">☰</span><span data-i18n="menu">Menu</span></button>
     </div>
   </header>
 
   <main id="main-content">
-    <!-- Section Héros -->
+    <!-- Hero section -->
     <section class="hero" id="home">
       <div class="container hero-grid">
         <div class="hero-copy-block">
-          <span class="eyebrow"><span class="eyebrow-dot"></span><span data-i18n="heroEyebrow">Un monde de possibilités</span></span>
-          <h1 data-i18n="heroTitle">Trouvez ce dont vous avez besoin, <span>facilement.</span></h1>
-          <p class="hero-copy" data-i18n="heroCopy">Découvrez des entreprises de confiance, des lieux remarquables, des produits et des services du monde entier, le tout dans une seule destination facile à explorer.</p>
+          <span class="eyebrow"><span class="eyebrow-dot"></span><span data-i18n="heroEyebrow">A world of possibilities</span></span>
+          <h1 data-i18n="heroTitle">Find what you need, <span>easily.</span></h1>
+          <p class="hero-copy" data-i18n="heroCopy">Discover trusted businesses, remarkable places, products and services from around the world — all in one easy-to-explore destination.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#categories" data-i18n="exploreCategories">Explorer les catégories <span aria-hidden="true">→</span></a>
-            <a class="btn btn-light" href="#business" data-i18n="growBusiness">Développez votre entreprise</a>
+            <a class="btn btn-primary" href="#categories" data-i18n="exploreCategories">Explore categories <span aria-hidden="true">→</span></a>
+            <a class="btn btn-light" href="#business" data-i18n="growBusiness">Grow your business</a>
           </div>
           <div class="trust-row">
-            <span class="trust-item"><span class="check">✓</span><span data-i18n="globalDiscovery">Découverte globale</span></span>
-            <span class="trust-item"><span class="check">✓</span><span data-i18n="manyCategories">Nombreuses catégories</span></span>
-            <span class="trust-item"><span class="check">✓</span><span data-i18n="madeForEveryone">Conçu pour tous</span></span>
+            <span class="trust-item"><span class="check">✓</span><span data-i18n="globalDiscovery">Global discovery</span></span>
+            <span class="trust-item"><span class="check">✓</span><span data-i18n="manyCategories">Many categories</span></span>
+            <span class="trust-item"><span class="check">✓</span><span data-i18n="madeForEveryone">Made for everyone</span></span>
           </div>
         </div>
-        <div class="hero-visual" aria-label="Photographie de destination de voyage">
+        <div class="hero-visual" aria-label="Travel destination photograph">
           <div class="hero-photo">
-            <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=2000&q=92" alt="Magnifique destination côtière représentant les voyages et les découvertes à travers le monde" fetchpriority="high" decoding="async">
-            <div class="photo-caption"><strong data-i18n="heroPhotoTitle">Votre prochaine découverte commence ici</strong><span data-i18n="heroPhotoCopy">Lieux, personnes, marques et expériences</span></div>
+            <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=2000&q=92" alt="Beautiful coastal destination representing worldwide travel and discovery" fetchpriority="high" decoding="async">
+            <div class="photo-caption"><strong data-i18n="heroPhotoTitle">Your next discovery starts here</strong><span data-i18n="heroPhotoCopy">Places, people, brands and experiences</span></div>
           </div>
-          <div class="floating-card top-card"><div class="floating-label" data-i18n="discoverMore">Découvrez-en plus</div><div class="floating-value" data-i18n="worldwide">Monde entier</div></div>
-          <div class="floating-card bottom-card"><div class="floating-icon" aria-hidden="true">↗</div><div><div class="floating-label" data-i18n="onePlatform">Une plateforme</div><div class="floating-value" data-i18n="manyPossibilities">De nombreuses possibilités</div></div></div>
+          <div class="floating-card top-card"><div class="floating-label" data-i18n="discoverMore">Discover more</div><div class="floating-value" data-i18n="worldwide">Worldwide</div></div>
+          <div class="floating-card bottom-card"><div class="floating-icon" aria-hidden="true">↗</div><div><div class="floating-label" data-i18n="onePlatform">One platform</div><div class="floating-value" data-i18n="manyPossibilities">Many possibilities</div></div></div>
         </div>
       </div>
     </section>
 
-    <!-- Annonce officielle de préparation au lancement : n’implique aucun paiement ni transaction en direct. -->
+    <!-- Official launch-preparation announcement: do not imply live payments or transactions. -->
     <section class="launch-notice" aria-labelledby="launchNoticeTitle">
       <div class="container launch-notice-inner">
         <div class="launch-notice-mark" aria-hidden="true">✦</div>
         <div>
-          <span class="eyebrow">Préparation d'un lancement mondial</span>
-          <h2 id="launchNoticeTitle">Marrakechpixim se prépare à un lancement mondial.</h2>
-          Nous préparons une plateforme multilingue de découverte et de publicité, axée sur la technologie, avec l'ambition de rivaliser en termes de qualité avec les plateformes mondiales établies. Notre objectif est d'aider les utilisateurs à découvrir des entreprises, des produits, des services et des expériences dans le monde entier. Explorez ce concept préliminaire ou contactez-nous pour proposer une inscription ou un partenariat. Les annonces en ligne, les paiements et le traitement des transactions ne sont pas encore disponibles.
+          <span class="eyebrow">Preparing for a global launch</span>
+          <h2 id="launchNoticeTitle">Marrakechpixim is preparing for global launch.</h2>
+          <p>We are preparing a multilingual, technology-led discovery and advertising platform with the ambition to compete on quality with established global platforms. Our goal is to help people discover businesses, products, services and experiences worldwide. Explore this early concept or contact us to propose a listing or partnership. Live listings, online payments and transaction processing are not enabled at this stage.</p>
         </div>
-        <a class="btn" href="#contact-marrakechpixim">Discutez d'un partenariat <span aria-hidden="true">→</span></a>
+        <a class="btn" href="#contact-marrakechpixim">Discuss a partnership <span aria-hidden="true">→</span></a>
       </div>
     </section>
 
-    <!-- Recherche : filtrage local fonctionnel, aucun service externe requis. -->
-    <section class="container search-wrap" aria-label="Rechercher sur la place de marché">
+    <!-- Search: functional local filtering, no external service required. -->
+    <section class="container search-wrap" aria-label="Search marketplace">
       <form class="search-panel" id="searchForm">
         <div class="field">
-          <label for="searchInput" data-i18n="searchLabel">Que recherchez-vous ?</label>
-          <div class="field-control"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Hôtels, restaurants, mode..." data-i18n-placeholder="searchPlaceholder"></div>
+          <label for="searchInput" data-i18n="searchLabel">What are you looking for?</label>
+          <div class="field-control"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Hotels, restaurants, fashion..." data-i18n-placeholder="searchPlaceholder"></div>
         </div>
         <div class="field">
-          <label for="categoryFilter" data-i18n="categoryLabel">Catégorie</label>
-          <div class="field-control"><span aria-hidden="true">▦</span><select id="categoryFilter"><option value="" data-i18n="allCategories">Toutes les catégories</option></select></div>
+          <label for="categoryFilter" data-i18n="categoryLabel">Category</label>
+          <div class="field-control"><span aria-hidden="true">▦</span><select id="categoryFilter"><option value="" data-i18n="allCategories">All categories</option></select></div>
         </div>
         <div class="field">
-          <label for="locationInput" data-i18n="locationLabel">Emplacement</label>
-          <div class="field-control"><span aria-hidden="true">⌖</span><input id="locationInput" type="text" placeholder="Ville ou pays" data-i18n-placeholder="locationPlaceholder"></div>
+          <label for="locationInput" data-i18n="locationLabel">Location</label>
+          <div class="field-control"><span aria-hidden="true">⌖</span><input id="locationInput" type="text" placeholder="City or country" data-i18n-placeholder="locationPlaceholder"></div>
         </div>
-        <button class="btn btn-primary" type="submit"><span aria-hidden="true">⌕</span><span data-i18n="searchButton">Rechercher</span></button>
+        <button class="btn btn-primary" type="submit"><span aria-hidden="true">⌕</span><span data-i18n="searchButton">Search</span></button>
       </form>
     </section>
 
-    <!-- Les catégories sont générées à partir du tableau de données ci-dessous ; chacune utilise une URL photographique réelle. -->
+    <!-- Categories are rendered from the data array below; each uses a real photographic URL. -->
     <section class="section" id="categories">
       <div class="container">
         <div class="section-heading">
-          <div><span class="eyebrow" data-i18n="exploreEyebrow">Explorez le monde</span><h2 data-i18n="categoriesTitle">Découvrez par catégorie</h2><p data-i18n="categoriesCopy">Voyages, gastronomie, shopping, services professionnels et produits de luxe : commencez par ce qui compte pour vous.</p></div>
-          <a class="text-link" href="#business" data-i18n="businessDirectory">Annuaire d'entreprises <span aria-hidden="true">→</span></a>
+          <div><span class="eyebrow" data-i18n="exploreEyebrow">Explore the world</span><h2 data-i18n="categoriesTitle">Discover by category</h2><p data-i18n="categoriesCopy">From travel and dining to shopping, professional services and luxury products, start with what matters to you.</p></div>
+          <a class="text-link" href="#business" data-i18n="businessDirectory">Business directory <span aria-hidden="true">→</span></a>
         </div>
         <div class="category-grid" id="categoryGrid" aria-live="polite"></div>
         <p class="sr-only" id="resultsAnnouncement" aria-live="polite"></p>
@@ -1211,23 +1219,23 @@
 
 
 
-    <!-- Découverte des jeunes : un concept illustratif des intérêts, des tendances et des offres partenaires susceptibles d'intéresser les jeunes. -->
+    <!-- Youth discovery: an illustrative concept for interests, trends and partner offers young people may enjoy. -->
     <section class="expanded-section youth-section" id="youth-discovery" aria-labelledby="youthTitle">
       <div class="container-wide">
         <div class="youth-topline">
-          <span class="youth-pill"><span aria-hidden="true">✦</span> Pour la prochaine génération</span>
-          Musique · Style · Technologie · Sport · Voyages
+          <span class="youth-pill"><span aria-hidden="true">✦</span> For the next generation</span>
+          <span class="youth-pill">Music · Style · Tech · Sport · Travel</span>
         </div>
         <div class="section-heading">
           <div>
-            <span class="section-kicker">Découvrez ce qui vous touche</span>
-            <h2 id="youthTitle">Votre monde. Vos intérêts. Votre prochaine découverte.</h2>
-            <p class="section-intro">Explorez des idées inspirantes, des talents créatifs, des styles novateurs, la technologie, le sport et des expériences – le tout dans un espace coloré conçu autour des passions des jeunes.</p>
+            <span class="section-kicker">Discover what moves you</span>
+            <h2 id="youthTitle">Your world. Your interests. Your next discovery.</h2>
+            <p class="section-intro">Explore inspiring ideas, creative talent, fresh styles, technology, sport and experiences—all in one colorful space built around the things young people love.</p>
           </div>
         </div>
         <div class="youth-card-grid">
           <a class="youth-card" href="#artist-collaboration" style="--youth-image:url('https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1000&q=85')">
-            <span class="youth-card-icon" aria-hidden="true">🎤</span><h3>Musique et créateurs</h3><p>Découvrez des artistes, de nouveaux talents, des événements en direct et des créations originales.</p><span class="youth-card-link">Explorer la musique <span aria-hidden="true">→</span></span>
+            <span class="youth-card-icon" aria-hidden="true">🎤</span><h3>Music & Creators</h3><p>Discover artists, new voices, live events and creative talent.</p><span class="youth-card-link">Explore music <span aria-hidden="true">→</span></span>
           </a>
           <a class="youth-card" href="#categories" style="--youth-image:url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1000&q=85')">
             <span class="youth-card-icon" aria-hidden="true">👟</span><h3>Mode et style urbain</h3><p>Découvrez des looks tendance, des sneakers, des accessoires et des marques.</p><span class="youth-card-link">Trouvez votre style <span aria-hidden="true">→</span></span>
@@ -1310,8 +1318,24 @@
             </ul>
           </div>
           <div class="artist-form-card">
-            <h3>Postulez pour collaborer</h3>
-            <p>Veuillez remplir le court formulaire. Un courriel sera automatiquement envoyé à notre équipe afin que vous puissiez le relire et l'envoyer depuis votre application de messagerie.</p>
+            <h3>Apply to collaborate</h3>
+            <p>Complete the short form. It will prepare an email to our team so you can review it and send it from your own email application.</p>
             <form class="request-form" id="artistApplicationForm">
               <div class="field">
-                <label for="artistType">Votre activité *</la
+                <label for="artistType">Your activity *</label>
+                <select id="artistType" name="artistType" required>
+                  <option value="">Choose your activity</option>
+                  <option>Singer / musician</option><option>Actor / performer</option><option>Content creator / influencer</option><option>Artist / designer</option><option>Athlete / public personality</option><option>Other creative talent</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="artistStageName">Artist or public name *</label>
+                <input id="artistStageName" name="artistStageName" required autocomplete="nickname" placeholder="Name people know you by">
+              </div>
+              <div class="field">
+                <label for="artistLegalName">Full name (private contact) *</label>
+                <input id="artistLegalName" name="artistLegalName" required autocomplete="name" placeholder="Your full name">
+              </div>
+              <div class="field">
+                <label for="artistEmail">Email address *</label>
+                <input id="artistEmail" name="artistEmai
