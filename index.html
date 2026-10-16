@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#075b42">
+  <meta name="theme-color" content="#10243f">
   <title>Marrakechpixim â€” Find What You Need, Easily</title>
   <meta name="description" content="Discover global businesses, travel, luxury products, suppliers, services and experiences with Marrakechpixim.">
   <meta property="og:url" content="https://www.marrakechpixim.com/">
@@ -23,17 +23,17 @@
        Single-file prototype. Real photo URLs are used for category art.
        ============================================================== */
     :root {
-      --navy: #064b38;
-      --navy-2: #075b42;
-      --blue: #087f55;
-      --blue-dark: #056443;
-      --teal: #d6a83e;
+      --navy: #10243f;
+      --navy-2: #173b63;
+      --blue: #087fbd;
+      --blue-dark: #075b91;
+      --teal: #18b7b0;
       --ink: #172b23;
       --muted: #607268;
       --line: #e1e9e3;
       --surface: #ffffff;
       --background: #f7faf7;
-      --soft-blue: #edf6ef;
+      --soft-blue: #e8f7fb;
       --radius: 18px;
       --shadow: 0 12px 35px rgba(20, 38, 72, .08);
       --content: 1240px;
@@ -118,7 +118,7 @@
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 25px 0 27px; }
     .trust-row { display: flex; flex-wrap: wrap; gap: 17px; color: #647188; font-size: 12px; font-weight: 700; }
     .trust-item { display: inline-flex; align-items: center; gap: 7px; }
-    .check { display: inline-grid; place-items: center; width: 19px; height: 19px; border-radius: 50%; background: #dcf8ed; color: #087b59; font-size: 12px; }
+    .check { display: inline-grid; place-items: center; width: 19px; height: 19px; border-radius: 50%; background: #d6f4f7; color: #087fbd; font-size: 12px; }
     .hero-visual { position: relative; min-height: 420px; }
     .hero-photo {
       position: absolute; inset: 8px 10px 18px 30px; overflow: hidden;
@@ -138,7 +138,7 @@
     .floating-card.bottom-card { right: 0; bottom: 0; display: flex; align-items: center; gap: 11px; }
     .floating-label { color: var(--muted); font-size: 11px; font-weight: 700; }
     .floating-value { margin-top: 3px; font: 800 18px Manrope, sans-serif; }
-    .floating-icon { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 12px; background: #e4fbf4; color: #087b59; font-size: 20px; }
+    .floating-icon { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 12px; background: #e4fbf4; color: #087fbd; font-size: 20px; }
 
     /* Search bar */
     .search-wrap { position: relative; z-index: 4; margin: 16px auto 54px; }
@@ -172,7 +172,11 @@
     .category-image img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .6s cubic-bezier(.2,.7,.2,1), filter .4s ease; }
     .category-card:hover .category-image img { transform: scale(1.075); filter: saturate(1.08); }
     .category-image img[loading="lazy"] { background: linear-gradient(135deg,#dbe8e7,#f3e8d6); }
-    .category-image.image-fallback::before { content: "Marrakechpixim"; position: absolute; inset: 0; display: grid; place-items: center; color: #536878; font-weight: 800; letter-spacing: .04em; }
+    .category-image.image-fallback::before { content: attr(data-image-label); position: absolute; inset: 0; display: grid; place-items: center; padding: 22px; text-align: center; color: #24445a; font-weight: 800; letter-spacing: .01em; font-size: 1.1rem; background: linear-gradient(135deg,#e8f7fb 0%,#f8f0df 55%,#d8f1eb 100%); }
+    .category-image.image-fallback img { display: none; }
+    .sector-overview-card.image-fallback { padding-top: 0; }
+    .sector-overview-card.image-fallback::before { content: attr(data-image-label); display: grid; place-items: center; width: calc(100% + 46px); min-height: 154px; margin: 0 -23px 18px; padding: 18px; box-sizing: border-box; text-align: center; color: #24445a; font-weight: 800; background: linear-gradient(135deg,#e8f7fb 0%,#f8f0df 55%,#d8f1eb 100%); }
+    .sector-overview-card.image-fallback .sector-card-photo { display:none; }
     .category-tag { position: absolute; top: 12px; left: 12px; padding: 5px 9px; border-radius: 999px; background: rgba(255,255,255,.94); color: var(--navy); font-size: 10px; font-weight: 800; }
     .category-body { padding: 16px; }
     .category-body h3 { margin: 0 0 7px; font-size: 16px; letter-spacing: -.35px; }
@@ -181,6 +185,21 @@
     .category-footer span { color: #778399; font-size: 11px; font-weight: 700; }
     .circle-arrow { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; color: var(--blue); background: var(--soft-blue); font-size: 17px; }
     .empty-state { grid-column: 1 / -1; padding: 35px; text-align: center; color: var(--muted); background: white; border: 1px dashed #cfd7e4; border-radius: 16px; }
+
+
+    .mpx-live-search-controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px}
+    .mpx-live-search-controls button{border:0;border-radius:11px;padding:11px 14px;font-weight:800;cursor:pointer}
+    #mpxGlobalSearchButton{background:#10243f;color:#fff}
+    #mpxVoiceSearchButton{background:#e8f7fb;color:#075b91;border:1px solid #b7e8ee}
+    #mpxVoiceSearchButton:disabled{opacity:.55;cursor:not-allowed}
+    #mpxLiveSearchStatus{font-size:13px;color:#526176;margin:9px 0 0}
+    #mpxLiveSearchResults{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:14px 0 20px}
+    .mpx-live-result{background:#fff;border:1px solid #dbe5ef;border-radius:14px;padding:15px;box-shadow:0 8px 22px rgba(16,36,61,.05);overflow-wrap:anywhere}
+    .mpx-live-result h3{font-size:16px;margin:0 0 6px;color:#10243f}
+    .mpx-live-result p{font-size:13px;color:#526176;margin:0 0 10px}
+    .mpx-live-result a{display:inline-block;margin:4px 8px 0 0;font-size:13px;font-weight:800;color:#087fbd;text-decoration:underline}
+    .mpx-live-source{font-size:11px;color:#738195;margin-top:8px}
+    @media(max-width:600px){.mpx-live-search-controls button{flex:1}}
 
     /* Business callout */
     .business-band { padding: 20px 0 58px; }
@@ -1082,38 +1101,38 @@
 
     /* Final brand pass: Marrakechpixim emerald green, gold and white. */
     :root {
-      --navy: #064b38;
-      --navy-2: #075b42;
-      --blue: #087f55;
-      --blue-dark: #056443;
-      --teal: #d6a83e;
+      --navy: #10243f;
+      --navy-2: #173b63;
+      --blue: #087fbd;
+      --blue-dark: #075b91;
+      --teal: #18b7b0;
       --ink: #172b23;
       --muted: #607268;
       --line: #e1e9e3;
       --surface: #ffffff;
       --background: #f7faf7;
-      --soft-blue: #edf6ef;
+      --soft-blue: #e8f7fb;
       --shadow: 0 12px 35px rgba(6, 75, 56, .09);
     }
-    .brand-mark, .btn-primary { background: linear-gradient(135deg, #075b42, #0b815a) !important; }
+    .brand-mark, .btn-primary { background: linear-gradient(135deg, #087fbd, #18b7b0 68%, #d6a83e) !important; }
     .brand-name span, .main-nav a:hover, .main-nav a:focus-visible,
-    .hero h1 span, .eyebrow, .text-link, .btn-quiet { color: #087f55; }
+    .hero h1 span, .eyebrow, .text-link, .btn-quiet { color: #087fbd; }
     .btn-primary { color: #fff; box-shadow: 0 8px 20px rgba(7, 91, 66, .18); }
-    .btn-primary:hover { background: linear-gradient(135deg, #064b38, #056443) !important; }
-    .btn-quiet, .floating-icon, .check { background: #edf6ef; color: #075b42; }
-    .launch-notice { background: linear-gradient(115deg, #064b38 0%, #08734f 66%, #b78a25 100%); border-color: rgba(214,168,62,.55); }
+    .btn-primary:hover { background: linear-gradient(135deg, #075b91, #087fbd) !important; }
+    .btn-quiet, .floating-icon, .check { background: #e8f7fb; color: #075b91; }
+    .launch-notice { background: linear-gradient(115deg, #10243f 0%, #087fbd 62%, #18b7b0 84%, #d6a83e 100%); border-color: rgba(214,168,62,.55); }
     .launch-notice .eyebrow { color: #f5d98c; }
     .launch-notice::before { background: linear-gradient(180deg, #f2d477, #d6a83e); }
-    .launch-notice .btn { color: #064b38; background: #fff; }
+    .launch-notice .btn { color: #10243f; background: #fff; }
     .partner-sample-note { background: #fff9e9; border-color: #eedca6; }
-    .contact-method-icon { background: #edf6ef; color: #075b42; }
-    .phone-line a, .footer-links a[href^="tel:"] { color: #087f55; }
+    .contact-method-icon { background: #e8f7fb; color: #075b91; }
+    .phone-line a, .footer-links a[href^="tel:"] { color: #087fbd; }
     .category-card:hover, .feature-card:hover { border-color: rgba(214,168,62,.72); box-shadow: 0 16px 36px rgba(6,75,56,.12); }
     .technical-roadmap { background: #f2f7f2; }
     .code-system-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; margin-top: 28px; }
     .code-system-card { padding: 24px; border: 1px solid #dfe9df; border-radius: 18px; background: #fff; box-shadow: 0 8px 24px rgba(6,75,56,.045); }
-    .code-system-icon, .mobile-money-mark { display: grid; place-items: center; width: 46px; height: 46px; margin-bottom: 14px; border-radius: 14px; background: #edf6ef; color: #075b42; font-size: 25px; font-weight: 800; }
-    .code-system-card h3, .mobile-money-panel h3 { margin: 0 0 10px; color: #064b38; font-size: 19px; }
+    .code-system-icon, .mobile-money-mark { display: grid; place-items: center; width: 46px; height: 46px; margin-bottom: 14px; border-radius: 14px; background: #e8f7fb; color: #075b91; font-size: 25px; font-weight: 800; }
+    .code-system-card h3, .mobile-money-panel h3 { margin: 0 0 10px; color: #10243f; font-size: 19px; }
     .code-system-card p { margin-bottom: 10px; color: #53665b; }
     .code-example { padding: 12px; border-left: 3px solid #d6a83e; border-radius: 8px; background: #fff9e9; font-size: 13px; overflow-wrap: anywhere; }
     [dir="rtl"] .code-example { border-left: 0; border-right: 3px solid #d6a83e; }
@@ -1124,9 +1143,177 @@
     .mobile-money-panel li { margin: 7px 0; }
     .technical-disclaimer { margin: 18px 0 0; padding: 14px 16px; border: 1px solid #dfe9df; border-radius: 12px; background: #fff; color: #52645a; font-size: 13px; }
     @media (max-width: 720px) { .code-system-grid { grid-template-columns: 1fr; } .mobile-money-panel { grid-template-columns: 1fr; } }
-    ::selection { background: #f3df9f; color: #064b38; }
+    ::selection { background: #f9dbe8; color: #10243f; }
 
-  </style>
+  
+    /* Global directory pilot additions */
+    .pilot-ribbon{margin:0 auto 26px;padding:16px 20px;border:1px solid #b9e5ef;border-radius:16px;background:linear-gradient(110deg,#effbff,#fff7fb);display:flex;gap:14px;align-items:flex-start;color:#183047}
+    .pilot-ribbon strong{display:block;margin-bottom:4px;color:#10263d}
+    .pilot-ribbon p{margin:0;line-height:1.65;font-size:14px}
+    .global-directory{padding:68px 0;background:#f7f9fc}
+    .directory-disclosure{margin:18px 0 26px;padding:14px 16px;border-left:4px solid #e4b64b;background:#fff;border-radius:8px;color:#48566a;font-size:14px;line-height:1.65}
+    .directory-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .directory-card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:21px;display:flex;flex-direction:column;min-height:235px;box-shadow:0 8px 24px rgba(22,38,63,.045)}
+    .directory-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px}
+    .directory-card h3{font-size:18px;line-height:1.35;margin:0;color:#172b46}
+    .directory-type{display:inline-flex;align-self:flex-start;border-radius:999px;padding:5px 9px;background:#edf7fa;color:#126276;font-size:11px;font-weight:800;letter-spacing:.02em}
+    .directory-card p{font-size:14px;line-height:1.65;color:#5a687a;margin:10px 0 18px}
+    .directory-card .directory-action{margin-top:auto;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+    .directory-card a{font-weight:750;text-decoration:none}
+    .directory-card .official-link{display:inline-flex;align-items:center;gap:6px}
+    .directory-card .enquire-link{font-size:13px;color:#56657a;text-decoration:underline}
+    .directory-search-row{display:flex;gap:12px;align-items:center;margin:22px 0}
+    .directory-search-row input,.directory-search-row select{min-width:0;flex:1;border:1px solid #d5deea;border-radius:11px;padding:12px 13px;background:white;color:#1a2b42}
+    .directory-results-count{font-size:13px;color:#617086;margin:0 0 12px}
+    .request-demo-note{padding:12px 14px;border-radius:10px;background:#fff8e7;color:#6d5317;font-size:13px;line-height:1.6;margin-top:10px}
+    .request-form-status{line-height:1.6}
+    @media(max-width:900px){.directory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:600px){.directory-grid{grid-template-columns:1fr}.directory-search-row{flex-direction:column;align-items:stretch}.pilot-ribbon{padding:14px}}
+
+
+    /* Global sector directory and transparent referral/commission policy */
+    .mpx-partner-section{padding:72px 0;background:#f7f9fc}
+    .mpx-partner-intro{max-width:920px;margin:0 auto 28px;color:var(--muted);line-height:1.8}
+    .mpx-commission-panel{background:linear-gradient(135deg,#082b3a,#075b55);color:#fff;border-radius:22px;padding:28px;margin:24px 0 34px;box-shadow:0 18px 42px rgba(10,45,58,.12)}
+    .mpx-commission-panel h3{color:#fff;margin:0 0 12px;font-size:24px}
+    .mpx-commission-panel p,.mpx-commission-panel li{color:#edf8f7;line-height:1.75}
+    .mpx-commission-panel strong{color:#ffe1a0}
+
+    .mpx-directory-tools{max-width:760px;margin:22px 0 20px;padding:18px;border:1px solid #dce8ec;border-radius:16px;background:#f8fbfc}
+    .mpx-directory-tools label{display:block;font-size:14px;font-weight:800;color:var(--navy);margin-bottom:8px}
+    .mpx-directory-tools input{width:100%;padding:14px 15px;border:1px solid #cbd9e0;border-radius:11px;font:inherit;background:#fff;color:#172b3a;outline-offset:3px}
+    .mpx-directory-tools p{font-size:12px;color:var(--muted);margin:9px 0 0;line-height:1.6}
+    .mpx-sector-card[hidden]{display:none!important}
+    .mpx-sector-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .mpx-sector-card{background:#fff;border:1px solid #e4eaf1;border-radius:16px;padding:18px;min-width:0}
+    .mpx-sector-card h3{font-size:16px;line-height:1.45;margin:0 0 8px;color:var(--navy)}
+    .mpx-sector-card p{font-size:12px;line-height:1.65;color:var(--muted);margin:0 0 12px}
+    .mpx-company-links{display:flex;flex-wrap:wrap;gap:8px}
+    .mpx-company-links a{display:inline-flex;align-items:center;border:1px solid #dce6ed;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:700;text-decoration:none;color:#075b55;background:#fbfdfd}
+    .mpx-company-links a:hover{border-color:#0b8278;background:#effaf8}
+    .mpx-status-note{font-size:12px!important;color:#68778a!important;margin-top:12px!important}
+    @media(max-width:900px){.mpx-sector-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:600px){.mpx-sector-grid{grid-template-columns:1fr}.mpx-partner-section{padding:48px 0}.mpx-commission-panel{padding:20px}}
+
+  
+
+    /* Marrakechpixim professional redesign â€” midnight navy, turquoise, champagne gold and a restrained rose accent. */
+    :root {
+      --navy: #10243d;
+      --navy-2: #173653;
+      --blue: #087fba;
+      --blue-dark: #066b9d;
+      --teal: #13b8b0;
+      --ink: #182b40;
+      --muted: #63748a;
+      --line: #e0e8f0;
+      --surface: #ffffff;
+      --background: #f5f8fc;
+      --soft-blue: #eaf6fb;
+      --radius: 20px;
+      --shadow: 0 16px 44px rgba(16,36,61,.09);
+      --gold: #c89d4b;
+      --gold-soft: #fff7e8;
+      --green-soft: #e8f8f5;
+      --rose-soft: #fff0f5;
+      --violet-soft: #f3f1ff;
+      --card-border: #e1e8f1;
+      --focus-ring: 0 0 0 4px rgba(19,184,176,.2);
+    }
+    body { background:linear-gradient(180deg,#fbfdff 0%,#f4f8fc 62%,#fbfcff 100%); color:var(--ink); }
+    .site-header { background:rgba(255,255,255,.92); border-bottom:1px solid rgba(218,229,240,.9); box-shadow:0 5px 24px rgba(16,36,61,.035); }
+    .brand { gap:12px; }
+    .brand-mark { position:relative; isolation:isolate; width:46px; height:46px; border-radius:15px 15px 15px 5px; background:linear-gradient(145deg,#10243d 5%,#145174 62%,#13b8b0 100%) !important; box-shadow:0 9px 22px rgba(8,127,186,.22); font-size:23px; font-weight:900; letter-spacing:-1px; }
+    .brand-mark::after { content:""; position:absolute; width:8px; height:8px; border-radius:50%; right:5px; top:5px; background:#e6c477; border:2px solid #173653; }
+    .brand-name { color:#10243d !important; font-size:21px; letter-spacing:-.85px; font-weight:850; }
+    .brand-accent { color:#078d9b; }
+    .footer-brand .brand-name, .site-footer .brand-name { color:#fff !important; }
+    .footer-brand .brand-accent, .site-footer .brand-accent { color:#62ddd4; }
+    .main-nav { color:#3e536a; gap:22px; }
+    .main-nav a { transition:color .18s ease; }
+    .main-nav a:hover,.main-nav a:focus-visible { color:#078d9b; }
+    .language-select,.search-panel,.field input,.field select,.field textarea,input,select,textarea { border-color:#dbe5ef; }
+    .language-select:focus,.field input:focus,.field select:focus,.field textarea:focus,input:focus,select:focus,textarea:focus { outline:none; box-shadow:var(--focus-ring); border-color:#13b8b0; }
+    .btn { border-radius:13px; transition:transform .2s ease,box-shadow .2s ease,background .2s ease; }
+    .btn-primary,.brand-mark { background:linear-gradient(120deg,#087fba,#0c9da9 72%,#13b8b0) !important; }
+    .btn-primary { box-shadow:0 9px 22px rgba(8,127,186,.2); }
+    .btn-primary:hover { background:linear-gradient(120deg,#066b9d,#07858f) !important; box-shadow:0 12px 26px rgba(8,127,186,.25); }
+    .btn-light { border-color:#dce6ef; color:#173653; }
+    .btn-light:hover { background:#f2f9fc; border-color:#9adbdc; }
+    .hero { padding-top:70px; }
+    .hero h1 { color:#10243d; letter-spacing:-2.4px; }
+    .hero h1 span { color:#078d9b !important; }
+    .eyebrow,.section-kicker,.text-link,.btn-quiet { color:#078d9b; }
+    .hero-copy { color:#5b6f84; }
+    .hero-photo { border-radius:30px; box-shadow:0 26px 65px rgba(16,36,61,.19); }
+    .hero-photo::after { background:linear-gradient(transparent,rgba(9,28,48,.72)); }
+    .floating-card { border:1px solid rgba(222,232,241,.95); box-shadow:0 15px 38px rgba(16,36,61,.13); border-radius:18px; }
+    .floating-icon,.check { background:#e5f8f5; color:#087f83; }
+    .search-wrap { margin-bottom:60px; }
+    .search-panel { border-radius:22px; padding:20px; box-shadow:0 18px 44px rgba(16,36,61,.09); }
+    .category-card,.feature-card,.mpx-sector-card,.code-system-card,.trust-check-item,.contact-method { border-color:#e0e8f0; border-radius:20px; box-shadow:0 7px 24px rgba(16,36,61,.045); transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease; }
+    .category-card:hover,.feature-card:hover,.mpx-sector-card:hover { transform:translateY(-4px); border-color:rgba(19,184,176,.7) !important; box-shadow:0 18px 40px rgba(16,36,61,.1) !important; }
+    .global-directory { background:linear-gradient(180deg,#f1f7fc 0%,#f8fbfe 100%); }
+    .mpx-sector-card { background:rgba(255,255,255,.96); }
+    .mpx-sector-card h3 { color:#173653; }
+    .mpx-company-links a { display:inline-flex; align-items:center; border:1px solid #d9e8ef; border-radius:999px; padding:6px 10px; background:#f7fbfd; color:#087f9b; font-weight:700; transition:background .18s ease,border-color .18s ease; }
+    .mpx-company-links a:hover { background:#e8f8f7; border-color:#8edbd5; }
+    .pilot-ribbon { border-color:#d8e7f1; background:linear-gradient(115deg,#edf9fc 0%,#f6f5ff 52%,#fff7ec 100%); border-radius:18px; }
+    .pilot-ribbon strong { color:#10243d; }
+    .directory-disclosure { border-left-color:#c89d4b; background:#fffdf8; border-radius:12px; }
+    [dir="rtl"] .directory-disclosure { border-left:0; border-right:4px solid #c89d4b; }
+    .launch-notice { background:linear-gradient(112deg,#10243d 0%,#145174 55%,#087f83 100%) !important; border-color:rgba(200,157,75,.6); border-radius:22px; box-shadow:0 16px 40px rgba(16,36,61,.15); }
+    .launch-notice .eyebrow { color:#f1d99f !important; }
+    .launch-notice::before { background:linear-gradient(180deg,#f1d99f,#c89d4b) !important; }
+    .launch-notice .btn { color:#10243d; }
+    .partner-sample-note { background:#fff9ed; border-color:#efdfbd; }
+    .contact-panel { border-radius:26px; background:linear-gradient(130deg,#10243d 0%,#173d5c 60%,#087f83 100%); box-shadow:0 22px 52px rgba(16,36,61,.16); }
+    .contact-panel h2,.contact-panel h3 { color:#fff; }
+    .contact-panel p { color:#d9e8f1; }
+    .contact-method { background:rgba(255,255,255,.97); }
+    .contact-method-icon { background:#e5f8f5; color:#087f83; }
+    .contact-method a,.phone-line a,.footer-links a[href^="tel:"] { color:#087f9b; }
+    .technical-roadmap { background:linear-gradient(180deg,#f1f7fc,#f8fbfe); }
+    .code-system-card { background:#fff; }
+    .code-system-icon,.mobile-money-mark { background:#e5f8f5; color:#087f83; }
+    .code-system-card h3,.mobile-money-panel h3 { color:#173653; }
+    .code-example { border-left-color:#c89d4b; background:#fff9ed; }
+    [dir="rtl"] .code-example { border-right-color:#c89d4b; }
+    .mobile-money-panel { border-color:#ead9b6; background:linear-gradient(130deg,#fffdf8,#f1fbfa); }
+    .technical-disclaimer { border-color:#dce6ef; }
+    .site-footer { background:#0e2036; }
+    .site-footer a:hover,.footer-links a:hover { color:#62ddd4; }
+    ::selection { background:#bff2ec; color:#10243d; }
+    :focus-visible { outline:3px solid rgba(19,184,176,.75); outline-offset:3px; }
+    @media(max-width:720px) {
+      .brand { gap:8px; }
+      .brand-mark { width:39px; height:39px; border-radius:13px 13px 13px 4px; font-size:20px; }
+      .brand-name { font-size:18px; letter-spacing:-.65px; }
+      .hero { padding-top:42px; }
+      .hero h1 { letter-spacing:-1.65px; }
+      .search-panel { padding:14px; border-radius:18px; }
+      .contact-panel { border-radius:20px; }
+    }
+    @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto !important; transition:none !important; animation:none !important; } }
+
+</style>
+
+<style id="marrakechpixim-brand-and-image-fixes">
+  /* Brand lockup: one exact word, no separate icon or split styling. */
+  .brand { gap: 0 !important; }
+  .brand-name { display: inline-block; white-space: nowrap; word-break: keep-all; overflow-wrap: normal; letter-spacing: -.55px; }
+  .brand-mark, .brand-accent { display: none !important; }
+  .sector-overview-card .sector-card-symbol { display: none !important; }
+  .category-image { min-height: 190px; }
+  .category-image img { display: block; width: 100%; height: 100%; min-height: 190px; object-fit: cover; object-position: center; }
+  .sector-overview-card .sector-card-photo { height: 178px; object-fit: cover; object-position: center; }
+  @media (max-width: 480px) {
+    .brand-name { font-size: 17px !important; letter-spacing: -.65px; }
+    .category-image, .category-image img { min-height: 175px; }
+    .sector-overview-card .sector-card-photo { height: 190px; }
+    .sector-overview-card.image-fallback::before { width: calc(100% + 40px); min-height: 190px; margin: 0 -20px 16px; }
+  }
+</style>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -1134,11 +1321,12 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#home" aria-label="Marrakechpixim home">
-        <span class="brand-mark" aria-hidden="true">M</span>
         <span class="brand-name">Marrakechpixim</span>
       </a>
       <nav class="main-nav" id="mainNav" aria-label="Main navigation">
         <a href="#categories" data-i18n="navExplore">Explore</a>
+        <a href="#global-partners">Global companies</a>
+        <a href="#commission-transparency">Commission policy</a>
         <a href="#business" data-i18n="navBusiness">For businesses</a>
         <a href="#how-it-works" data-i18n="navHow">How it works</a>
         <a href="#about" data-i18n="navAbout">About us</a>
@@ -1196,7 +1384,7 @@
         <div>
           <span class="eyebrow">Preparing for a global launch</span>
           <h2 id="launchNoticeTitle">Marrakechpixim is preparing for global launch.</h2>
-          <p>We are preparing a multilingual, technology-led discovery and advertising platform with the ambition to compete on quality with established global platforms. Our goal is to help people discover businesses, products, services and experiences worldwide. Explore this early concept or contact us to propose a listing or partnership. Live listings, online payments and transaction processing are not enabled at this stage.</p>
+          <p>We are preparing a multilingual, global discovery and advertising platform. During this 30-day pilot, visitors can browse the public directory and follow links to providersâ€™ official websites at no cost. Businesses can propose a listing or partnership for review. The directory is a discovery guide, not a claim that every provider partners with Marrakechpixim. Reservations and purchases are completed on the providerâ€™s own website unless a future Marrakechpixim integration is explicitly announced. Marrakechpixim payments and transaction processing are not enabled at this stage.</p>
         </div>
         <a class="btn" href="#contact-marrakechpixim">Discuss a partnership <span aria-hidden="true">â†’</span></a>
       </div>
@@ -1219,6 +1407,128 @@
         </div>
         <button class="btn btn-primary" type="submit"><span aria-hidden="true">âŒ•</span><span data-i18n="searchButton">Search</span></button>
       </form>
+    </section>
+
+    <!-- Public starter directory: independent providers, not confirmed Marrakechpixim partners. -->
+    <section class="global-directory" id="global-directory" aria-labelledby="directoryTitle">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">Global discovery pilot</span><h2 id="directoryTitle">Explore real businesses and booking websites</h2><p>Start with these public examples. Open the providerâ€™s official website to check current details, prices and availability.</p></div>
+        </div>
+        <div class="pilot-ribbon" role="note">
+          <span aria-hidden="true">âœ¦</span><div><strong>30-day free pilot â€” browsing is free</strong><p>No payment is requested by Marrakechpixim during this pilot. External providers may charge their own prices or fees. The directory entries below are independent public examples and are not confirmed partnerships.</p></div>
+        </div>
+        <div class="directory-search-row">
+          <label class="sr-only" for="directorySearch">Search directory</label>
+          <input id="directorySearch" type="search" placeholder="Search hotels, airlines, propertyâ€¦" autocomplete="off">
+          <label class="sr-only" for="directoryTypeFilter">Filter directory category</label>
+          <select id="directoryTypeFilter"><option value="">All directory categories</option><option value="Airlines">Airlines</option><option value="Hotels">Hotels</option><option value="Property">Property</option><option value="Travel">Travel & car rental</option><option value="Restaurants">Restaurants</option><option value="Events">Events & tickets</option><option value="Shopping">Shopping & technology</option></select>
+        </div>
+        <p class="directory-results-count" id="directoryResultsCount" aria-live="polite">Showing public example listings</p>
+        <div class="directory-grid" id="directoryGrid">
+          <article class="directory-card" data-directory-category="Airlines" data-directory-search="royal air maroc airline flights morocco international"><div class="directory-card-top"><h3>Royal Air Maroc</h3><span class="directory-type">Airlines</span></div><p>Check routes, flight schedules, baggage information and booking options on the airlineâ€™s official website.</p><div class="directory-action"><a class="official-link" href="https://www.royalairmaroc.com/" target="_blank" rel="noopener noreferrer">Official website â†—</a><a class="enquire-link" href="#consultationRequestForm" data-directory-enquiry="Royal Air Maroc â€” flight information">Ask Marrakechpixim for information</a></div></article>
+          <article class="directory-card" data-directory-category="Airlines" data-directory-search="emirates airline flights international booking"><div class="directory-card-top"><h3>Emirates</h3><span class="directory-type">Airlines</span></div><p>Explore international routes, flight options and airline services directly with Emirates.</p><div class="directory-action"><a class="official-link" href="https://www.emirates.com/" target="_blank" rel="noopener noreferrer">Official website â†—</a><a class="enquire-link" href="#consultationRequestForm" data-directory-enquiry="Emirates â€” flight information">Ask Marrakechpixim for information</a></div></article>
+          <article class="directory-card" data-directory-category="Airlines" data-directory-search="qatar airways airline flights travel booking"><div class="directory-card-top"><h3>Qatar Airways</h3><span class="directory-type">Airlines</span></div><p>Review destinations, schedules and booking services through the airlineâ€™s own website.</p><div class="directory-action"><a class="official-link" href="https://www.qatarairways.com/" target="_blank" rel="noopener noreferrer">Official website â†—</a><a class="enquire-link" href="#consultationRequestForm" data-directory-enquiry="Qatar Airways â€” flight information">Ask Marrakechpixim for information</a></div></article>
+          <article class="directory-card" data-directory-category="Hotels" data-directory-search="accor hotels resorts accommodation booking"><div class="directory-card-top"><h3>Accor</h3><span class="directory-type">Hotels</span></div><p>Browse participating hotel brands, destinations, room options and availability.</p><div class="directory-action"><a class="official-link" href="https://all.accor.com/" target="_blank" rel="noopener noreferrer">Official website â†—</a><a class="enquire-link" href="#consultationRequestForm" data-directory-enquiry="Accor â€” hotel information">Ask Marrakechpixim for information</a></div></article>
+          <article class="directory-card" data-directory-category="Hotels" data-directory-search="marriott hotels resorts accommodation booking"><div class="directory-card-top"><h3>Marriott Bonvoy</h3><span class="directory-type">Hotels</span></div><p>Search hotel destinations, room details and loyalty programme information.</p><div class="directory-action"><a class="official-link" href="https://www.marriott.com/" target="_blank" rel="noopener noreferrer">Official website â†—</a><a class="enquire-link" href="#consultationRequestForm" data-directory-enquiry="Marriott â€” hotel information">Ask Marrakechpixim for information</a></div></article>
+          <article class="directory-card" data-directory-category="Hotels" data-directory-search="hilton hotels resorts accommodation booking"><div class="directory-card-top"><h3>Hilton</h3><span class="directory-type">Hotels</span></div><p>Check hotel locations, amenities, rates and availability directly with Hilton.</p><div class="directory-action"><a class="official-link" href="https://www.hilton.com/" target="_blank" rel="noopener noreferrer">Official website â†—</a><a class="enquire-link" href="#consultationRequestForm" data-directory-enquiry="Hilton â€” hotel information">Ask Marrakechpixim for information</a></div></article>
+          <article class="directory-card" data-directory-category="Property" data-directory-search="sothebys international realty homes villas property real estate"><div class="directory-card-top"><h3>Sothebyâ€™s International Realty</h3><span class="directory-type">Property</span></div><p>Explore property listings and contact the relevant local real-estate office for details.</p><div class="directory-action"><a class="official-link" href="https://www.sothebysrealty.com/" target="_blank" rel="noopener noreferrer">Official website â†—</a><a class="enquire-link" href="#consultationRequestForm" data-directory-enquiry="Sotheby's International Realty â€” property enquiry">Ask Marrakechpixim for information</a></div></article>
+          <article class="directory-card" data-directory-category="Property" data-directory-search="property finder homes apartments real estate uae property"><div class="directory-card-top"><h3>Property Finder</h3><span class="directory-type">Property</span></div><p>Browse regional property listings and contact the listing agent through the provider.</p><div class="directory-action"><a class="official-link" href="https://www.propertyfinder.ae/" target="_blank" rel="noopener noreferrer">Official website â†—</a><a class="enquire-link" href="#consultationRequestForm" data-directory-enquiry="Property Finder â€” property enquiry">Ask Marrakechpixim for information</a></div></article>
+          <article class="directory-card" data-directory-category="Travel" data-directory-search="europcar car rental vehicles travel hire"><div class="directory-card-top"><h3>Europcar</h3><span class="directory-type">Travel & car rental</span></div><p>Check rental locations, vehicle classes, terms and prices directly with Europcar.</p><div class="directory-action"><a class="official-link" href="https://www.europcar.com/" target="_blank" rel="noopener noreferrer">Official website â†—</a><a class="enquire-link" href="#consultationRequestForm" data-directory-enquiry="Europcar â€” car rental enquiry">Ask Marrakechpixim for information</a></div></article>
+          <article class="directory-card" data-directory-category="Restaurants" data-directory-search="opentable restaurants dining table reservation"><div class="directory-card-top"><h3>OpenTable</h3><span class="directory-type">Restaurants</span></div><p>Find participating restaurants and check reservation availability in supported locations.</p><div class="directory-action"><a class="official-link" href="https://www.opentable.com/" target="_blank" rel="noopener noreferrer">Official website â†—</a><a class="enquire-link" href="#consultationRequestForm" data-directory-enquiry="OpenTable â€” restaurant reservation information">Ask Marrakechpixim for information</a></div></article>
+          <article class="directory-card" data-directory-category="Events" data-directory-search="ticketmaster events concerts festivals tickets"><div class="directory-card-top"><h3>Ticketmaster</h3><span class="directory-type">Events & tickets</span></div><p>Discover events and ticket availability on the ticket providerâ€™s official website.</p><div class="directory-action"><a class="official-link" href="https://www.ticketmaster.com/" target="_blank" rel="noopener noreferrer">Official website â†—</a><a class="enquire-link" href="#consultationRequestForm" data-directory-enquiry="Ticketmaster â€” event ticket information">Ask Marrakechpixim for information</a></div></article>
+          <article class="directory-card" data-directory-category="Shopping" data-directory-search="apple technology electronics devices products shopping"><div class="directory-card-top"><h3>Apple</h3><span class="directory-type">Shopping & technology</span></div><p>Review product specifications, availability and purchase options in your region.</p><div class="directory-action"><a class="official-link" href="https://www.apple.com/" target="_blank" rel="noopener noreferrer">Official website â†—</a><a class="enquire-link" href="#consultationRequestForm" data-directory-enquiry="Apple â€” product information">Ask Marrakechpixim for information</a></div></article>
+        </div>
+        <p class="directory-disclosure"><strong>Booking clarity:</strong> Marrakechpixim does not make or confirm hotel, flight, restaurant or event reservations from this demo page. To book, open the official provider website, select your dates or service, review its terms, and complete the reservation there. The enquiry form on this page is not a reservation and is not connected to a live request database yet.</p>
+      </div>
+    </section>
+
+
+    <!-- Global business directory: examples only; no company is presented as a confirmed partner without written approval. -->
+    <section class="mpx-partner-section" id="global-partners" aria-labelledby="mpxPartnersTitle">
+      <div class="container-wide">
+        <div class="section-heading">
+          <div><span class="section-kicker">Global discovery and business referrals</span><h2 id="mpxPartnersTitle">Search a growing directory across 57 business sectors</h2></div>
+        </div>
+        <p class="mpx-partner-intro">Marrakechpixim is designed to help customers discover companies and help businesses reach international markets through advertising, introductions and referral pathways. The companies below are public examples to explore, not a statement that they have signed a partnership with Marrakechpixim. Always check the companyâ€™s official website for availability, prices, regional eligibility and terms.</p>
+        <div class="mpx-commission-panel" id="commission-transparency">
+          <h3>Transparent advertising, referrals and commissions</h3>
+          <p><strong>Marrakechpixim</strong> is an independent discovery, advertising and referral intermediary. Where a referral, lead or completed transaction is eligible for a commercial fee, the applicable commission percentage or advertising fee, its calculation basis, payment schedule, cancellation rules and any exclusions must be disclosed and accepted in the relevant affiliate programme or written agreement before the commission-based activity becomes binding.</p>
+          <p><strong>No invented rates:</strong> there is no universal commission percentage for all companies or sectors. The rate may differ by product, region, order value, volume and provider programme. If no approved rate or tracking method exists, the listing remains a discovery listing and no commission is represented as agreed.</p>
+          <p><strong>How customers book or buy:</strong> unless a verified integration is explicitly identified, customers complete bookings and purchases on the providerâ€™s official website. A request submitted to Marrakechpixim is an enquiry, not a confirmed reservation or purchase. Referral attribution requires an approved tracking link, partner ID, API integration or another method accepted by the provider.</p>
+          <p><strong>For companies:</strong> listing visibility can support brand awareness and qualified enquiries. Inclusion in this directory alone does not create a contract, endorsement, agency relationship or obligation to pay. Partnership terms must be agreed separately and transparently.</p>
+        </div>
+        <div class="mpx-directory-tools" aria-label="Search the global company directory">
+          <label for="mpxDirectorySearch">Search by product, company, sector or country</label>
+          <input id="mpxDirectorySearch" type="search" placeholder="Try: fertilizer, motorcycle, yacht, tractor, hotelâ€¦" autocomplete="off">
+          <div class="mpx-live-search-controls">
+            <button id="mpxGlobalSearchButton" type="button">Search worldwide companies</button>
+            <button id="mpxVoiceSearchButton" type="button" aria-label="Search by voice">ðŸŽ™ Search by voice</button>
+          </div>
+          <p id="mpxDirectoryCount" aria-live="polite">Browse the directory below. These are public discovery listings, not confirmed partners.</p>
+          <p id="mpxLiveSearchStatus" role="status" aria-live="polite">Worldwide results use Wikidataâ€™s public knowledge base. Results are a starting point and may not include every company.</p>
+          <div id="mpxLiveSearchResults" aria-live="polite"></div>
+        </div>
+        <div class="mpx-sector-grid" id="mpxSectorGrid">
+          <article class="mpx-sector-card"><h3>01 Â· Travel, tourism and aviation</h3><p>Flights, tours, travel services and international destinations.</p><div class="mpx-company-links"><a href="https://www.qatarairways.com/" target="_blank" rel="noopener noreferrer">Qatar Airways â†—</a><a href="https://www.emirates.com/" target="_blank" rel="noopener noreferrer">Emirates â†—</a><a href="https://www.royalairmaroc.com/" target="_blank" rel="noopener noreferrer">Royal Air Maroc â†—</a></div><p class="mpx-status-note">Affiliate option: Qatar Airways publishes an affiliate programme; approval and programme terms apply.</p></article>
+          <article class="mpx-sector-card"><h3>02 Â· Hotels and accommodation</h3><p>Hotels, resorts, riads and stays.</p><div class="mpx-company-links"><a href="https://all.accor.com/" target="_blank" rel="noopener noreferrer">Accor â†—</a><a href="https://www.marriott.com/" target="_blank" rel="noopener noreferrer">Marriott â†—</a><a href="https://www.hilton.com/" target="_blank" rel="noopener noreferrer">Hilton â†—</a><a href="https://www.booking.com/affiliate-program/" target="_blank" rel="noopener noreferrer">Booking.com affiliates â†—</a></div></article>
+          <article class="mpx-sector-card"><h3>03 Â· Real estate, land and villas</h3><p>Property discovery and real-estate professionals.</p><div class="mpx-company-links"><a href="https://www.sothebysrealty.com/" target="_blank" rel="noopener noreferrer">Sothebyâ€™s Realty â†—</a><a href="https://www.propertyfinder.ae/" target="_blank" rel="noopener noreferrer">Property Finder â†—</a><a href="https://www.realtor.com/" target="_blank" rel="noopener noreferrer">Realtor.com â†—</a></div></article>
+          <article class="mpx-sector-card"><h3>04 Â· Investment and business services</h3><p>Business services and investment information; regulated products require extra checks.</p><div class="mpx-company-links"><a href="https://www.hsbc.com/" target="_blank" rel="noopener noreferrer">HSBC â†—</a><a href="https://www.bnpparibas.com/" target="_blank" rel="noopener noreferrer">BNP Paribas â†—</a><a href="https://www.deloitte.com/" target="_blank" rel="noopener noreferrer">Deloitte â†—</a></div></article>
+          <article class="mpx-sector-card"><h3>05 Â· Cars and automotive</h3><p>Vehicles, dealers, rentals and automotive services.</p><div class="mpx-company-links"><a href="https://www.mercedes-benz.com/" target="_blank" rel="noopener noreferrer">Mercedes-Benz â†—</a><a href="https://www.bmw.com/" target="_blank" rel="noopener noreferrer">BMW â†—</a><a href="https://www.toyota.com/" target="_blank" rel="noopener noreferrer">Toyota â†—</a></div></article>
+          <article class="mpx-sector-card"><h3>06 Â· Motorcycles, parts and maintenance</h3><p>Motorcycles, parts, service networks and maintenance.</p><div class="mpx-company-links"><a href="https://global.honda/en/" target="_blank" rel="noopener noreferrer">Honda â†—</a><a href="https://global.yamaha-motor.com/" target="_blank" rel="noopener noreferrer">Yamaha Motor â†—</a><a href="https://www.kawasaki.com/" target="_blank" rel="noopener noreferrer">Kawasaki â†—</a></div></article>
+          <article class="mpx-sector-card"><h3>07 Â· Healthcare and medical equipment</h3><p>Medical devices and healthcare technology; provider credentials must be checked.</p><div class="mpx-company-links"><a href="https://www.siemens-healthineers.com/" target="_blank" rel="noopener noreferrer">Siemens Healthineers â†—</a><a href="https://www.gehealthcare.com/" target="_blank" rel="noopener noreferrer">GE HealthCare â†—</a><a href="https://www.philips.com/healthcare" target="_blank" rel="noopener noreferrer">Philips Healthcare â†—</a></div></article>
+          <article class="mpx-sector-card"><h3>08 Â· Banking and financial products</h3><p>Banking and payment providers; products depend on country and eligibility.</p><div class="mpx-company-links"><a href="https://www.hsbc.com/" target="_blank" rel="noopener noreferrer">HSBC â†—</a><a href="https://group.bnpparibas/en/" target="_blank" rel="noopener noreferrer">BNP Paribas â†—</a><a href="https://www.visa.com/" target="_blank" rel="noopener noreferrer">Visa â†—</a></div></article>
+          <article class="mpx-sector-card"><h3>09 Â· Luxury fashion and designer brands</h3><p>Fashion, accessories and premium brands.</p><div class="mpx-company-links"><a href="https://www.gucci.com/" target="_blank" rel="noopener noreferrer">Gucci â†—</a><a href="https://www.prada.com/" target="_blank" rel="noopener noreferrer">Prada â†—</a><a href="https://www.lvmh.com/" target="_blank" rel="noopener noreferrer">LVMH â†—</a></div></article>
+          <article class="mpx-sector-card"><h3>10 Â· Watches, jewellery and diamonds</h3><p>Watches, jewellery and authorised retailer discovery.</p><div class="mpx-company-links"><a href="https://www.rolex.com/" target="_blank" rel="noopener noreferrer">Rolex â†—</a><a href="https://www.cartier.com/" target="_blank" rel="noopener noreferrer">Cartier â†—</a><a href="https://www.tiffany.com/" target="_blank" rel="noopener noreferrer">Tiffany & Co. â†—</a></div></article>
+          <article class="mpx-sector-card"><h3>11 Â· Luxury packaging and gift boxes</h3><p>Packaging suppliers, custom boxes and corporate gifts.</p><div class="mpx-company-links"><a href="https://www.dssmith.com/" target="_blank" rel="noopener noreferrer">DS Smith â†—</a><a href="https://www.smurfitkappa.com/" target="_blank" rel="noopener noreferrer">Smurfit Westrock â†—</a><a href="https://www.paccor.com/" target="_blank" rel="noopener noreferrer">Packaging suppliers â†—</a></div></article>
+          <article class="mpx-sector-card"><h3>12 Â· Shopping and retail</h3><p>Consumer products and online retail destinations.</p><div class="mpx-company-links"><a href="https://www.amazon.com/" target="_blank" rel="noopener noreferrer">Amazon â†—</a><a href="https://www.aliexpress.com/" target="_blank" rel="noopener noreferrer">AliExpress â†—</a><a href="https://www.samsung.com/" target="_blank" rel="noopener noreferrer">Samsung â†—</a></div></article>
+          <article class="mpx-sector-card"><h3>13 Â· Restaurants and food</h3><p>Dining discovery, restaurant reservations and food producers.</p><div class="mpx-company-links"><a href="https://www.opentable.com/" target="_blank" rel="noopener noreferrer">OpenTable â†—</a><a href="https://www.nestle.com/" target="_blank" rel="noopener noreferrer">NestlÃ© â†—</a><a href="https://www.mcdonalds.com/" target="_blank" rel="noopener noreferrer">McDonaldâ€™s â†—</a></div></article>
+          <article class="mpx-sector-card"><h3>14 Â· Entertainment, concerts and leisure</h3><p>Live events, attractions and ticket discovery.</p><div class="mpx-company-links"><a href="https://www.ticketmaster.com/" target="_blank" rel="noopener noreferrer">Ticketmaster â†—</a><a href="https://www.livenation.com/" target="_blank" rel="noopener noreferrer">Live Nation â†—</a><a href="https://www.getyourguide.com/" target="_blank" rel="noopener noreferrer">GetYourGuide â†—</a></div></article>
+          <article class="mpx-sector-card"><h3>15 Â· Events, fairs and exhibitions</h3><p>Exhibition organisers, venues and event services.</p><div class="mpx-company-links"><a href="https://www.messefrankfurt.com/" target="_blank" rel="noopener noreferrer">Messe Frankfurt â†—</a><a href="https://www.informa.com/" target="_blank" rel="noopener noreferrer">Informa â†—</a><a href="https://www.eventbrite.com/" target="_blank" rel="noopener noreferrer">Eventbrite â†—</a></div></article>
+          <article class="mpx-sector-card"><h3>16 Â· Sports, fitness and equipment</h3><p>Sportswear, equipment and fitness products.</p><div class="mpx-company-links"><a href="https://www.decathlon.com/" target="_blank" rel="noopener noreferrer">Decathlon â†—</a><a href="https://www.nike.com/" target="_blank" rel="noopener noreferrer">Nike â†—</a><a href="https://www.adidas.com/" target="_blank" rel="noopener noreferrer">Adidas â†—</a></div></article>
+          <article class="mpx-sector-card"><h3>17 Â· Technology and electronics</h3><p>Computers, devices, software and electronics.</p><div class="mpx-company-links"><a href="https://www.apple.com/" target="_blank" rel="noopener noreferrer">Apple â†—</a><a href="https://www.hp.com/" target="_blank" rel="noopener noreferrer">HP â†—</a><a href="https://www.lenovo.com/" target="_blank" rel="noopener noreferrer">Lenovo â†—</a></div></article>
+          <article class="mpx-sector-card"><h3>18 Â· Industrial manufacturing</h3><p>Industrial equipment, automation and manufacturing technology.</p><div class="mpx-company-links"><a href="https://www.siemens.com/" target="_blank" rel="noopener noreferrer">Siemens â†—</a><a href="https://www.se.com/" target="_blank" rel="noopener noreferrer">Schneider Electric â†—</a><a href="https://global.abb/" target="_blank" rel="noopener noreferrer">ABB â†—</a></div></article>
+          <article class="mpx-sector-card"><h3>19 Â· Promotional products and merchandise</h3><p>Branded merchandise, printing and customised promotional goods.</p><div class="mpx-company-links"><a href="https://www.vistaprint.com/" target="_blank" rel="noopener noreferrer">VistaPrint â†—</a><a href="https://www.4imprint.com/" target="_blank" rel="noopener noreferrer">4imprint â†—</a><a href="https://www.cimpress.com/" target="_blank" rel="noopener noreferrer">Cimpress â†—</a></div></article>
+          <article class="mpx-sector-card"><h3>20 Â· Beauty, wellness, perfumes and cosmetics</h3><p>Beauty retailers, cosmetics and personal care brands.</p><div class="mpx-company-links"><a href="https://www.loreal.com/" target="_blank" rel="noopener noreferrer">Lâ€™OrÃ©al â†—</a><a href="https://www.sephora.com/" target="_blank" rel="noopener noreferrer">Sephora â†—</a><a href="https://www.esteelauder.com/" target="_blank" rel="noopener noreferrer">EstÃ©e Lauder â†—</a></div></article>
+          <article class="mpx-sector-card"><h3>21 Â· Home, furniture, energy and environment</h3><p>Furniture, solar, cooling, heating and energy solutions.</p><div class="mpx-company-links"><a href="https://www.ikea.com/" target="_blank" rel="noopener noreferrer">IKEA â†—</a><a href="https://www.daikin.com/" target="_blank" rel="noopener noreferrer">Daikin â†—</a><a href="https://www.longi.com/" target="_blank" rel="noopener noreferrer">LONGi Solar â†—</a><a href="https://www.trane.com/" target="_blank" rel="noopener noreferrer">Trane â†—</a></div></article>
+          <article class="mpx-sector-card" data-search="agriculture farming fertilizers fertilizer seeds irrigation tractors harvest combine crop protection feed greenhouse cold storage export"><h3>22 Â· Agriculture, fertilizers and farming</h3><p>Mineral and organic fertilizers, crop nutrients, seeds, irrigation, tractors, harvesters, greenhouse systems, livestock feed and agricultural services.</p><div class="mpx-company-links"><a href="https://www.yara.com/" target="_blank" rel="noopener noreferrer">Yara â†—</a><a href="https://www.corteva.com/" target="_blank" rel="noopener noreferrer">Corteva â†—</a><a href="https://www.deere.com/" target="_blank" rel="noopener noreferrer">John Deere â†—</a><a href="https://www.cnh.com/" target="_blank" rel="noopener noreferrer">CNH â†—</a></div><p class="mpx-status-note">Check local regulations and product registrations before purchasing fertilizers or crop-protection products.</p></article>
+          <article class="mpx-sector-card" data-search="fishing marine commercial fishing nets sonar fish finder boat engine aquaculture fish processing ice machine cold chain"><h3>23 Â· Fishing, marine equipment and aquaculture</h3><p>Commercial fishing nets and lines, sonar and fish finders, marine electronics, boat engines, aquaculture systems, fish processing and ice equipment.</p><div class="mpx-company-links"><a href="https://www.garmin.com/" target="_blank" rel="noopener noreferrer">Garmin â†—</a><a href="https://www.simrad-yachting.com/" target="_blank" rel="noopener noreferrer">Simrad â†—</a><a href="https://www.yamaha-motor.com/" target="_blank" rel="noopener noreferrer">Yamaha Motor â†—</a></div></article>
+          <article class="mpx-sector-card" data-search="heavy machinery construction mining excavator bulldozer crane tracked tractor quarry road equipment parts service"><h3>24 Â· Heavy machinery, construction and mining</h3><p>Excavators, bulldozers, tracked machines, cranes, mining and quarry equipment, road construction machinery, parts and maintenance.</p><div class="mpx-company-links"><a href="https://www.caterpillar.com/" target="_blank" rel="noopener noreferrer">Caterpillar â†—</a><a href="https://www.komatsu.com/" target="_blank" rel="noopener noreferrer">Komatsu â†—</a><a href="https://www.jcb.com/" target="_blank" rel="noopener noreferrer">JCB â†—</a><a href="https://www.volvoce.com/" target="_blank" rel="noopener noreferrer">Volvo CE â†—</a></div></article>
+          <article class="mpx-sector-card" data-search="marine yachts ships boats zodiac inflatable dinghy ports shipyards cargo shipping anchors ropes safety equipment chandlery"><h3>25 Â· Ships, boats, yachts and marine services</h3><p>Commercial vessels, cargo ships, luxury yachts, inflatable boats, engines, ropes, anchors, safety equipment, shipyards and marine servicing.</p><div class="mpx-company-links"><a href="https://www.beneteau.com/" target="_blank" rel="noopener noreferrer">Beneteau â†—</a><a href="https://www.bavariayachts.com/" target="_blank" rel="noopener noreferrer">Bavaria Yachts â†—</a><a href="https://www.damen.com/" target="_blank" rel="noopener noreferrer">Damen â†—</a></div></article>
+          <article class="mpx-sector-card" data-search="refrigeration cold storage refrigerated truck trailer food processing warehouse logistics cooling temperature control"><h3>26 Â· Cold chain, refrigeration and food logistics</h3><p>Cold rooms, industrial refrigeration, refrigerated trucks and trailers, food processing lines, temperature monitoring and cold-chain logistics.</p><div class="mpx-company-links"><a href="https://www.carrier.com/" target="_blank" rel="noopener noreferrer">Carrier â†—</a><a href="https://www.thermoking.com/" target="_blank" rel="noopener noreferrer">Thermo King â†—</a><a href="https://www.danfoss.com/" target="_blank" rel="noopener noreferrer">Danfoss â†—</a></div></article>
+          <article class="mpx-sector-card" data-search="grain wheat durum semolina flour mill milling couscous cereal silo"><h3>27 Â· Grain, semolina, flour and milling</h3><p>Wheat, durum wheat, semolina, flour, couscous ingredients, grain cleaning, milling plants, silos, packaging and mill equipment.</p><div class="mpx-company-links"><a href="https://www.buhlergroup.com/" target="_blank" rel="noopener noreferrer">BÃ¼hler Group â†—</a><a href="https://www.ocrim.com/" target="_blank" rel="noopener noreferrer">Ocrim â†—</a><a href="https://www.alapala.com/" target="_blank" rel="noopener noreferrer">Alapala â†—</a><a href="https://www.henrysimonmilling.com/" target="_blank" rel="noopener noreferrer">Henry Simon â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="agriculture commodity trading grains pulses dates olive oil fruits vegetables exporter importer wholesale"><h3>28 Â· Agricultural products and commodity trading</h3><p>Farm produce, grains, pulses, dates, olive oil, fresh produce, wholesale sourcing, import and export.</p><div class="mpx-company-links"><a href="https://www.ofi.com/" target="_blank" rel="noopener noreferrer">ofi â†—</a><a href="https://www.adm.com/" target="_blank" rel="noopener noreferrer">ADM â†—</a><a href="https://www.cargill.com/" target="_blank" rel="noopener noreferrer">Cargill â†—</a><a href="https://www.ldc.com/" target="_blank" rel="noopener noreferrer">Louis Dreyfus Company â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="seeds fertilizer crop nutrients agricultural inputs farming"><h3>29 Â· Seeds, fertilizers and crop inputs</h3><p>Seeds, crop nutrition, fertilizers, agricultural science, crop protection and farm productivity products.</p><div class="mpx-company-links"><a href="https://www.yara.com/" target="_blank" rel="noopener noreferrer">Yara â†—</a><a href="https://www.corteva.com/" target="_blank" rel="noopener noreferrer">Corteva Agriscience â†—</a><a href="https://www.syngenta.com/" target="_blank" rel="noopener noreferrer">Syngenta â†—</a><a href="https://www.cropscience.bayer.com/" target="_blank" rel="noopener noreferrer">Bayer Crop Science â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="livestock cattle sheep poultry animal feed veterinary dairy farm"><h3>30 Â· Livestock, poultry, feed and veterinary supplies</h3><p>Livestock, poultry, animal nutrition, feed systems, farm equipment and veterinary products.</p><div class="mpx-company-links"><a href="https://www.deheus.com/" target="_blank" rel="noopener noreferrer">De Heus â†—</a><a href="https://www.alltech.com/" target="_blank" rel="noopener noreferrer">Alltech â†—</a><a href="https://www.hendrix-genetics.com/" target="_blank" rel="noopener noreferrer">Hendrix Genetics â†—</a><a href="https://www.cobb-vantress.com/" target="_blank" rel="noopener noreferrer">Cobb â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="fishing seafood fish aquaculture fish farming marine equipment"><h3>31 Â· Fishing, seafood and aquaculture</h3><p>Commercial fishing, aquaculture, fish farming, seafood processing, nets, marine electronics and cold storage.</p><div class="mpx-company-links"><a href="https://mowi.com/" target="_blank" rel="noopener noreferrer">Mowi â†—</a><a href="https://www.skretting.com/" target="_blank" rel="noopener noreferrer">Skretting â†—</a><a href="https://www.biomar.com/" target="_blank" rel="noopener noreferrer">BioMar â†—</a><a href="https://www.garmin.com/en-US/c/marine/" target="_blank" rel="noopener noreferrer">Garmin Marine â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="cargo ship shipping line container vessel sea freight maritime"><h3>32 Â· Cargo shipping lines and sea freight</h3><p>Container shipping, cargo vessels, global shipping routes, international freight and shipment tracking.</p><div class="mpx-company-links"><a href="https://www.maersk.com/" target="_blank" rel="noopener noreferrer">Maersk â†—</a><a href="https://www.msc.com/" target="_blank" rel="noopener noreferrer">MSC â†—</a><a href="https://www.cma-cgm.com/" target="_blank" rel="noopener noreferrer">CMA CGM â†—</a><a href="https://www.hapag-lloyd.com/" target="_blank" rel="noopener noreferrer">Hapag-Lloyd â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="shipyard port shipbuilding repair vessel construction marine engineering"><h3>33 Â· Shipyards, ports and vessel construction</h3><p>Commercial shipbuilding, ship repair, port services, marine engineering and vessel construction.</p><div class="mpx-company-links"><a href="https://www.damen.com/" target="_blank" rel="noopener noreferrer">Damen â†—</a><a href="https://www.fincantieri.com/" target="_blank" rel="noopener noreferrer">Fincantieri â†—</a><a href="https://www.navantia.es/en/" target="_blank" rel="noopener noreferrer">Navantia â†—</a><a href="https://www.dpworld.com/" target="_blank" rel="noopener noreferrer">DP World â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="marine engines navigation ship equipment propulsion safety parts"><h3>34 Â· Marine engines, navigation and ship equipment</h3><p>Marine engines, propulsion, navigation, safety systems, anchors, ropes and vessel maintenance equipment.</p><div class="mpx-company-links"><a href="https://www.wartsila.com/" target="_blank" rel="noopener noreferrer">WÃ¤rtsilÃ¤ â†—</a><a href="https://www.kongsberg.com/maritime/" target="_blank" rel="noopener noreferrer">Kongsberg Maritime â†—</a><a href="https://www.man-es.com/" target="_blank" rel="noopener noreferrer">MAN Energy Solutions â†—</a><a href="https://www.brunswick.com/" target="_blank" rel="noopener noreferrer">Brunswick â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="logistics freight forwarding customs warehouse cargo trucking supply chain"><h3>35 Â· Freight forwarding, logistics and customs</h3><p>Freight forwarding, warehouses, customs support, road transport, air cargo and supply-chain services.</p><div class="mpx-company-links"><a href="https://www.dhl.com/" target="_blank" rel="noopener noreferrer">DHL â†—</a><a href="https://home.kuehne-nagel.com/" target="_blank" rel="noopener noreferrer">Kuehne+Nagel â†—</a><a href="https://www.dsv.com/" target="_blank" rel="noopener noreferrer">DSV â†—</a><a href="https://www.fedex.com/" target="_blank" rel="noopener noreferrer">FedEx â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="food processing machinery packaging dairy beverage factory industrial kitchen"><h3>36 Â· Food processing and industrial food machinery</h3><p>Food factories, grain processing, dairy and beverage lines, packaging machines, industrial kitchens and food safety equipment.</p><div class="mpx-company-links"><a href="https://www.tetrapak.com/" target="_blank" rel="noopener noreferrer">Tetra Pak â†—</a><a href="https://www.gea.com/" target="_blank" rel="noopener noreferrer">GEA â†—</a><a href="https://www.jbtmarel.com/" target="_blank" rel="noopener noreferrer">JBT Marel â†—</a><a href="https://www.buhlergroup.com/" target="_blank" rel="noopener noreferrer">BÃ¼hler Group â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="construction building materials cement steel glass insulation infrastructure"><h3>37 Â· Construction materials and building systems</h3><p>Cement, steel, glass, insulation, building systems, construction materials and infrastructure suppliers.</p><div class="mpx-company-links"><a href="https://www.holcim.com/" target="_blank" rel="noopener noreferrer">Holcim â†—</a><a href="https://www.saint-gobain.com/" target="_blank" rel="noopener noreferrer">Saint-Gobain â†—</a><a href="https://corporate.arcelormittal.com/" target="_blank" rel="noopener noreferrer">ArcelorMittal â†—</a><a href="https://www.kingspan.com/" target="_blank" rel="noopener noreferrer">Kingspan â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="mining metals minerals quarry raw materials industrial materials"><h3>38 Â· Mining, metals and raw materials</h3><p>Mining equipment, metals, industrial minerals, quarry materials, raw materials and processing technology.</p><div class="mpx-company-links"><a href="https://www.riotinto.com/" target="_blank" rel="noopener noreferrer">Rio Tinto â†—</a><a href="https://www.vale.com/" target="_blank" rel="noopener noreferrer">Vale â†—</a><a href="https://www.epiroc.com/" target="_blank" rel="noopener noreferrer">Epiroc â†—</a><a href="https://www.metso.com/" target="_blank" rel="noopener noreferrer">Metso â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="textile fabric leather garment manufacturing yarn clothing mills"><h3>39 Â· Textiles, fabrics, leather and garment manufacturing</h3><p>Fabric mills, textile machinery, yarn, leather, garment production, wholesale apparel and textile sourcing.</p><div class="mpx-company-links"><a href="https://www.toray.com/" target="_blank" rel="noopener noreferrer">Toray â†—</a><a href="https://www.coats.com/" target="_blank" rel="noopener noreferrer">Coats â†—</a><a href="https://www.arvind.com/" target="_blank" rel="noopener noreferrer">Arvind â†—</a><a href="https://www.lectra.com/" target="_blank" rel="noopener noreferrer">Lectra â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="education training university vocational courses online learning language"><h3>40 Â· Education, vocational training and online learning</h3><p>Schools, universities, professional courses, vocational training, language education and online learning providers.</p><div class="mpx-company-links"><a href="https://www.coursera.org/" target="_blank" rel="noopener noreferrer">Coursera â†—</a><a href="https://www.edx.org/" target="_blank" rel="noopener noreferrer">edX â†—</a><a href="https://www.britishcouncil.org/" target="_blank" rel="noopener noreferrer">British Council â†—</a><a href="https://www.goethe.de/" target="_blank" rel="noopener noreferrer">Goethe-Institut â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="recruitment staffing hiring employment human resources careers"><h3>41 Â· Recruitment, staffing and workforce services</h3><p>Recruitment firms, staffing, international hiring, career services, HR technology and professional development.</p><div class="mpx-company-links"><a href="https://www.randstad.com/" target="_blank" rel="noopener noreferrer">Randstad â†—</a><a href="https://www.adeccogroup.com/" target="_blank" rel="noopener noreferrer">Adecco Group â†—</a><a href="https://www.manpowergroup.com/" target="_blank" rel="noopener noreferrer">ManpowerGroup â†—</a><a href="https://www.hays.com/" target="_blank" rel="noopener noreferrer">Hays â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="telecommunications internet fiber network data center connectivity"><h3>42 Â· Telecommunications, internet and data infrastructure</h3><p>Telecom operators, fiber networks, connectivity, data centers, network equipment and business communications.</p><div class="mpx-company-links"><a href="https://www.ericsson.com/" target="_blank" rel="noopener noreferrer">Ericsson â†—</a><a href="https://www.nokia.com/" target="_blank" rel="noopener noreferrer">Nokia â†—</a><a href="https://www.cisco.com/" target="_blank" rel="noopener noreferrer">Cisco â†—</a><a href="https://www.equinix.com/" target="_blank" rel="noopener noreferrer">Equinix â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="water treatment desalination filtration irrigation wastewater pumps"><h3>43 Â· Water treatment, desalination and irrigation systems</h3><p>Water filtration, desalination, wastewater treatment, pumps, irrigation systems and industrial water management.</p><div class="mpx-company-links"><a href="https://www.veolia.com/" target="_blank" rel="noopener noreferrer">Veolia â†—</a><a href="https://www.xylem.com/" target="_blank" rel="noopener noreferrer">Xylem â†—</a><a href="https://www.suez.com/" target="_blank" rel="noopener noreferrer">SUEZ â†—</a><a href="https://www.grundfos.com/" target="_blank" rel="noopener noreferrer">Grundfos â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="recycling waste management plastic paper metal circular economy"><h3>44 Â· Recycling, waste management and circular economy</h3><p>Recycling equipment, plastic and paper recovery, industrial waste services, sorting systems and circular materials.</p><div class="mpx-company-links"><a href="https://www.tomra.com/" target="_blank" rel="noopener noreferrer">TOMRA â†—</a><a href="https://www.remondis.com/" target="_blank" rel="noopener noreferrer">REMONDIS â†—</a><a href="https://www.veolia.com/" target="_blank" rel="noopener noreferrer">Veolia â†—</a><a href="https://www.wm.com/" target="_blank" rel="noopener noreferrer">Waste Management â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="chemicals polymers industrial materials laboratory supplies coatings"><h3>45 Â· Chemicals, industrial materials and laboratory supplies</h3><p>Industrial chemicals, polymers, coatings, specialist materials, lab supplies and manufacturing inputs.</p><div class="mpx-company-links"><a href="https://www.basf.com/" target="_blank" rel="noopener noreferrer">BASF â†—</a><a href="https://www.dow.com/" target="_blank" rel="noopener noreferrer">Dow â†—</a><a href="https://www.sabic.com/" target="_blank" rel="noopener noreferrer">SABIC â†—</a><a href="https://www.evonik.com/" target="_blank" rel="noopener noreferrer">Evonik â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="professional services legal accounting consulting engineering business"><h3>46 Â· Professional services, legal, accounting and engineering</h3><p>Business consulting, accounting, legal services, engineering, project studies and professional company support.</p><div class="mpx-company-links"><a href="https://www.deloitte.com/" target="_blank" rel="noopener noreferrer">Deloitte â†—</a><a href="https://www.pwc.com/" target="_blank" rel="noopener noreferrer">PwC â†—</a><a href="https://www.ey.com/" target="_blank" rel="noopener noreferrer">EY â†—</a><a href="https://kpmg.com/" target="_blank" rel="noopener noreferrer">KPMG â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="printing paper labels packaging machinery cartons commercial print"><h3>47 Â· Printing, paper, labels and packaging machinery</h3><p>Commercial printing, paper mills, labels, cartons, industrial printing and packaging production equipment.</p><div class="mpx-company-links"><a href="https://www.mondigroup.com/" target="_blank" rel="noopener noreferrer">Mondi â†—</a><a href="https://www.internationalpaper.com/" target="_blank" rel="noopener noreferrer">International Paper â†—</a><a href="https://www.heidelberg.com/" target="_blank" rel="noopener noreferrer">Heidelberg â†—</a><a href="https://www.bobst.com/" target="_blank" rel="noopener noreferrer">Bobst â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="franchise distributor wholesale import export brand distribution"><h3>48 Â· Franchise, distribution and wholesale networks</h3><p>Franchise opportunities, brand distribution, wholesalers, importers, retail networks and regional distributors.</p><div class="mpx-company-links"><a href="https://www.yum.com/" target="_blank" rel="noopener noreferrer">Yum! Brands â†—</a><a href="https://www.rbi.com/" target="_blank" rel="noopener noreferrer">Restaurant Brands International â†—</a><a href="https://www.ingrammicro.com/" target="_blank" rel="noopener noreferrer">Ingram Micro â†—</a><a href="https://www.tdsynnex.com/" target="_blank" rel="noopener noreferrer">TD SYNNEX â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="energy solar batteries storage renewable wind power inverters"><h3>49 Â· Energy, solar, batteries and energy storage</h3><p>Solar panels, inverters, batteries, energy storage, wind power, electrical equipment and industrial energy solutions.</p><div class="mpx-company-links"><a href="https://www.longi.com/" target="_blank" rel="noopener noreferrer">LONGi â†—</a><a href="https://www.trinasolar.com/" target="_blank" rel="noopener noreferrer">Trina Solar â†—</a><a href="https://www.catl.com/" target="_blank" rel="noopener noreferrer">CATL â†—</a><a href="https://en.sungrowpower.com/" target="_blank" rel="noopener noreferrer">Sungrow â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="youth talent volunteer community project athlete creator public figure"><h3>50 Â· Youth projects, talent, volunteering and community initiatives</h3><p>Youth-led projects, volunteering opportunities, creative talent, athletes, public figures and community collaborations.</p><div class="mpx-company-links"><a href="https://www.unv.org/" target="_blank" rel="noopener noreferrer">UN Volunteers â†—</a><a href="https://aiesec.org/" target="_blank" rel="noopener noreferrer">AIESEC â†—</a><a href="https://www.globalgiving.org/" target="_blank" rel="noopener noreferrer">GlobalGiving â†—</a><a href="https://www.ashoka.org/" target="_blank" rel="noopener noreferrer">Ashoka â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="private aviation charter jet aircraft maintenance airport services"><h3>51 Â· Private aviation, charter flights and aircraft services</h3><p>Private aircraft charter, business aviation, aircraft maintenance, airport services and aviation suppliers.</p><div class="mpx-company-links"><a href="https://www.vistajet.com/" target="_blank" rel="noopener noreferrer">Vista â†—</a><a href="https://www.netjets.com/" target="_blank" rel="noopener noreferrer">NetJets â†—</a><a href="https://www.flexjet.com/" target="_blank" rel="noopener noreferrer">Flexjet â†—</a><a href="https://www.dassault-aviation.com/" target="_blank" rel="noopener noreferrer">Dassault Aviation â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="security safety PPE fire protection protective equipment access control"><h3>52 Â· Security, safety and protective equipment</h3><p>Workplace safety, fire protection, PPE, industrial security, access control and emergency equipment.</p><div class="mpx-company-links"><a href="https://www.3m.com/" target="_blank" rel="noopener noreferrer">3M â†—</a><a href="https://www.honeywell.com/" target="_blank" rel="noopener noreferrer">Honeywell â†—</a><a href="https://www.draeger.com/" target="_blank" rel="noopener noreferrer">DrÃ¤ger â†—</a><a href="https://us.msasafety.com/" target="_blank" rel="noopener noreferrer">MSA Safety â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="cleaning facility management maintenance sanitation equipment"><h3>53 Â· Cleaning, facility management and maintenance</h3><p>Commercial cleaning, building maintenance, facilities management, sanitation systems and professional cleaning equipment.</p><div class="mpx-company-links"><a href="https://www.issworld.com/" target="_blank" rel="noopener noreferrer">ISS â†—</a><a href="https://www.sodexo.com/" target="_blank" rel="noopener noreferrer">Sodexo â†—</a><a href="https://www.ecolab.com/" target="_blank" rel="noopener noreferrer">Ecolab â†—</a><a href="https://www.nilfisk.com/" target="_blank" rel="noopener noreferrer">Nilfisk â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="insurance risk management business property travel insurance"><h3>54 Â· Insurance and risk-management services</h3><p>Business insurance, property cover, travel insurance, risk management and insurance service providers.</p><div class="mpx-company-links"><a href="https://www.allianz.com/" target="_blank" rel="noopener noreferrer">Allianz â†—</a><a href="https://www.axa.com/" target="_blank" rel="noopener noreferrer">AXA â†—</a><a href="https://www.zurich.com/" target="_blank" rel="noopener noreferrer">Zurich Insurance Group â†—</a><a href="https://www.marsh.com/" target="_blank" rel="noopener noreferrer">Marsh â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="media advertising marketing creative production photography agency"><h3>55 Â· Media, advertising, marketing and creative production</h3><p>Advertising agencies, digital marketing, media production, brand strategy, photography and creative services.</p><div class="mpx-company-links"><a href="https://www.wpp.com/" target="_blank" rel="noopener noreferrer">WPP â†—</a><a href="https://www.publicisgroupe.com/" target="_blank" rel="noopener noreferrer">Publicis Groupe â†—</a><a href="https://www.omnicomgroup.com/" target="_blank" rel="noopener noreferrer">Omnicom â†—</a><a href="https://www.canva.com/" target="_blank" rel="noopener noreferrer">Canva â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="plants nursery landscaping horticulture seeds greenhouse garden"><h3>56 Â· Plants, nurseries, landscaping and horticulture</h3><p>Plant nurseries, seeds, landscaping, garden equipment, greenhouse suppliers and horticultural products.</p><div class="mpx-company-links"><a href="https://www.fiskars.com/" target="_blank" rel="noopener noreferrer">Fiskars â†—</a><a href="https://www.husqvarna.com/" target="_blank" rel="noopener noreferrer">Husqvarna â†—</a><a href="https://www.netafim.com/" target="_blank" rel="noopener noreferrer">Netafim â†—</a><a href="https://www.royalbrinkman.com/" target="_blank" rel="noopener noreferrer">Royal Brinkman â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <article class="mpx-sector-card" data-search="industrial kitchen bakery equipment hospitality supplies catering"><h3>57 Â· Industrial kitchens, bakery equipment and hospitality supplies</h3><p>Commercial kitchen equipment, bakery machinery, refrigeration, hotel supplies and catering equipment.</p><div class="mpx-company-links"><a href="https://www.rational-online.com/" target="_blank" rel="noopener noreferrer">Rational â†—</a><a href="https://www.welbilt.com/" target="_blank" rel="noopener noreferrer">Welbilt â†—</a><a href="https://www.electroluxprofessional.com/" target="_blank" rel="noopener noreferrer">Electrolux Professional â†—</a><a href="https://www.middleby.com/" target="_blank" rel="noopener noreferrer">Middleby â†—</a></div><p class="mpx-status-note">Discovery links only. Verify company details, availability and regional service directly with the provider. No partnership is implied.</p></article>
+          <p class="mpx-status-note">Directory note: these are public discovery links to independent providers. Their inclusion is not an endorsement or partnership. Check official sites for current services, local availability, legal requirements and commercial terms. Marrakechpixim does not confirm bookings or purchases on their behalf.</p>
+      </div>
     </section>
 
     <!-- Categories are rendered from the data array below; each uses a real photographic URL. -->
@@ -1337,7 +1647,7 @@
           </div>
           <div class="artist-form-card">
             <h3>Apply to collaborate</h3>
-            <p>Complete the short form. It will prepare an email to our team so you can review it and send it from your own email application.</p>
+            <p>Complete the form to send your proposal to the secure Marrakechpixim request system when the service is configured.</p>
             <form class="request-form" id="artistApplicationForm">
               <div class="field">
                 <label for="artistType">Your activity *</label>
@@ -1514,11 +1824,15 @@
             <label for="requestMessage">Describe your request or proposal *</label>
             <textarea id="requestMessage" name="requestMessage" required placeholder="Tell us what you offer or are looking for, the intended market, and what kind of cooperation you would like to discuss."></textarea>
           </div>
+          <div class="field field-full">
+            <label class="artist-consent"><input type="checkbox" name="requestConsent" value="yes" required><span>I agree that Marrakechpixim may use these details to review and respond to this enquiry. *</span></label>
+          </div>
           <div class="form-actions">
-            <button class="btn btn-primary" type="submit">Prepare enquiry email <span aria-hidden="true">â†’</span></button>
-            <p class="form-note">This free initial form prepares an email addressed to the Marrakechpixim contact team. It does not submit to or store data on a server. Your email application must be configured. No transaction, listing or partnership is confirmed until reviewed and agreed.</p>
+            <button class="btn btn-primary" type="submit">Send enquiry securely <span aria-hidden="true">â†’</span></button>
+            <p class="form-note">This form submits to the secure request service when connected. It does not open your email application. No transaction, listing or partnership is confirmed until reviewed and agreed.</p>
           </div>
           <p class="request-form-status" id="requestFormStatus" aria-live="polite"></p>
+          <p class="request-demo-note">If the secure request service is not configured, the form will show an error and keep your entries. It will never claim success without a server confirmation.</p>
         </form>
       </div>
     </section>
@@ -1574,10 +1888,11 @@
             <label class="artist-consent"><input type="checkbox" name="consultationConsent" value="yes" required><span>I agree that Marrakechpixim may use these details to respond to this request. *</span></label>
           </div>
           <div class="form-actions">
-            <button class="btn btn-primary" type="submit">Prepare consultation email <span aria-hidden="true">â†’</span></button>
-            <p class="form-note">Free in this prototype. Submitting opens your email application; this page does not save or send the information by itself. The temporary reference is not a permanent account number or QR/barcode.</p>
+            <button class="btn btn-primary" type="submit">Send request securely <span aria-hidden="true">â†’</span></button>
+            <p class="form-note">This request is not a booking. It is stored only when the secure request service confirms receipt. The temporary reference is not a permanent account number or QR/barcode.</p>
           </div>
           <p class="request-form-status" id="consultationRequestStatus" aria-live="polite"></p>
+          <p class="request-demo-note">This is an information request, not a hotel or flight booking. No reservation is made by submitting this form.</p>
         </form>
       </div>
     </section>
@@ -1620,12 +1935,12 @@
               <div><strong>Business and partnership enquiries</strong><a href="mailto:Marrakechpixim@gmail.com">Marrakechpixim@gmail.com</a><small>Use for supplier proposals, business enquiries and partnership discussions.</small></div>
             </div>
             <div class="contact-method">
-              <span class="contact-method-icon" aria-hidden="true">â˜Ž</span>
-              <div><strong>Temporary phone numbers</strong><a href="tel:+39329982544">+39 329 982 544 (Italy)</a><a href="tel:+34679792755">+34 679 792 755 (Spain)</a><small>Confirm that both numbers are active before public launch. For now, email is the preferred contact method.</small></div>
+              <span class="contact-method-icon" aria-hidden="true">âœ‰</span>
+              <div><strong>Email contact</strong><a href="mailto:Marrakechpixim@gmail.com">Marrakechpixim@gmail.com</a><small>Email is the preferred contact method for business enquiries and partnership proposals.</small></div>
             </div>
           </div>
         </div>
-        <p class="disclosure-note">Official contact email: <a href="mailto:Marrakechpixim@gmail.com">Marrakechpixim@gmail.com</a>. Italy: <a href="tel:+39329982544">+39 329 982 544</a>. Spain: <a href="tel:+34679792755">+34 679 792 755</a>. Intended Marrakechpixim website address: <a href="https://www.marrakechpixim.com/" target="_blank" rel="noopener noreferrer">www.marrakechpixim.com</a>. Confirm the email inbox, both phone numbers, domain ownership and DNS/Cloudflare configuration before public launch.</p>
+        <p class="disclosure-note">Official contact email: <a href="mailto:Marrakechpixim@gmail.com">Marrakechpixim@gmail.com</a>. Intended Marrakechpixim website address: <a href="https://www.marrakechpixim.com/" target="_blank" rel="noopener noreferrer">www.marrakechpixim.com</a>. Confirm the email inbox, both phone numbers, domain ownership and DNS/Cloudflare configuration before public launch.</p>
       </div>
     </section>
 
@@ -1670,11 +1985,11 @@
       </div>
     </section>
 
-    <!-- Newsletter demo: validates the email but does not send or store it. -->
+    <!-- Newsletter signup: stored only after secure API confirmation. -->
     <section class="newsletter">
       <div class="container newsletter-panel">
         <div><h2 data-i18n="newsletterTitle">Keep discovering</h2><p data-i18n="newsletterCopy">Get updates when new categories and partner listings become available.</p></div>
-        <form class="newsletter-form" id="newsletterForm"><label class="sr-only" for="newsletterEmail" data-i18n="emailLabel">Email address</label><input id="newsletterEmail" type="email" required placeholder="Your email address" data-i18n-placeholder="emailPlaceholder"><button class="btn btn-primary" type="submit" data-i18n="notifyMe">Notify me</button></form>
+        <form class="newsletter-form" id="newsletterForm"><label class="sr-only" for="newsletterEmail" data-i18n="emailLabel">Email address</label><input id="newsletterEmail" name="email" type="email" required placeholder="Your email address" data-i18n-placeholder="emailPlaceholder"><label style="display:flex;gap:8px;align-items:flex-start;font-size:12px;line-height:1.45"><input type="checkbox" name="newsletterConsent" value="yes" required style="margin-top:3px"><span>I agree to receive Marrakechpixim updates by email. I can unsubscribe later.</span></label><button class="btn btn-primary" type="submit" data-i18n="notifyMe">Notify me</button><p class="request-form-status" id="newsletterStatus" aria-live="polite"></p></form>
       </div>
     </section>
   </main>
@@ -1686,7 +2001,7 @@
         <h2 id="websiteAddressTitle">Official Marrakechpixim website</h2>
         <p>Intended website address: <a href="https://www.marrakechpixim.com/" target="_blank" rel="noopener noreferrer">https://www.marrakechpixim.com/</a></p>
         <p>Before launch, connect this domain to the Cloudflare Pages project and verify the DNS records and SSL certificate. Uploading this HTML file alone does not activate a domain or publish the site.</p>
-        <p>Contact: <a href="mailto:Marrakechpixim@gmail.com">Marrakechpixim@gmail.com</a> Â· Italy: <a href="tel:+39329982544">+39 329 982 544</a> Â· Spain: <a href="tel:+34679792755">+34 679 792 755</a></p>
+        <p>Contact: <a href="mailto:Marrakechpixim@gmail.com">Marrakechpixim@gmail.com</a></p>
       </div>
     </div>
   </section>
@@ -1694,8 +2009,6 @@
   <!-- OWNER LAUNCH CHECKLIST (not displayed on the public page):
        1. Brand spelling: Marrakechpixim.
        2. Main contact email: Marrakechpixim@gmail.com â€” verify inbox works.
-       3. Italy phone: +39 329 982 544 â€” verify active.
-       4. Spain phone: +34 679 792 755 â€” verify active.
        5. Intended site URL in this file: https://www.marrakechpixim.com/.
        6. The separate address www.marrakech.com was mentioned by the owner; do not replace the intended URL until ownership and DNS are confirmed.
        7. The 1,700+ catalogue figure is a future target, not a count of live listings.
@@ -1706,11 +2019,11 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-brand"><a class="brand" href="#home"><span class="brand-mark">M</span><span class="brand-name">Marrakechpixim</span></a><p data-i18n="footerIntro">A global, multilingual discovery and advertising concept connecting people with businesses, brands, products, services and experiences.</p><div class="footer-contact-short"><a href="mailto:Marrakechpixim@gmail.com">Marrakechpixim@gmail.com</a><br><a href="https://www.marrakechpixim.com/" target="_blank" rel="noopener noreferrer">https://www.marrakechpixim.com/</a></div></div>
+        <div class="footer-brand"><a class="brand" href="#home"><span class="brand-name">Marrakechpixim</span></a><p data-i18n="footerIntro">A global, multilingual discovery and advertising concept connecting people with businesses, brands, products, services and experiences.</p><div class="footer-contact-short"><a href="mailto:Marrakechpixim@gmail.com">Marrakechpixim@gmail.com</a><br><a href="https://www.marrakechpixim.com/" target="_blank" rel="noopener noreferrer">https://www.marrakechpixim.com/</a></div></div>
         <div><h3 class="footer-heading" data-i18n="footerExplore">Explore</h3><div class="footer-links"><a href="#categories" data-i18n="footerCategories">Categories</a><a href="#categories" data-i18n="footerTravel">Travel and tourism</a><a href="#categories" data-i18n="footerShopping">Shopping and brands</a><a href="#categories" data-i18n="footerServices">Services</a></div></div>
         <div><h3 class="footer-heading" data-i18n="footerBusiness">For businesses</h3><div class="footer-links"><a href="#business" data-i18n="footerAdvertise">Advertise with us</a><a href="#business" data-i18n="footerPartner">Partnerships</a><a href="#business" data-i18n="footerSuppliers">Suppliers and brands</a><a href="#how-it-works" data-i18n="footerHow">How it works</a></div></div>
         <div><h3 class="footer-heading" data-i18n="footerCompany">Company</h3><div class="footer-links"><a href="#about" data-i18n="footerAbout">About Marrakechpixim</a><a href="#about" data-i18n="footerAccessibility">Accessibility</a><a href="#about" data-i18n="footerPrivacy">Privacy (to be configured)</a><a href="#about" data-i18n="footerTerms">Terms (to be configured)</a></div></div>
-        <div><h3 class="footer-heading">Contact</h3><div class="footer-links"><a href="mailto:Marrakechpixim@gmail.com">Marrakechpixim@gmail.com</a><span class="contact-note">Email is the preferred contact method for all enquiries and business partnerships.</span><span class="contact-note">Phone â€” Italy</span><a href="tel:+39329982544">+39 329 982 544</a><span class="contact-note">Phone â€” Spain</span><a href="tel:+34679792755">+34 679 792 755</a><span class="contact-note">Please confirm that these phone numbers are active before public launch.</span><a href="https://www.marrakechpixim.com/" target="_blank" rel="noopener noreferrer">Visit Marrakechpixim.com</a></div></div>
+        <div><h3 class="footer-heading">Contact</h3><div class="footer-links"><a href="mailto:Marrakechpixim@gmail.com">Marrakechpixim@gmail.com</a><span class="contact-note">Email is the preferred contact method for all enquiries and business partnerships.</span><a href="https://www.marrakechpixim.com/" target="_blank" rel="noopener noreferrer">Visit Marrakechpixim.com</a></div></div>
       </div>
       <div class="footer-bottom"><span>Â© <span id="currentYear"></span> Marrakechpixim. <span data-i18n="rights">All rights reserved.</span></span><span data-i18n="tagline">Find What You Need, Easily.</span></div>
       <p class="disclaimer" data-i18n="disclaimer">Prototype notice: this page is a front-end concept. Category search works locally; the enquiry form prepares an email but does not send or store data on a server. Business listings, live location search, accounts, reviews, bookings, permanent customer/category/operation IDs, QR/barcodes, negotiation records, advertising billing and payments are not connected. Configure legal, privacy, security and commercial requirements before launch.</p>
@@ -1821,8 +2134,8 @@
       categoryGrid.innerHTML = list.map((category, index) => `
         <article class="category-card">
           <a href="#business" aria-label="${escapeHTML(translations[currentLanguage].viewCategory)}: ${escapeHTML(category.title)}">
-            <div class="category-image">
-              <img src="${escapeHTML(category.image)}" alt="${escapeHTML(category.title)}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80';this.alt=this.alt+' â€” illustrative image';">
+            <div class="category-image" data-image-label="${escapeHTML(category.title)}">
+              <img src="${escapeHTML(category.image)}" alt="${escapeHTML(category.title)} â€” illustrative photograph" loading="${index < 8 ? 'eager' : 'lazy'}" decoding="async" onerror="this.onerror=null;this.parentElement.classList.add('image-fallback');this.removeAttribute('src');">
               <span class="category-tag">${escapeHTML(category.tag)}</span>
             </div>
             <div class="category-body">
@@ -1909,63 +2222,58 @@
     categoryFilter.addEventListener("change", applyFilters);
     document.getElementById("languageSelect").addEventListener("change", event => setLanguage(event.target.value));
 
-    /* Business enquiry form: prepare an email locally; no data is stored or transmitted by this page. */
+    /* Configure an API base only if the request Worker is on a separate domain.
+       Leave blank when this same Cloudflare Worker serves /api/requests.
+       Example: https://marrakechpixim-api.YOUR-SUBDOMAIN.workers.dev */
+    const MARRAKECHPIXIM_API_BASE = "";
+
+    /* Submit only to the secure backend. No mailto fallback and no false success state. */
+    async function submitMarrakechpiximRequest(form, statusElementId, requestKind) {
+      const status = document.getElementById(statusElementId);
+      if (!form.reportValidity()) return;
+      const submitButton = form.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton ? submitButton.textContent : "";
+      if (submitButton) { submitButton.disabled = true; submitButton.textContent = "Checkingâ€¦"; }
+      if (status) status.textContent = "Checking your informationâ€¦";
+      const payload = { kind: requestKind, fields: Object.fromEntries(new FormData(form).entries()), submittedAt: new Date().toISOString() };
+      const apiBase = MARRAKECHPIXIM_API_BASE.trim().replace(/\/$/, "");
+      const apiUrl = (apiBase || "") + "/api/requests";
+      try {
+        const response = await fetch(apiUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok || result.success !== true || !result.reference) {
+          throw new Error(result.message || "The secure request service is not connected or did not confirm storage.");
+        }
+        if (status) status.textContent = `Request received successfully. Reference: ${result.reference}. Keep this reference for follow-up.`;
+        form.reset();
+      } catch (error) {
+        if (status) status.textContent = "Not sent: " + (error && error.message ? error.message : "the secure request service is unavailable") + ". Your information remains in the form. Please try again later or contact Marrakechpixim@gmail.com.";
+      } finally {
+        if (submitButton) { submitButton.disabled = false; submitButton.textContent = originalButtonText; }
+      }
+    }
+
     const businessRequestForm = document.getElementById("businessRequestForm");
-    if (businessRequestForm) {
-      businessRequestForm.addEventListener("submit", event => {
-        event.preventDefault();
-        const formData = new FormData(businessRequestForm);
-        const fields = [
-          ["Request type", formData.get("requestType")],
-          ["Category / industry", formData.get("requestSector")],
-          ["Name / company", formData.get("requestName")],
-          ["Email", formData.get("requestEmail")],
-          ["Country / market", formData.get("requestCountry") || "Not provided"],
-          ["Website", formData.get("requestWebsite") || "Not provided"],
-          ["Proposal", formData.get("requestMessage")]
-        ];
-        const subject = "Marrakechpixim â€” " + String(formData.get("requestType") || "Business enquiry");
-        const body = fields.map(([label, value]) => `${label}:\n${String(value || "").trim()}`).join("\n\n");
-        const mailto = "mailto:Marrakechpixim@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-        const status = document.getElementById("requestFormStatus");
-        if (status) status.textContent = "Your email application should open with the enquiry prepared. Please review and send it there. This page has not sent or saved the information.";
-        window.location.href = mailto;
-      });
-    }
-
-
-
-    /* Artist application: prepare an email locally; nothing is uploaded or stored here. */
-    const artistApplicationForm = document.getElementById("artistApplicationForm");
-    if (artistApplicationForm) {
-      artistApplicationForm.addEventListener("submit", event => {
-        event.preventDefault();
-        const data = new FormData(artistApplicationForm);
-        const fields = [
-          ["Activity", data.get("artistType")],
-          ["Artist / public name", data.get("artistStageName")],
-          ["Full name", data.get("artistLegalName")],
-          ["Email", data.get("artistEmail")],
-          ["Country", data.get("artistCountry")],
-          ["Website / public profile", data.get("artistProfile") || "Not provided"],
-          ["Collaboration proposal", data.get("artistProposal")],
-          ["Agreed to contact about this application", data.get("artistContactConsent") === "yes" ? "Yes" : "No"],
-          ["Wants to discuss possible future public profile use", data.get("artistPublicityConsent") === "yes" ? "Yes â€” discussion only; not publication permission" : "No / not selected"]
-        ];
-        const subject = "Marrakechpixim â€” Artist / Creator Collaboration Application";
-        const body = fields.map(([label, value]) => `${label}:\n${String(value || "").trim()}`).join("\n\n");
-        const mailto = "mailto:Marrakechpixim@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-        const status = document.getElementById("artistApplicationStatus");
-        if (status) status.textContent = "Your email application should open with the details prepared. Review it and press Send in your email app. This website has not transmitted or stored your information.";
-        window.location.href = mailto;
-      });
-    }
-
-    /* Newsletter demo deliberately does not transmit or save personal information. */
-    document.getElementById("newsletterForm").addEventListener("submit", event => {
+    if (businessRequestForm) businessRequestForm.addEventListener("submit", event => {
       event.preventDefault();
-      showToast(translations[currentLanguage].emailDemo);
-      event.target.reset();
+      submitMarrakechpiximRequest(businessRequestForm, "requestFormStatus", "business");
+    });
+
+    const artistApplicationForm = document.getElementById("artistApplicationForm");
+    if (artistApplicationForm) artistApplicationForm.addEventListener("submit", event => {
+      event.preventDefault();
+      submitMarrakechpiximRequest(artistApplicationForm, "artistApplicationStatus", "artist");
+    });
+
+    /* Newsletter sign-up uses the same secure request API and explicit consent. */
+    const newsletterForm = document.getElementById("newsletterForm");
+    if (newsletterForm) newsletterForm.addEventListener("submit", event => {
+      event.preventDefault();
+      submitMarrakechpiximRequest(newsletterForm, "newsletterStatus", "newsletter");
     });
 
 
@@ -2104,10 +2412,9 @@
       const grid = document.getElementById("expandedSectorGrid");
       if (!grid) return;
       grid.innerHTML = expandedSectors.map((sector, index) => `
-        <article class="sector-overview-card" data-sector-index="${index}">
-          <img class="sector-card-photo" src="${escapeHTML(sector.image)}" alt="${escapeHTML(sector.title)}" loading="lazy" decoding="async" onerror="this.onerror=null;this.classList.add('image-fallback-photo');this.src='https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80';">
+        <article class="sector-overview-card" data-sector-index="${index}" data-image-label="${escapeHTML(sector.title)}">
+          <img class="sector-card-photo" src="${escapeHTML(sector.image)}" alt="${escapeHTML(sector.title)} â€” illustrative photograph" loading="${index < 8 ? 'eager' : 'lazy'}" decoding="async" onerror="this.onerror=null;this.parentElement.classList.add('image-fallback');this.removeAttribute('src');">
           <div class="sector-card-content">
-            <div class="sector-card-symbol" aria-hidden="true">${escapeHTML(sector.symbol)}</div>
             <h3>${escapeHTML(sector.title)}</h3>
             <p>${escapeHTML(sector.description)}</p>
             <a class="sector-link" href="#searchForm" data-sector-search="${escapeHTML(sector.title)}">Explore this sector <span aria-hidden="true">â†’</span></a>
@@ -2155,47 +2462,49 @@
     });
 
     /* Mark all prototype forms with explicit demonstration behaviour. */
-    const prototypeForms = [document.getElementById("newsletterForm")].filter(Boolean);
-    prototypeForms.forEach(form => {
-      form.setAttribute("data-live-submission", "false");
-      form.setAttribute("aria-describedby", "prototype-form-note");
+    const prototypeForms = []; // All visible request forms use the secure API and show an error if it is not configured.
+
+    /* Consultation/info requests use the same API; never invent a successful reference locally. */
+    const consultationRequestForm = document.getElementById("consultationRequestForm");
+    if (consultationRequestForm) consultationRequestForm.addEventListener("submit", event => {
+      event.preventDefault();
+      submitMarrakechpiximRequest(consultationRequestForm, "consultationRequestStatus", "consultation");
     });
 
-    /* Consultation request: create a temporary reference for the prepared email only.
-       A permanent, globally unique ID must be assigned by the future backend. */
-    const consultationRequestForm = document.getElementById("consultationRequestForm");
-    if (consultationRequestForm) {
-      consultationRequestForm.addEventListener("submit", event => {
-        event.preventDefault();
-        const formData = new FormData(consultationRequestForm);
-        const now = new Date();
-        const datePart = `${now.getUTCFullYear()}${String(now.getUTCMonth()+1).padStart(2,"0")}${String(now.getUTCDate()).padStart(2,"0")}`;
-        const randomPart = Math.random().toString(36).slice(2,8).toUpperCase();
-        const previewReference = `MPX-REQ-${datePart}-${randomPart}`;
-        const fields = [
-          ["Temporary preview reference (not a permanent database ID)", previewReference],
-          ["Request type", formData.get("consultationKind")],
-          ["Category / product / service", formData.get("consultationCategory")],
-          ["Full name / company", formData.get("consultationName")],
-          ["Email", formData.get("consultationEmail")],
-          ["Country", formData.get("consultationCountry") || "Not provided"],
-          ["Phone / preferred contact", formData.get("consultationContact") || "Not provided"],
-          ["Details", formData.get("consultationDetails")],
-          ["Consent to respond", formData.get("consultationConsent") === "yes" ? "Yes" : "No"]
-        ];
-        const subject = `Marrakechpixim â€” ${String(formData.get("consultationKind") || "Information request")} â€” ${previewReference}`;
-        const body = fields.map(([label, value]) => `${label}:\n${String(value || "").trim()}`).join("\n\n");
-        const status = document.getElementById("consultationRequestStatus");
-        if (status) status.textContent = `Temporary reference: ${previewReference}. Your email application should open. Please review and send the email. This reference is only a browser-side preview; it is not saved on the platform and is not a QR/barcode.`;
-        window.location.href = "mailto:Marrakechpixim@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    /* Public directory filters and enquiry shortcuts. */
+    const directorySearch = document.getElementById("directorySearch");
+    const directoryTypeFilter = document.getElementById("directoryTypeFilter");
+    const directoryCards = Array.from(document.querySelectorAll(".directory-card"));
+    function filterDirectory() {
+      const term = (directorySearch?.value || "").trim().toLowerCase();
+      const type = directoryTypeFilter?.value || "";
+      let visible = 0;
+      directoryCards.forEach(card => {
+        const matchesText = !term || (card.dataset.directorySearch + " " + card.textContent).toLowerCase().includes(term);
+        const matchesType = !type || card.dataset.directoryCategory === type;
+        const show = matchesText && matchesType;
+        card.hidden = !show;
+        if (show) visible++;
       });
+      const count = document.getElementById("directoryResultsCount");
+      if (count) count.textContent = `Showing ${visible} of ${directoryCards.length} public example listings`;
     }
+    directorySearch?.addEventListener("input", filterDirectory);
+    directoryTypeFilter?.addEventListener("change", filterDirectory);
+    document.addEventListener("click", event => {
+      const enquiryLink = event.target.closest("[data-directory-enquiry]");
+      if (!enquiryLink) return;
+      const categoryInput = document.querySelector('#consultationRequestForm [name="consultationCategory"]');
+      const detailsInput = document.querySelector('#consultationRequestForm [name="consultationDetails"]');
+      if (categoryInput) categoryInput.value = enquiryLink.dataset.directoryEnquiry;
+      if (detailsInput && !detailsInput.value.trim()) detailsInput.value = "Please help me understand how to contact this provider. I understand this is not a reservation.";
+    });
 
     /* Inform users that this single-file version is a front-end prototype. */
     const prototypeNote = document.createElement("p");
     prototypeNote.id = "prototype-form-note";
     prototypeNote.className = "sr-only";
-    prototypeNote.textContent = "This demonstration form does not send information to a server.";
+    prototypeNote.textContent = "Forms submit only when a secure /api/requests backend is configured; otherwise information is not sent or saved.";
     document.body.appendChild(prototypeNote);
 
     /* Render the new overview after the original page's data has been declared. */
@@ -2207,5 +2516,57 @@
     populateCategoryFilter();
     renderCategories();
   </script>
+
+<script>
+(function(){
+  const input=document.getElementById('mpxDirectorySearch');
+  const grid=document.getElementById('mpxSectorGrid');
+  const count=document.getElementById('mpxDirectoryCount');
+  const globalButton=document.getElementById('mpxGlobalSearchButton');
+  const voiceButton=document.getElementById('mpxVoiceSearchButton');
+  const liveStatus=document.getElementById('mpxLiveSearchStatus');
+  const liveResults=document.getElementById('mpxLiveSearchResults');
+  if(!input||!grid||!count)return;
+  const cards=Array.from(grid.querySelectorAll('.mpx-sector-card'));
+  let searchSequence=0;
+  function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+  function filterDirectory(){
+    const q=input.value.trim().toLocaleLowerCase(); let shown=0;
+    cards.forEach(card=>{const haystack=(card.innerText+' '+(card.getAttribute('data-search')||'')).toLocaleLowerCase();const match=!q||haystack.includes(q);card.hidden=!match;if(match)shown++;});
+    count.textContent=q?('Showing '+shown+' of '+cards.length+' directory sectors matching â€œ'+input.value.trim()+'â€.'):(`Browse ${cards.length} sector groups. Example listings only; partnership status and availability must be verified.`);
+  }
+  async function searchWorldwide(){
+    const q=input.value.trim();
+    if(q.length<2){liveStatus.textContent='Type at least 2 characters to search worldwide.';return;}
+    const seq=++searchSequence; globalButton.disabled=true; liveStatus.textContent='Searching the public global knowledge baseâ€¦'; liveResults.innerHTML='';
+    try{
+      const response=await fetch('/api/company-search?q='+encodeURIComponent(q),{headers:{'Accept':'application/json'}});
+      const data=await response.json().catch(()=>({}));
+      if(!response.ok||data.success!==true)throw new Error(data.message||'The external search service is temporarily unavailable.');
+      if(seq!==searchSequence)return;
+      if(!data.results||!data.results.length){liveStatus.textContent='No matching public entities were returned. Try a company name, product, or a broader search term.';return;}
+      liveResults.innerHTML=data.results.map(item=>`<article class="mpx-live-result"><h3>${esc(item.label||'Unnamed result')}</h3><p>${esc(item.description||'Public knowledge-base result; verify details independently.')}</p>${item.website?`<a href="${esc(item.website)}" target="_blank" rel="noopener noreferrer">Website listed in source â†—</a>`:''}<a href="${esc(item.entityUrl)}" target="_blank" rel="noopener noreferrer">View source record â†—</a><div class="mpx-live-source">Source: Wikidata Â· Independent discovery result, not a confirmed Marrakechpixim partner</div></article>`).join('');
+      liveStatus.textContent=`Found ${data.results.length} public results for â€œ${q}â€. Coverage is not exhaustive; check each source before relying on it.`;
+    }catch(err){if(seq===searchSequence)liveStatus.textContent='Live search could not complete: '+(err.message||'temporary error')+'. The local directory remains available.';}
+    finally{globalButton.disabled=false;}
+  }
+  input.addEventListener('input',filterDirectory);
+  globalButton?.addEventListener('click',searchWorldwide);
+  input.addEventListener('keydown',e=>{if(e.key==='Enter'&&document.activeElement===input){e.preventDefault();searchWorldwide();}});
+  const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SpeechRecognition){voiceButton.disabled=true;voiceButton.title='Voice search is not supported in this browser. Use the text search instead.';voiceButton.textContent='Voice search not supported';}
+  else voiceButton.addEventListener('click',()=>{
+    try{
+      const recognition=new SpeechRecognition(); recognition.lang=({en:'en-US',fr:'fr-FR',es:'es-ES',ar:'ar-MA',pt:'pt-BR',ru:'ru-RU','zh':'zh-CN'})[document.documentElement.lang]||document.documentElement.lang||'en-US';
+      recognition.interimResults=false;recognition.maxAlternatives=1;voiceButton.disabled=true;liveStatus.textContent='Listeningâ€¦ say a company, product, sector or country.';
+      recognition.onresult=e=>{const transcript=e.results&&e.results[0]&&e.results[0][0]?e.results[0][0].transcript:'';if(transcript){input.value=transcript;filterDirectory();searchWorldwide();}};
+      recognition.onerror=e=>{liveStatus.textContent='Voice search stopped ('+(e.error||'unavailable')+'). You can type your search instead.';};
+      recognition.onend=()=>{voiceButton.disabled=false;}; recognition.start();
+    }catch(e){voiceButton.disabled=false;liveStatus.textContent='Voice search could not start. Please type your search instead.';}
+  });
+  filterDirectory();
+})();
+</script>
+
 </body>
 </html>
