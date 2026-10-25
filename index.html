@@ -1,1 +1,953 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#064e3b">
+<title>Marrakechpixim MPX | Official Platform</title>
+<style>
+:root{
+  --green:#064e3b;
+  --deep:#032e23;
+  --gold:#d4af37;
+  --light:#f3f7f4;
+  --white:#fff;
+  --muted:#64746c;
+  --border:#dce6df;
+  --red:#a93226;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--light);
+  color:#182a22;
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.55;
+}
+button,input,select,textarea{font:inherit}
+button,a{touch-action:manipulation}
+button{cursor:pointer}
+a{color:var(--green)}
+header{
+  background:linear-gradient(130deg,var(--deep),var(--green));
+  color:white;text-align:center;padding:30px 18px;
+  border-bottom:5px solid var(--gold);
+}
+.logo{
+  font-size:clamp(30px,5vw,48px);
+  font-weight:900;letter-spacing:2px;margin:0;
+}
+.gold{color:var(--gold)}
+header p{max-width:750px;margin:12px auto}
+.header-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+nav{
+  position:sticky;top:0;z-index:10;background:white;
+  border-bottom:1px solid var(--border);
+  display:flex;gap:6px;justify-content:center;
+  flex-wrap:wrap;padding:10px;
+}
+nav a{
+  text-decoration:none;padding:9px 12px;border-radius:7px;
+  font-size:14px;font-weight:bold;
+}
+nav a:hover{background:#e4efe8}
+main{max-width:1200px;margin:auto;padding:20px}
+section{
+  background:white;border:1px solid var(--border);
+  border-radius:14px;padding:22px;margin-bottom:22px;
+  box-shadow:0 3px 15px #153e2910;
+  scroll-margin-top:90px;
+}
+h2{color:var(--green);margin-top:0}
+h3{margin-top:8px}
+button,.btn{
+  display:inline-block;background:var(--green);color:white;
+  border:0;border-radius:7px;padding:11px 16px;
+  text-decoration:none;font-weight:bold;
+}
+button:hover,.btn:hover{background:#087352}
+button.secondary,.btn.secondary{background:#e6eee8;color:var(--green)}
+button.gold-button{background:var(--gold);color:#1b281d}
+button.danger{background:var(--red)}
+button:disabled{opacity:.55;cursor:not-allowed}
+input,select,textarea{
+  width:100%;padding:11px;margin:6px 0 14px;
+  border:1px solid #cbd8cf;border-radius:7px;background:white;
+}
+label{display:block;font-weight:bold;font-size:14px}
+small,.muted{color:var(--muted)}
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:14px;
+}
+.card{
+  background:white;border:1px solid var(--border);
+  border-radius:10px;padding:15px;min-width:0;
+}
+.stat{font-size:28px;font-weight:900;color:var(--green)}
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.between{justify-content:space-between}
+.tag{
+  display:inline-block;padding:4px 8px;border-radius:5px;
+  background:#e6f0e9;color:var(--green);font-size:12px;font-weight:bold;
+}
+.hero-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:18px}
+.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:10px}
+.price{
+  padding:15px 8px;text-align:center;border:1px solid var(--border);
+  border-radius:9px;background:#fbfdfb;
+}
+.price strong{font-size:22px;color:var(--green)}
+.activity-code{
+  overflow-wrap:anywhere;font-family:monospace;
+  font-size:12px;color:var(--muted);
+}
+.code-visual{max-width:100%;height:auto}
+.qr{
+  width:125px;height:125px;max-width:100%;
+  display:block;margin:8px auto;
+}
+.scan-box{
+  border:1px dashed #a7b9ad;border-radius:8px;
+  padding:10px;text-align:center;margin-top:10px;
+}
+.dark-panels{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;
+}
+.dark-panel{
+  background:var(--green);color:white;
+  border:2px solid var(--gold);border-radius:12px;padding:22px;
+}
+.dark-panel h2,.dark-panel h3{color:white}
+.dark-panel input,.dark-panel select,.dark-panel textarea{
+  color:#182a22;background:white;
+}
+.dark-panel a{color:#f4d56a}
+.status{padding:12px;border-radius:8px;background:#edf4ef;margin-top:10px}
+.status.error{background:#fbe9e7;color:#85261e}
+.status.ok{background:#e3f5e8;color:#155d35}
+.chat-log{
+  min-height:100px;max-height:280px;overflow:auto;
+  background:#f4f7f4;border:1px solid var(--border);
+  padding:12px;border-radius:8px;margin-bottom:12px;
+}
+.chat-message{padding:9px 11px;margin:7px 0;border-radius:8px;background:white}
+.chat-message.user{background:#dcefe3;margin-left:12%}
+.chat-message.bot{margin-right:12%}
+.satellite-links a{display:inline-block;margin:5px 7px 5px 0}
+footer{
+  text-align:center;background:var(--deep);color:white;
+  padding:28px 18px;border-top:4px solid var(--gold);
+}
+footer a{color:#f3d56e}
+.hidden{display:none!important}
+hr{border:0;border-top:1px solid var(--border);margin:20px 0}
+#introScene{
+  position:relative;overflow:hidden;min-height:180px;
+  background:radial-gradient(circle at 70% 20%,#237d58,var(--deep) 65%);
+  color:white;border:2px solid var(--gold);border-radius:10px;
+  display:grid;place-items:center;text-align:center;padding:24px;
+}
+#introScene .intro-title{font-size:clamp(22px,4vw,38px);font-weight:900}
+#introScene.playing{animation:introPulse 3s infinite alternate}
+@keyframes introPulse{from{background-color:#064e3b}to{background-color:#146846}}
+@media(max-width:700px){
+  main{padding:12px}
+  section{padding:16px}
+  .hero-grid,.dark-panels{grid-template-columns:1fr}
+  nav{position:static}
+}
+@media print{
+  nav,.header-actions,button,footer{display:none!important}
+  body{background:white}
+  section{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <p class="gold"><strong>BUSINESS · TECHNOLOGY · SERVICES</strong></p>
+  <h1 class="logo">MARRAKECHPIXIM <span class="gold">MPX</span></h1>
+  <p>Your international platform for discovering activities,
+     products, services and business opportunities.</p>
+  <div class="header-actions">
+    <button class="gold-button" onclick="playIntroduction()">
+      ▶ Play company introduction
+    </button>
+    <button class="secondary" onclick="stopIntroduction()">
+      ■ Stop audio
+    </button>
+    <a class="btn secondary" href="#activities">Explore activities</a>
+  </div>
+</header>
+
+<nav aria-label="Main navigation">
+  <a href="#dashboard">Dashboard</a>
+  <a href="#activities">60 Activities</a>
+  <a href="#prices">Prices</a>
+  <a href="#international">International</a>
+  <a href="#company">Company</a>
+  <a href="#assistant">MPX Robot</a>
+  <a href="#payment">Payment</a>
+  <a href="#registration">Registration</a>
+</nav>
+
+<main>
+<section id="dashboard">
+  <div class="hero-grid">
+    <div>
+      <span class="tag">MPX PLATFORM</span>
+      <h2>Welcome to Marrakechpixim</h2>
+      <p>
+        Explore our activity directory, identify categories with
+        their individual codes, review price references and submit
+        a company or customer enquiry.
+      </p>
+      <a href="#activities" class="btn">Browse the 60 activities</a>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="stat">60</div>
+        <div>Activity records</div>
+      </div>
+      <div class="card">
+        <div class="stat">60</div>
+        <div>Unique category IDs</div>
+      </div>
+      <div class="card">
+        <div class="stat">$2–$30</div>
+        <div>Price reference range</div>
+      </div>
+      <div class="card">
+        <div class="stat">MPX</div>
+        <div>Platform assistant demo</div>
+      </div>
+    </div>
+  </div>
+  <p class="muted">
+    Preview status: local interface. Live transactions and message
+    delivery require server-side configuration.
+  </p>
+</section>
+
+<section id="activities">
+  <div class="row between">
+    <div>
+      <h2>60 activity categories</h2>
+      <p>Every activity receives its own MPX ID, barcode and QR code.</p>
+    </div>
+    <button class="secondary" onclick="window.print()">Print directory</button>
+  </div>
+
+  <label for="activitySearch">Search by activity, ID or code</label>
+  <input id="activitySearch" placeholder="Example: technology, MPX-ACT-001"
+         oninput="filterActivities()">
+
+  <div class="row">
+    <span class="tag">Unique IDs</span>
+    <span class="tag">Generated barcodes</span>
+    <span class="tag">Generated QR codes</span>
+  </div>
+
+  <p id="barcodeStatus" class="muted">
+    Initializing barcode and QR-code libraries…
+  </p>
+  <div id="activitiesGrid" class="grid"></div>
+</section>
+
+<section id="prices">
+  <h2>Price framework: $2 to $30</h2>
+  <p>Reference amounts for the MPX pricing interface.</p>
+  <div id="priceGrid" class="price-grid"></div>
+
+  <hr>
+  <h3>Commission calculator for amounts above $30</h3>
+  <label for="transactionAmount">Transaction amount (USD)</label>
+  <input id="transactionAmount" type="number" min="30.01"
+         step="0.01" value="100">
+  <label for="commissionRate">
+    Commission rate: <span id="rateLabel">5%</span>
+  </label>
+  <input id="commissionRate" type="range" min="1" max="10" step="1" value="5"
+         oninput="calculateCommission()">
+  <div class="grid">
+    <div class="card">
+      <small>Commission</small>
+      <div id="commissionValue" class="stat">$5.00</div>
+    </div>
+    <div class="card">
+      <small>Remaining amount</small>
+      <div id="netValue" class="stat">$95.00</div>
+    </div>
+  </div>
+  <p class="muted">
+    Illustrative calculation only. The final commission rate, currency,
+    taxes, merchant terms and settlement rules must be agreed and configured.
+  </p>
+</section>
+
+<section id="international">
+  <h2>International weather and satellite resources</h2>
+  <p>
+    Access international weather information and satellite imagery.
+    Live forecasts can be connected through a weather API.
+  </p>
+  <label for="weatherCity">City for weather lookup</label>
+  <input id="weatherCity" placeholder="Example: Marrakech, Morocco">
+  <button onclick="lookupWeather()">Find weather resources</button>
+  <div id="weatherResult" class="status" aria-live="polite">
+    No live weather provider has been configured.
+  </div>
+  <div class="satellite-links">
+    <h3>Weather and satellite portals</h3>
+    <a href="https://worldview.earthdata.nasa.gov/" target="_blank"
+       rel="noopener">NASA Worldview satellite imagery</a>
+    <a href="https://earthobservatory.nasa.gov/" target="_blank"
+       rel="noopener">NASA Earth Observatory</a>
+    <a href="https://www.eumetsat.int/" target="_blank"
+       rel="noopener">EUMETSAT satellite information</a>
+    <a href="https://www.weather.gov/" target="_blank"
+       rel="noopener">US National Weather Service</a>
+    <a href="https://open-meteo.com/" target="_blank"
+       rel="noopener">Open-Meteo weather API</a>
+  </div>
+  <p class="muted">
+    These are external resources. This page does not yet retrieve
+    or display a live satellite feed.
+  </p>
+</section>
+
+<section id="company">
+  <h2>About Marrakechpixim MPX</h2>
+  <div id="introScene">
+    <div>
+      <div class="intro-title">MARRAKECHPIXIM MPX</div>
+      <p id="introCaption">Connecting people, products and opportunities.</p>
+      <span class="gold">Discover · Connect · Grow</span>
+    </div>
+  </div>
+  <p>
+    Marrakechpixim MPX is presented here as a platform for discovering
+    services, exploring business categories and connecting customers
+    with companies.
+  </p>
+  <div class="row">
+    <button onclick="playIntroduction()">▶ Play English introduction</button>
+    <button class="secondary" onclick="stopIntroduction()">Stop</button>
+  </div>
+  <p class="muted">
+    The introduction uses browser text-to-speech where supported.
+    The visual above is an animated introduction panel, not a recorded
+    20-second MP4 video or a prerecorded company voice-over.
+  </p>
+  <hr>
+  <h3>Microsoft and Windows resources</h3>
+  <div class="grid">
+    <div class="card">
+      <h3>Microsoft</h3>
+      <p>Official Microsoft products, services and support.</p>
+      <a class="btn" href="https://www.microsoft.com/" target="_blank"
+         rel="noopener">Visit Microsoft</a>
+    </div>
+    <div class="card">
+      <h3>Windows</h3>
+      <p>Windows information, updates and official resources.</p>
+      <a class="btn" href="https://www.microsoft.com/windows"
+         target="_blank" rel="noopener">Explore Windows</a>
+    </div>
+  </div>
+</section>
+
+<section id="assistant">
+  <h2>MPX Technology Robot</h2>
+  <p>
+    Try the local demonstration assistant. A real AI assistant requires
+    a secure backend and an AI service connection.
+  </p>
+  <div class="chat-log" id="chatLog" aria-live="polite">
+    <div class="chat-message bot">
+      <strong>MPX Robot:</strong> Welcome to Marrakechpixim!
+      Ask about activities, prices, registration or payment information.
+    </div>
+  </div>
+  <form id="chatForm">
+    <label for="chatInput">Your message</label>
+    <input id="chatInput" maxlength="1000"
+           placeholder="Type your message…" required>
+    <button type="submit">Send message</button>
+  </form>
+  <p class="muted">
+    This demonstration generates local responses. Messages are not
+    sent to a live AI service or a support team.
+  </p>
+</section>
+
+<section id="payment">
+  <h2>Payment and customer registration</h2>
+  <p>
+    The two parallel dark-green panels below provide separate areas
+    for payment information and company/customer registration.
+  </p>
+
+  <div class="dark-panels">
+    <div class="dark-panel">
+      <h2>Payment information</h2>
+      <p>Choose a payment method to indicate your preference.</p>
+      <label for="paymentMethod">Preferred method</label>
+      <select id="paymentMethod">
+        <option value="">Select a method</option>
+        <option>Bank transfer</option>
+        <option>Card payment</option>
+        <option>PayPal</option>
+        <option>Cash / agreed offline payment</option>
+      </select>
+      <label for="paymentReference">Reference (optional)</label>
+      <input id="paymentReference" maxlength="100"
+             placeholder="Order or transaction reference">
+      <button onclick="savePaymentPreference()">Save preference</button>
+      <div id="paymentStatus" aria-live="polite"></div>
+      <p class="muted" style="color:#e2eee6">
+        This form does not collect card details or process payments.
+        A payment gateway must be integrated securely.
+      </p>
+    </div>
+
+    <div class="dark-panel" id="registration">
+      <h2>Customer / Company registration</h2>
+      <form id="registrationForm">
+        <label for="regType">Registration type</label>
+        <select id="regType" required>
+          <option value="">Choose type</option>
+          <option>Customer</option>
+          <option>Company</option>
+          <option>Service provider</option>
+          <option>Advertiser</option>
+        </select>
+        <label for="regName">Full name or company name</label>
+        <input id="regName" required maxlength="150">
+        <label for="regEmail">Email address</label>
+        <input id="regEmail" type="email" required maxlength="254">
+        <label for="regCountry">Country</label>
+        <input id="regCountry" maxlength="100">
+        <label for="regMessage">Description / enquiry</label>
+        <textarea id="regMessage" rows="3" maxlength="3000"></textarea>
+        <button type="submit">Submit registration</button>
+      </form>
+      <div id="registrationStatus" aria-live="polite"></div>
+      <p class="muted" style="color:#e2eee6">
+        Local demonstration only. Submissions are not delivered to
+        an administrator until a secure backend is configured.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="notifications">
+  <h2>Messages and notifications</h2>
+  <p id="notificationText" class="status" aria-live="polite">
+    MPX notification area is ready.
+  </p>
+  <button class="secondary" onclick="testNotification()">
+    Test local notification
+  </button>
+  <p class="muted">
+    Automatic server messages and email notifications require a backend,
+    verified sender, and appropriate privacy and consent controls.
+  </p>
+</section>
+</main>
+
+<footer>
+  <h2 style="color:white">MARRAKECHPIXIM <span class="gold">MPX</span></h2>
+  <p>Discover activities, products, services and opportunities.</p>
+  <p>
+    <a href="#dashboard">Home</a> ·
+    <a href="#activities">Activities</a> ·
+    <a href="#company">Company</a> ·
+    <a href="#contact">Contact</a>
+  </p>
+  <small style="color:#d5e3da">
+    MPX website implementation · October 25, 2026
+  </small>
+</footer>
+
+<script>
+"use strict";
+
+/*
+  MPX standalone implementation.
+  Barcode and QR libraries are loaded from public CDNs.
+  For production, host reviewed copies of dependencies yourself.
+*/
+
+const activityNames = [
+  "Technology and IT",
+  "Software and applications",
+  "Web design and development",
+  "Digital marketing",
+  "Advertising and media",
+  "Graphic design",
+  "Photography",
+  "Video production",
+  "Audio and music",
+  "Education and training",
+  "Consulting",
+  "Business services",
+  "Accounting and finance",
+  "Legal services",
+  "Real estate",
+  "Architecture",
+  "Construction",
+  "Home improvement",
+  "Interior design",
+  "Furniture and decor",
+  "Fashion and clothing",
+  "Beauty and cosmetics",
+  "Health and wellness",
+  "Fitness and sport",
+  "Tourism and travel",
+  "Hotels and accommodation",
+  "Restaurants and catering",
+  "Food and beverages",
+  "Agriculture",
+  "Manufacturing",
+  "Wholesale trade",
+  "Retail and e-commerce",
+  "Logistics and delivery",
+  "Transport and mobility",
+  "Automotive services",
+  "Industrial equipment",
+  "Electronics",
+  "Telecommunications",
+  "Energy and utilities",
+  "Environmental services",
+  "Cleaning services",
+  "Security services",
+  "Recruitment and HR",
+  "Events and entertainment",
+  "Arts and crafts",
+  "Publishing and printing",
+  "Translation and languages",
+  "Customer support",
+  "Import and export",
+  "International trade",
+  "Banking services",
+  "Insurance",
+  "Nonprofit organizations",
+  "Government resources",
+  "Scientific research",
+  "Satellite and geospatial",
+  "Robotics and automation",
+  "Business partnerships",
+  "Professional services",
+  "Other activities"
+];
+
+const activities = activityNames.map((name, index) => ({
+  number: index + 1,
+  name,
+  id: "MPX-ACT-" + String(index + 1).padStart(3, "0"),
+  barcodeValue: "MPXACT" + String(index + 1).padStart(6, "0")
+}));
+
+let barcodeLibraryReady = false;
+let qrLibraryReady = false;
+
+function loadScript(url) {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = url;
+    script.onload = resolve;
+    script.onerror = () => reject(new Error("Could not load " + url));
+    document.head.appendChild(script);
+  });
+}
+
+async function initializeCodeLibraries() {
+  const status = document.getElementById("barcodeStatus");
+  try {
+    await loadScript(
+      "https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"
+    );
+    barcodeLibraryReady = typeof window.JsBarcode === "function";
+  } catch (error) {
+    console.error(error);
+  }
+
+  try {
+    await loadScript(
+      "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+    );
+    qrLibraryReady = typeof window.QRCode === "function";
+  } catch (error) {
+    console.error(error);
+  }
+
+  if (barcodeLibraryReady && qrLibraryReady) {
+    status.textContent =
+      "Barcode and QR libraries loaded. Codes can now be generated.";
+  } else {
+    status.textContent =
+      "Some code libraries could not load. Check your internet connection " +
+      "or configure local copies of the libraries.";
+  }
+
+  renderActivities(activities);
+}
+
+function renderActivities(items) {
+  const grid = document.getElementById("activitiesGrid");
+
+  if (!items.length) {
+    grid.innerHTML = "<p>No matching activities found.</p>";
+    return;
+  }
+
+  grid.replaceChildren();
+
+  items.forEach(activity => {
+    const card = document.createElement("article");
+    card.className = "card";
+
+    const title = document.createElement("h3");
+    title.textContent =
+      String(activity.number).padStart(2, "0") + ". " + activity.name;
+
+    const id = document.createElement("p");
+    id.className = "activity-code";
+    id.textContent = activity.id;
+
+    const barcodeLabel = document.createElement("p");
+    barcodeLabel.className = "muted";
+    barcodeLabel.textContent = "Individual barcode";
+
+    const barcode = document.createElementNS(
+      "http://www.w3.org/2000/svg", "svg"
+    );
+    barcode.classList.add("code-visual");
+    barcode.setAttribute("role", "img");
+    barcode.setAttribute("aria-label", "Barcode " + activity.barcodeValue);
+
+    const qrLabel = document.createElement("p");
+    qrLabel.className = "muted";
+    qrLabel.textContent = "Individual QR code";
+
+    const qr = document.createElement("div");
+    qr.className = "qr";
+    qr.setAttribute("aria-label", "QR code for " + activity.id);
+
+    const value = document.createElement("p");
+    value.className = "activity-code";
+    value.textContent = activity.barcodeValue;
+
+    const download = document.createElement("button");
+    download.className = "secondary";
+    download.textContent = "Download barcode SVG";
+    download.addEventListener("click", () => {
+      if (!barcodeLibraryReady) {
+        alert("Barcode library unavailable. Check your internet connection.");
+        return;
+      }
+      downloadBarcode(barcode, activity);
+    });
+
+    card.append(title, id, barcodeLabel, barcode, value,
+                qrLabel, qr, download);
+    grid.appendChild(card);
+
+    if (barcodeLibraryReady) {
+      try {
+        JsBarcode(barcode, activity.barcodeValue, {
+          format: "CODE128",
+          displayValue: true,
+          lineColor: "#064e3b",
+          background: "#ffffff",
+          width: 1.5,
+          height: 48,
+          margin: 5,
+          fontSize: 11
+        });
+      } catch (error) {
+        console.error("Barcode generation failed:", error);
+      }
+    } else {
+      barcodeLabel.textContent =
+        "Barcode requires the JsBarcode library and an internet connection.";
+    }
+
+    if (qrLibraryReady) {
+      try {
+        new QRCode(qr, {
+          text: JSON.stringify({
+            platform: "Marrakechpixim MPX",
+            activityId: activity.id,
+            activity: activity.name
+          }),
+          width: 120,
+          height: 120,
+          colorDark: "#064e3b",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.M
+        });
+      } catch (error) {
+        console.error("QR generation failed:", error);
+      }
+    } else {
+      qr.textContent = "QR library unavailable";
+    }
+  });
+}
+
+function downloadBarcode(svg, activity) {
+  const markup = new XMLSerializer().serializeToString(svg);
+  const blob = new Blob([markup], { type: "image/svg+xml;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = activity.id + "-barcode.svg";
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function filterActivities() {
+  const query = document.getElementById("activitySearch")
+    .value.trim().toLowerCase();
+
+  renderActivities(activities.filter(activity =>
+    activity.name.toLowerCase().includes(query) ||
+    activity.id.toLowerCase().includes(query) ||
+    activity.barcodeValue.toLowerCase().includes(query)
+  ));
+}
+
+const priceAmounts = [2, 5, 7, 9, 13, 16, 20, 24, 30];
+
+function renderPrices() {
+  const grid = document.getElementById("priceGrid");
+  grid.replaceChildren();
+
+  priceAmounts.forEach(amount => {
+    const card = document.createElement("div");
+    card.className = "price";
+
+    const strong = document.createElement("strong");
+    strong.textContent = "$" + amount.toFixed(2);
+
+    const label = document.createElement("div");
+    label.textContent = "Reference amount";
+
+    card.append(strong, label);
+    grid.appendChild(card);
+  });
+}
+
+function calculateCommission() {
+  const amountInput = document.getElementById("transactionAmount");
+  const rateInput = document.getElementById("commissionRate");
+  const amount = Number(amountInput.value);
+  const rate = Number(rateInput.value);
+
+  document.getElementById("rateLabel").textContent = rate + "%";
+
+  if (!Number.isFinite(amount) || amount <= 30) {
+    document.getElementById("commissionValue").textContent = "—";
+    document.getElementById("netValue").textContent = "—";
+    return;
+  }
+
+  const commission = amount * rate / 100;
+  document.getElementById("commissionValue").textContent =
+    "$" + commission.toFixed(2);
+  document.getElementById("netValue").textContent =
+    "$" + (amount - commission).toFixed(2);
+}
+
+function lookupWeather() {
+  const city = document.getElementById("weatherCity").value.trim();
+  const result = document.getElementById("weatherResult");
+  result.replaceChildren();
+
+  if (!city) {
+    result.textContent = "Enter a city or location first.";
+    return;
+  }
+
+  result.append(
+    document.createTextNode(
+      "Live forecast API not configured. Search external weather resources for: "
+      + city + " "
+    )
+  );
+
+  const link = document.createElement("a");
+  link.href = "https://www.google.com/search?q=" +
+    encodeURIComponent(city + " weather forecast");
+  link.target = "_blank";
+  link.rel = "noopener";
+  link.textContent = "Search forecast";
+  result.appendChild(link);
+}
+
+let introTimer = null;
+
+function playIntroduction() {
+  stopIntroduction();
+
+  const scene = document.getElementById("introScene");
+  const caption = document.getElementById("introCaption");
+  scene.classList.add("playing");
+
+  const phrases = [
+    "Welcome to Marrakechpixim MPX.",
+    "Discover activities, products and services.",
+    "Connect with companies and business opportunities.",
+    "Marrakechpixim MPX. Discover, connect and grow."
+  ];
+
+  let index = 0;
+  caption.textContent = phrases[0];
+
+  introTimer = setInterval(() => {
+    index++;
+    if (index >= phrases.length) {
+      clearInterval(introTimer);
+      introTimer = null;
+      scene.classList.remove("playing");
+      return;
+    }
+    caption.textContent = phrases[index];
+  }, 5000);
+
+  if ("speechSynthesis" in window) {
+    const utterance = new SpeechSynthesisUtterance(
+      "Welcome to Marrakechpixim MPX. Discover activities, products " +
+      "and services. Connect with companies and business opportunities. " +
+      "Marrakechpixim. Discover, connect and grow."
+    );
+    utterance.lang = "en-US";
+    utterance.rate = 0.9;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utterance);
+  }
+}
+
+function stopIntroduction() {
+  if (introTimer !== null) {
+    clearInterval(introTimer);
+    introTimer = null;
+  }
+  const scene = document.getElementById("introScene");
+  if (scene) scene.classList.remove("playing");
+
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+  }
+}
+
+function addChatMessage(message, sender) {
+  const log = document.getElementById("chatLog");
+  const bubble = document.createElement("div");
+  bubble.className = "chat-message " + sender;
+
+  const strong = document.createElement("strong");
+  strong.textContent = sender === "user" ? "You: " : "MPX Robot: ";
+
+  bubble.append(strong, document.createTextNode(message));
+  log.appendChild(bubble);
+  log.scrollTop = log.scrollHeight;
+}
+
+function getDemoReply(message) {
+  const q = message.toLowerCase();
+
+  if (q.includes("price") || q.includes("commission")) {
+    return "The demo shows price references from $2 to $30 and an " +
+      "illustrative 1%-10% commission calculator for amounts above $30.";
+  }
+
+  if (q.includes("barcode") || q.includes("qr") || q.includes("activity")) {
+    return "The activity directory contains 60 entries, each with its own " +
+      "identifier and generated barcode/QR code when the libraries load.";
+  }
+
+  if (q.includes("payment")) {
+    return "The payment section is a demonstration. No payment is processed " +
+      "until a secure payment provider is connected.";
+  }
+
+  if (q.includes("register") || q.includes("company") || q.includes("form")) {
+    return "You can complete the registration form. In this demo, submissions " +
+      "remain in the current page and are not sent to a server.";
+  }
+
+  if (q.includes("weather") || q.includes("satellite")) {
+    return "Open the International section for NASA, EUMETSAT and weather " +
+      "resources. Live data still needs integration.";
+  }
+
+  return "Thank you for contacting Marrakechpixim MPX. This is a local " +
+    "assistant demo. Connect a secure AI backend to enable intelligent replies.";
+}
+
+document.getElementById("chatForm").addEventListener("submit", event => {
+  event.preventDefault();
+  const input = document.getElementById("chatInput");
+  const message = input.value.trim();
+
+  if (!message) return;
+
+  addChatMessage(message, "user");
+  addChatMessage(getDemoReply(message), "bot");
+  input.value = "";
+  input.focus();
+});
+
+function savePaymentPreference() {
+  const method = document.getElementById("paymentMethod").value;
+  const status = document.getElementById("paymentStatus");
+
+  status.className = "status";
+  status.textContent = method
+    ? "Preference selected: " + method +
+      ". This has not been sent or processed."
+    : "Please select a payment method.";
+}
+
+document.getElementById("registrationForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  const name = document.getElementById("regName").value.trim();
+  const email = document.getElementById("regEmail").value.trim();
+  const status = document.getElementById("registrationStatus");
+
+  if (!name || !email) {
+    status.className = "status error";
+    status.textContent = "Please complete the required fields.";
+    return;
+  }
+
+  status.className = "status ok";
+  status.textContent =
+    "Form validated locally. No registration has been transmitted. " +
+    "Connect a secure backend to receive submissions.";
+});
+
+function testNotification() {
+  const box = document.getElementById("notificationText");
+  box.className = "status ok";
+  box.textContent =
+    "MPX local notification test successful. This message is generated " +
+    "in your browser and was not emailed or sent to a server.";
+}
+
+renderPrices();
+calculateCommission();
+initializeCodeLibraries();
+</script>
+</body>
+</html>
