@@ -4128,222 +4128,244 @@ $('xis-ask').addEventListener('click',async()=>{const q=$('xis-question').value.
 .site-header .mpx-header-robot{flex:0 0 auto;margin:4px 12px 4px 0}
 .site-header .mpx-header-robot img{object-position:center}
 @media(max-width:650px){#mpx-volunteer-form .mpx-volunteer-pay-grid{grid-template-columns:1fr}.site-header .mpx-header-robot img{width:44px!important;height:44px!important}.site-header .mpx-header-robot span{font-size:12px}}
-/* MPX PAYMENT MODULE */
-.mpx-pay-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9998;
-  background: rgba(4, 38, 31, .94);
-  backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 15px;
-  overflow-y: auto;
-}
-
-.mpx-pay-card {
-  width: min(520px, 100%);
-  background: #fff;
-  border: 2px solid #c9a34a;
-  border-radius: 20px;
-  padding: 25px;
-  color: #172b23;
-  box-shadow: 0 15px 45px rgba(0,0,0,.25);
-}
-
-.mpx-pay-card h2 {
-  color: #075b46;
-  text-align: center;
-  margin-top: 0;
-}
-
-.mpx-pay-card label {
-  display: block;
-  font-weight: 800;
-  font-size: 13px;
-  margin: 12px 0 5px;
-}
-
-.mpx-pay-card select,
-.mpx-pay-card input {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #dbe5de;
-  border-radius: 9px;
-  background: white;
-  font: inherit;
-}
-
-.mpx-pay-method {
-  border: 2px solid #dbe5de;
-  border-radius: 12px;
-  padding: 12px;
-  margin-top: 12px;
-  text-align: center;
-  font-weight: 800;
-  background: #f7faf8;
-}
-
-.mpx-pay-method.active {
-  border-color: #075b46;
-  background: #fff8e8;
-}
-
-#mpxPayButton {
-  width: 100%;
-  margin-top: 18px;
-  min-height: 48px;
-}
-
-#mpxPayStatus {
-  font-size: 13px;
-  text-align: center;
-  margin-top: 12px;
-  color: #075b46;
-}
-
-.mpx-pay-note {
-  background: #f4f8f6;
-  border-left: 3px solid #c9a34a;
-  padding: 10px;
-  font-size: 12px;
-  margin-top: 12px;
-  border-radius: 8px;
-}
-
-@media(max-width:600px) {
-  .mpx-pay-card { padding: 18px; }
-}
 </style>
 <script id="mpx-volunteer-payment-ui-20261030">
 (()=>{const form=document.getElementById('mpx-volunteer-form');if(!form)return;const status=document.getElementById('mpx-vol-payment-status');const amount=document.getElementById('mpx-vol-contribution');form.querySelectorAll('input[name="mpx-volunteer-payment"]').forEach(r=>r.addEventListener('change',()=>{const labels={paypal:'PayPal Business selected. Secure provider checkout must be configured before a payment can be taken.',card:'Visa / Mastercard selected. An approved card processor must be connected before a payment can be taken.',interac:'Canadian Interac selected. Transfer instructions and confirmation remain subject to account verification.'};status.textContent=labels[r.value]+' Your volunteer registration remains free.';}));amount.addEventListener('input',()=>{if(Number(amount.value)>0&&!form.querySelector('input[name="mpx-volunteer-payment"]:checked'))status.textContent='Choose an optional contribution method, or clear the amount to submit a free volunteer application.';else if(!amount.value||Number(amount.value)===0)status.textContent='No contribution amount entered. You can submit your free volunteer application.';});})();
 </script>
-<!-- MPX PAYMENT GATE -->
-<div class="mpx-pay-overlay" id="mpxPaymentGate">
-  <div class="mpx-pay-card">
+<style>
+.mpx-payment {
+  max-width: 850px;
+  margin: 35px auto;
+  padding: 25px;
+  font-family: Arial, sans-serif;
+  color: #172b23;
+}
+.mpx-payment .mpx-card {
+  background: #fff;
+  border: 1px solid #e1e9e3;
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 30px rgba(7,91,70,.08);
+}
+.mpx-payment h2,
+.mpx-payment h3 {
+  color: #10243f;
+}
+.mpx-payment .mpx-group {
+  margin-bottom: 16px;
+}
+.mpx-payment label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 7px;
+  font-size: 14px;
+}
+.mpx-payment input,
+.mpx-payment select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #cbd8e8;
+  border-radius: 10px;
+  background: #fdfdfd;
+  font-size: 14px;
+}
+.mpx-payment button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 11px;
+  background: linear-gradient(135deg,#087fbd,#18b7b0);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.mpx-payment .mpx-status {
+  display: none;
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #eef8f2;
+  color: #075b46;
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+}
+.mpx-payment .mpx-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media(max-width:600px) {
+  .mpx-payment .mpx-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+</style>
 
-    <h2>Marrakechpixim Payment</h2>
-    <p style="text-align:center;color:#53665b;font-size:13px;">
-      Secure payment access
-    </p>
+<div class="mpx-payment">
 
-    <label for="mpxService">Choose your service</label>
-    <select id="mpxService">
-      <option value="3">Basic Access — $3.00</option>
-      <option value="5">Business Service — $5.00</option>
-      <option value="8">Premium Service — $8.00</option>
-      <option value="14">Professional Service — $14.00</option>
-      <option value="30">Premium Plus — $30.00</option>
-    </select>
+  <!-- STANDARD BROWSING PAYMENT -->
+  <section class="mpx-card" id="browsing-section">
+    <h2>Marrakechpixim Standard Browsing ($3.00)</h2>
+    <p>Complete the form to submit your browsing access request.</p>
 
-    <label for="mpxCustomerEmail">Email address</label>
-    <input
-      type="email"
-      id="mpxCustomerEmail"
-      placeholder="your@email.com"
-      autocomplete="email"
-      required
-    >
+    <form id="browsingForm">
+      <div class="mpx-row">
+        <div class="mpx-group">
+          <label for="browseName">Full Name:</label>
+          <input type="text" id="browseName" required>
+        </div>
 
-    <div class="mpx-pay-method active">
-      🅿️ PayPal Secure Checkout
-    </div>
+        <div class="mpx-group">
+          <label for="browseEmail">Email Address:</label>
+          <input type="email" id="browseEmail" required>
+        </div>
+      </div>
 
-    <div class="mpx-pay-note">
-      You will complete your payment through the official PayPal checkout.
-      Your card details will never be collected by Marrakechpixim.
-    </div>
+      <div class="mpx-group">
+        <label for="paymentMethod">Select Payment Method:</label>
+        <select id="paymentMethod" required>
+          <option value="paypal_secure">PayPal Secure Checkout</option>
+          <option value="paypal_business">PayPal Business</option>
+          <option value="interac">Interac Canada Transfer</option>
+          <option value="bbva">BBVA México Transfer</option>
+          <option value="card">Visa / Mastercard</option>
+        </select>
+      </div>
 
-    <div id="mpxPayButton"></div>
+      <div class="mpx-group">
+        <label>Browsing Fee:</label>
+        <input type="text" value="$3.00 USD" readonly>
+      </div>
 
-    <div id="mpxPayStatus" role="status"></div>
+      <button type="submit">Submit Browsing Request ($3.00)</button>
+      <div class="mpx-status" id="browsingStatus"></div>
+    </form>
+  </section>
 
-  </div>
-</div> 
-<!-- PayPal Official SDK -->
-<script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD&intent=capture"></script>
+  <!-- 65 FIELDS PRICING -->
+  <section class="mpx-card" id="pricing-section">
+    <h2>65-Field Pricing & Packages</h2>
+    <p>Choose your preferred service package.</p>
+
+    <form id="mpxPricingForm">
+      <div class="mpx-group">
+        <label for="serviceCategory">Select Service Package:</label>
+        <select id="serviceCategory" required>
+          <option value="3">Basic Category Inquiry — $3.00</option>
+          <option value="5" selected>Standard Business Support — $5.00</option>
+          <option value="8">Advanced Brokerage & Catalog Audit — $8.00</option>
+          <option value="14">Executive Priority Service — $14.00</option>
+          <option value="30">Premium Plus Global Ecosystem — $30.00+</option>
+        </select>
+      </div>
+
+      <div class="mpx-row">
+        <div class="mpx-group">
+          <label for="clientName">Full Name / Company:</label>
+          <input type="text" id="clientName" required>
+        </div>
+
+        <div class="mpx-group">
+          <label for="clientEmail">Email Address:</label>
+          <input type="email" id="clientEmail" required>
+        </div>
+      </div>
+
+      <button type="submit">
+        Submit Package Request ($<span id="tierAmount">5</span>.00)
+      </button>
+
+      <div class="mpx-status" id="pricingStatus"></div>
+    </form>
+  </section>
+
+  <!-- CONTACT INFORMATION -->
+  <section class="mpx-card">
+    <h3>Payment & Contact Information</h3>
+    <p>PayPal: laatour73@gmail.com</p>
+    <p>Business Email: Business.marrakechpixim@gmail.com</p>
+    <p>WhatsApp Italy: +39 329 982 5844</p>
+    <p>WhatsApp Morocco: +212 666 73 05 25</p>
+  </section>
+
+</div>
 
 <script>
 (function () {
-  const service = document.getElementById('mpxService');
-  const email = document.getElementById('mpxCustomerEmail');
-  const status = document.getElementById('mpxPayStatus');
-  const gate = document.getElementById('mpxPaymentGate');
+  const whatsappNumber = "393299825844";
 
-  if (!window.paypal) {
-    status.textContent = 'PayPal could not be loaded.';
-    return;
+  function submitRequest(formId, statusId, type, getDetails) {
+    const form = document.getElementById(formId);
+    if (!form) return;
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const details = getDetails();
+      const status = document.getElementById(statusId);
+
+      status.style.display = "block";
+      status.textContent = "Your request has been prepared. No payment has been confirmed.";
+
+      const message = [
+        "Marrakechpixim - New Payment Request",
+        "Type: " + type,
+        "Name: " + details.name,
+        "Email: " + details.email,
+        "Amount: $" + details.amount + " USD",
+        "Payment Method: " + details.method,
+        "Status: Request submitted - payment not confirmed."
+      ].join("\n");
+
+      const whatsappUrl =
+        "https://wa.me/" + whatsappNumber +
+        "?text=" + encodeURIComponent(message);
+
+      window.open(whatsappUrl, "_blank");
+    });
   }
 
-  paypal.Buttons({
+  const category = document.getElementById("serviceCategory");
+  const tierAmount = document.getElementById("tierAmount");
 
-    createOrder: async function () {
-      if (!email.value || !email.checkValidity()) {
-        email.reportValidity();
-        throw new Error('Please enter a valid email.');
-      }
+  if (category && tierAmount) {
+    category.addEventListener("change", function () {
+      tierAmount.textContent = this.value;
+    });
+  }
 
-      status.textContent = 'Preparing secure PayPal checkout...';
-
-      const response = await fetch('/api/paypal/create-order', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          service: service.value,
-          email: email.value
-        })
-      });
-
-      const data = await response.json();
-
-      if (!response.ok || !data.id) {
-        throw new Error(data.message || 'Could not create order.');
-      }
-
-      return data.id;
-    },
-
-    onApprove: async function (data) {
-      status.textContent = 'Verifying payment with PayPal...';
-
-      const response = await fetch('/api/paypal/capture-order', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          orderID: data.orderID
-        })
-      });
-
-      const result = await response.json();
-
-      if (!response.ok || result.status !== 'COMPLETED') {
-        status.textContent = 'Payment not verified. Access remains locked.';
-        return;
-      }
-
-      status.textContent = 'Payment verified successfully!';
-
-      // Unlock only after server-side confirmation.
-      gate.style.display = 'none';
-
-      const main = document.getElementById('mainPlatformContent');
-      if (main) {
-        main.classList.remove('site-content-locked');
-      }
-    },
-
-    onCancel: function () {
-      status.textContent = 'Payment cancelled.';
-    },
-
-    onError: function (error) {
-      console.error('PayPal error:', error);
-      status.textContent = 'Payment could not be completed. Please try again.';
+  submitRequest(
+    "browsingForm",
+    "browsingStatus",
+    "Standard Browsing",
+    function () {
+      return {
+        name: document.getElementById("browseName").value,
+        email: document.getElementById("browseEmail").value,
+        amount: "3.00",
+        method: document.getElementById("paymentMethod").value
+      };
     }
+  );
 
-  }).render('#mpxPayButton');
-
+  submitRequest(
+    "mpxPricingForm",
+    "pricingStatus",
+    "65-Field Package",
+    function () {
+      return {
+        name: document.getElementById("clientName").value,
+        email: document.getElementById("clientEmail").value,
+        amount: document.getElementById("serviceCategory").value,
+        method: "Selected package - contact for payment"
+      };
+    }
+  );
 })();
 </script>
+    
 </body></html>
