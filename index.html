@@ -4128,8 +4128,222 @@ $('xis-ask').addEventListener('click',async()=>{const q=$('xis-question').value.
 .site-header .mpx-header-robot{flex:0 0 auto;margin:4px 12px 4px 0}
 .site-header .mpx-header-robot img{object-position:center}
 @media(max-width:650px){#mpx-volunteer-form .mpx-volunteer-pay-grid{grid-template-columns:1fr}.site-header .mpx-header-robot img{width:44px!important;height:44px!important}.site-header .mpx-header-robot span{font-size:12px}}
+/* MPX PAYMENT MODULE */
+.mpx-pay-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: rgba(4, 38, 31, .94);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.mpx-pay-card {
+  width: min(520px, 100%);
+  background: #fff;
+  border: 2px solid #c9a34a;
+  border-radius: 20px;
+  padding: 25px;
+  color: #172b23;
+  box-shadow: 0 15px 45px rgba(0,0,0,.25);
+}
+
+.mpx-pay-card h2 {
+  color: #075b46;
+  text-align: center;
+  margin-top: 0;
+}
+
+.mpx-pay-card label {
+  display: block;
+  font-weight: 800;
+  font-size: 13px;
+  margin: 12px 0 5px;
+}
+
+.mpx-pay-card select,
+.mpx-pay-card input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dbe5de;
+  border-radius: 9px;
+  background: white;
+  font: inherit;
+}
+
+.mpx-pay-method {
+  border: 2px solid #dbe5de;
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 12px;
+  text-align: center;
+  font-weight: 800;
+  background: #f7faf8;
+}
+
+.mpx-pay-method.active {
+  border-color: #075b46;
+  background: #fff8e8;
+}
+
+#mpxPayButton {
+  width: 100%;
+  margin-top: 18px;
+  min-height: 48px;
+}
+
+#mpxPayStatus {
+  font-size: 13px;
+  text-align: center;
+  margin-top: 12px;
+  color: #075b46;
+}
+
+.mpx-pay-note {
+  background: #f4f8f6;
+  border-left: 3px solid #c9a34a;
+  padding: 10px;
+  font-size: 12px;
+  margin-top: 12px;
+  border-radius: 8px;
+}
+
+@media(max-width:600px) {
+  .mpx-pay-card { padding: 18px; }
+}
 </style>
 <script id="mpx-volunteer-payment-ui-20261030">
 (()=>{const form=document.getElementById('mpx-volunteer-form');if(!form)return;const status=document.getElementById('mpx-vol-payment-status');const amount=document.getElementById('mpx-vol-contribution');form.querySelectorAll('input[name="mpx-volunteer-payment"]').forEach(r=>r.addEventListener('change',()=>{const labels={paypal:'PayPal Business selected. Secure provider checkout must be configured before a payment can be taken.',card:'Visa / Mastercard selected. An approved card processor must be connected before a payment can be taken.',interac:'Canadian Interac selected. Transfer instructions and confirmation remain subject to account verification.'};status.textContent=labels[r.value]+' Your volunteer registration remains free.';}));amount.addEventListener('input',()=>{if(Number(amount.value)>0&&!form.querySelector('input[name="mpx-volunteer-payment"]:checked'))status.textContent='Choose an optional contribution method, or clear the amount to submit a free volunteer application.';else if(!amount.value||Number(amount.value)===0)status.textContent='No contribution amount entered. You can submit your free volunteer application.';});})();
+</script>
+<!-- MPX PAYMENT GATE -->
+<div class="mpx-pay-overlay" id="mpxPaymentGate">
+  <div class="mpx-pay-card">
+
+    <h2>Marrakechpixim Payment</h2>
+    <p style="text-align:center;color:#53665b;font-size:13px;">
+      Secure payment access
+    </p>
+
+    <label for="mpxService">Choose your service</label>
+    <select id="mpxService">
+      <option value="3">Basic Access — $3.00</option>
+      <option value="5">Business Service — $5.00</option>
+      <option value="8">Premium Service — $8.00</option>
+      <option value="14">Professional Service — $14.00</option>
+      <option value="30">Premium Plus — $30.00</option>
+    </select>
+
+    <label for="mpxCustomerEmail">Email address</label>
+    <input
+      type="email"
+      id="mpxCustomerEmail"
+      placeholder="your@email.com"
+      autocomplete="email"
+      required
+    >
+
+    <div class="mpx-pay-method active">
+      🅿️ PayPal Secure Checkout
+    </div>
+
+    <div class="mpx-pay-note">
+      You will complete your payment through the official PayPal checkout.
+      Your card details will never be collected by Marrakechpixim.
+    </div>
+
+    <div id="mpxPayButton"></div>
+
+    <div id="mpxPayStatus" role="status"></div>
+
+  </div>
+</div> 
+<!-- PayPal Official SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD&intent=capture"></script>
+
+<script>
+(function () {
+  const service = document.getElementById('mpxService');
+  const email = document.getElementById('mpxCustomerEmail');
+  const status = document.getElementById('mpxPayStatus');
+  const gate = document.getElementById('mpxPaymentGate');
+
+  if (!window.paypal) {
+    status.textContent = 'PayPal could not be loaded.';
+    return;
+  }
+
+  paypal.Buttons({
+
+    createOrder: async function () {
+      if (!email.value || !email.checkValidity()) {
+        email.reportValidity();
+        throw new Error('Please enter a valid email.');
+      }
+
+      status.textContent = 'Preparing secure PayPal checkout...';
+
+      const response = await fetch('/api/paypal/create-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          service: service.value,
+          email: email.value
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.id) {
+        throw new Error(data.message || 'Could not create order.');
+      }
+
+      return data.id;
+    },
+
+    onApprove: async function (data) {
+      status.textContent = 'Verifying payment with PayPal...';
+
+      const response = await fetch('/api/paypal/capture-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          orderID: data.orderID
+        })
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || result.status !== 'COMPLETED') {
+        status.textContent = 'Payment not verified. Access remains locked.';
+        return;
+      }
+
+      status.textContent = 'Payment verified successfully!';
+
+      // Unlock only after server-side confirmation.
+      gate.style.display = 'none';
+
+      const main = document.getElementById('mainPlatformContent');
+      if (main) {
+        main.classList.remove('site-content-locked');
+      }
+    },
+
+    onCancel: function () {
+      status.textContent = 'Payment cancelled.';
+    },
+
+    onError: function (error) {
+      console.error('PayPal error:', error);
+      status.textContent = 'Payment could not be completed. Please try again.';
+    }
+
+  }).render('#mpxPayButton');
+
+})();
 </script>
 </body></html>
