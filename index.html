@@ -2724,4 +2724,138 @@ $('xis-ask').addEventListener('click',async()=>{const q=$('xis-question').value.
  start?.addEventListener('click',startCamera);stop?.addEventListener('click',stopCamera);$('mpxQrOpen')?.addEventListener('click',()=>{const v=$('mpxQrManual').value.trim();if(v)showResult(v);else status.textContent='Paste QR content first.';});$('mpxQrFile')?.addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;if(!('BarcodeDetector'in window)&&!window.jsQR){status.textContent='QR decoder could not load. Paste the QR text manually.';return;}try{const bmp=await createImageBitmap(f);let value='';if('BarcodeDetector'in window){const d=new BarcodeDetector({formats:['qr_code']});const codes=await d.detect(bmp);if(codes.length)value=codes[0].rawValue;}else{canvas.width=bmp.width;canvas.height=bmp.height;const cx=canvas.getContext('2d');cx.drawImage(bmp,0,0);const data=cx.getImageData(0,0,canvas.width,canvas.height);const code=window.jsQR(data.data,data.width,data.height,{inversionAttempts:'attemptBoth'});if(code)value=code.data;}if(value){showResult(value);status.textContent='QR code detected from image.';}else status.textContent='No QR code found in this image.';}catch(err){status.textContent='Could not read this image. Try a clearer picture.';}});window.addEventListener('pagehide',stopCamera);
 })();
 </script>
+
+    <!-- =====================================
+     MARRAKECHPIXIM - PAYMENT CENTER
+===================================== -->
+
+<style>
+#mpx-payment {
+  width: min(94%, 850px);
+  margin: 18px auto;
+  padding: 22px;
+  box-sizing: border-box;
+  background: linear-gradient(135deg,#062e29,#075b46);
+  color: white;
+  border-radius: 16px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+#mpx-payment h2 { margin-top: 0; }
+.mpx-plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(170px,1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+.mpx-plan {
+  background: white;
+  color: #173d35;
+  border-radius: 12px;
+  padding: 16px 10px;
+}
+.mpx-plan strong {
+  display: block;
+  font-size: 27px;
+  margin: 10px;
+}
+.mpx-plan button {
+  background: #087b59;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  padding: 12px;
+  width: 100%;
+  cursor: pointer;
+  font-weight: bold;
+}
+#mpx-payment-status {
+  margin-top: 15px;
+  font-size: 14px;
+}
+</style>
+
+<section id="mpx-payment">
+  <h2>🌍 Marrakechpixim Payment Center</h2>
+  <p>Secure access to our global platform</p>
+
+  <div class="mpx-plans">
+
+    <div class="mpx-plan">
+      <h3>Initial Access</h3>
+      <strong>$10</strong>
+      <p>First 20 minutes</p>
+      <button onclick="MPX_PAY('entry')">
+        Pay $10
+      </button>
+    </div>
+
+    <div class="mpx-plan">
+      <h3>First Extension</h3>
+      <strong>$4</strong>
+      <p>Access until minute 90</p>
+      <button onclick="MPX_PAY('extension20')">
+        Pay $4
+      </button>
+    </div>
+
+    <div class="mpx-plan">
+      <h3>90-Minute Extension</h3>
+      <strong>$6</strong>
+      <p>Additional 90 minutes</p>
+      <button onclick="MPX_PAY('extension90')">
+        Pay $6
+      </button>
+    </div>
+
+  </div>
+
+  <div id="mpx-payment-status">
+    Secure payment powered by PayPal.
+  </div>
+</section>
+
+<script>
+async function MPX_PAY(plan) {
+  const status = document.getElementById(
+    'mpx-payment-status'
+  );
+
+  status.textContent = 'Connecting to secure payment...';
+
+  try {
+    const key = 'mpx_' + crypto.randomUUID();
+
+    const response = await fetch(
+      '/api/browse/create-checkout',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Idempotency-Key': key
+        },
+        body: JSON.stringify({
+          method: 'paypal',
+          plan: plan
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok || !data.success || !data.checkoutUrl) {
+      throw new Error('Payment service unavailable');
+    }
+
+    window.location.href = data.checkoutUrl;
+
+  } catch (error) {
+    status.textContent =
+      'Payment could not be started. Please try again.';
+    console.error(error);
+  }
+}
+</script>
+
+<!-- END MPX PAYMENT CENTER -->
 </body></html>
