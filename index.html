@@ -2827,6 +2827,11 @@ $('xis-ask').addEventListener('click',async()=>{const q=$('xis-question').value.
 
     <label>Payment method</label>
     <select id="mpx-product-method">
+  <option value="paypal">PayPal</option>
+  <option value="card">Visa / Mastercard / American Express</option>
+  <option value="apple_pay">Apple Pay</option>
+  <option value="google_pay">Google Pay</option>
+</select>
       <option value="paypal">PayPal</option>
     </select>
 
@@ -2895,6 +2900,81 @@ function MPX_CUSTOM_PAYMENT() {
     'Custom purchases require a separately configured and verified checkout.';
 }
 </script>
+    <!-- MPX PAYMENT REQUIRED NOTICE -->
+<div id="mpx-payment-required" style="
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:9999999;
+  background:rgba(0,0,0,.88);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  font-family:Arial,sans-serif;
+">
+  <div style="
+    background:white;
+    color:#173d35;
+    padding:25px;
+    border-radius:16px;
+    max-width:390px;
+    width:100%;
+    text-align:center;
+  ">
+    <h2>Marrakechpixim</h2>
+    <h3 id="mpx-payment-title">Payment Required</h3>
+    <p id="mpx-payment-message"></p>
+    <strong id="mpx-payment-amount"
+      style="font-size:32px"></strong>
+    <button id="mpx-payment-button"
+      style="display:block;width:100%;margin-top:20px;
+      padding:14px;background:#087b59;color:white;
+      border:0;border-radius:8px;font-weight:bold;">
+      Pay Now
+    </button>
+  </div>
+</div>
+
+<script>
+window.MPX_REQUIRE_PAYMENT = function(stage) {
+  const plans = {
+    entry: {
+      amount: "$3",
+      message: "Pay $3 to access the platform for 20 minutes.",
+      plan: "entry"
+    },
+    extension20: {
+      amount: "$4",
+      message: "Pay $4 to continue until minute 90.",
+      plan: "extension20"
+    },
+    extension90: {
+      amount: "$6",
+      message: "Pay $6 for 90 additional minutes.",
+      plan: "extension90"
+    }
+  };
+
+  const item = plans[stage];
+  if (!item) return;
+
+  document.getElementById("mpx-payment-message").textContent =
+    item.message;
+
+  document.getElementById("mpx-payment-amount").textContent =
+    item.amount;
+
+  document.getElementById("mpx-payment-required").style.display =
+    "flex";
+
+  document.getElementById("mpx-payment-button").onclick = () => {
+    if (typeof MPX_PAYMENT === "function") {
+      MPX_PAYMENT(item.plan);
+    }
+  };
+};
+</script>
+<!-- END MPX PAYMENT REQUIRED NOTICE -->
 <!-- END MARRAKECHPIXIM PAYMENT CENTER -->
     
 </body></html>
