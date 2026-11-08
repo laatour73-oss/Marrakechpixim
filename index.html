@@ -2724,130 +2724,147 @@ $('xis-ask').addEventListener('click',async()=>{const q=$('xis-question').value.
  start?.addEventListener('click',startCamera);stop?.addEventListener('click',stopCamera);$('mpxQrOpen')?.addEventListener('click',()=>{const v=$('mpxQrManual').value.trim();if(v)showResult(v);else status.textContent='Paste QR content first.';});$('mpxQrFile')?.addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;if(!('BarcodeDetector'in window)&&!window.jsQR){status.textContent='QR decoder could not load. Paste the QR text manually.';return;}try{const bmp=await createImageBitmap(f);let value='';if('BarcodeDetector'in window){const d=new BarcodeDetector({formats:['qr_code']});const codes=await d.detect(bmp);if(codes.length)value=codes[0].rawValue;}else{canvas.width=bmp.width;canvas.height=bmp.height;const cx=canvas.getContext('2d');cx.drawImage(bmp,0,0);const data=cx.getImageData(0,0,canvas.width,canvas.height);const code=window.jsQR(data.data,data.width,data.height,{inversionAttempts:'attemptBoth'});if(code)value=code.data;}if(value){showResult(value);status.textContent='QR code detected from image.';}else status.textContent='No QR code found in this image.';}catch(err){status.textContent='Could not read this image. Try a clearer picture.';}});window.addEventListener('pagehide',stopCamera);
 })();
 </script>
-
-    <!-- =====================================
-     MARRAKECHPIXIM - PAYMENT CENTER
-===================================== -->
-
+<!-- MARRAKECHPIXIM - PAYMENT CENTER -->
 <style>
-#mpx-payment {
-  width: min(94%, 850px);
-  margin: 18px auto;
+#mpx-pay-center {
+  max-width: 950px;
+  margin: 20px auto;
   padding: 22px;
-  box-sizing: border-box;
-  background: linear-gradient(135deg,#062e29,#075b46);
-  color: white;
   border-radius: 16px;
-  font-family: Arial, sans-serif;
-  text-align: center;
-}
-#mpx-payment h2 { margin-top: 0; }
-.mpx-plans {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(170px,1fr));
-  gap: 12px;
-  margin-top: 18px;
-}
-.mpx-plan {
-  background: white;
-  color: #173d35;
-  border-radius: 12px;
-  padding: 16px 10px;
-}
-.mpx-plan strong {
-  display: block;
-  font-size: 27px;
-  margin: 10px;
-}
-.mpx-plan button {
-  background: #087b59;
+  background: linear-gradient(135deg,#062e29,#08785a);
   color: white;
-  border: 0;
-  border-radius: 8px;
-  padding: 12px;
-  width: 100%;
-  cursor: pointer;
-  font-weight: bold;
+  font-family: Arial,sans-serif;
+  text-align: center;
+  box-sizing: border-box;
 }
-#mpx-payment-status {
-  margin-top: 15px;
-  font-size: 14px;
+#mpx-pay-center * {box-sizing:border-box}
+.mpx-pay-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:12px;
+}
+.mpx-pay-card {
+  background:white;
+  color:#173d35;
+  border-radius:12px;
+  padding:18px 12px;
+}
+.mpx-pay-card strong {
+  display:block;
+  font-size:28px;
+  margin:12px;
+}
+#mpx-pay-center input,
+#mpx-pay-center select {
+  width:100%;
+  padding:12px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  margin:7px 0;
+}
+#mpx-pay-center button {
+  width:100%;
+  padding:12px;
+  border:0;
+  border-radius:8px;
+  background:#087b59;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+.mpx-custom-payment {
+  background:white;
+  color:#173d35;
+  padding:18px;
+  border-radius:12px;
+  margin-top:18px;
+  text-align:left;
+}
+#mpx-pay-status {
+  margin-top:15px;
+  overflow-wrap:anywhere;
 }
 </style>
 
-<section id="mpx-payment">
-  <h2>🌍 Marrakechpixim Payment Center</h2>
-  <p>Secure access to our global platform</p>
+<section id="mpx-pay-center">
+  <h2>🌍 MARRAKECHPIXIM PAYMENT CENTER</h2>
+  <p>Secure payments for platform access, services and products.</p>
 
-  <div class="mpx-plans">
+  <h3>Platform Access</h3>
 
-    <div class="mpx-plan">
+  <div class="mpx-pay-grid">
+    <div class="mpx-pay-card">
       <h3>Initial Access</h3>
-      <strong>$10</strong>
-      <p>First 20 minutes</p>
-      <button onclick="MPX_PAY('entry')">
-        Pay $10
-      </button>
+      <strong>$3</strong>
+      <p>20 minutes</p>
+      <button onclick="MPX_PAYMENT('entry')">Pay $3</button>
     </div>
 
-    <div class="mpx-plan">
-      <h3>First Extension</h3>
+    <div class="mpx-pay-card">
+      <h3>Extension</h3>
       <strong>$4</strong>
-      <p>Access until minute 90</p>
-      <button onclick="MPX_PAY('extension20')">
-        Pay $4
-      </button>
+      <p>Until minute 90</p>
+      <button onclick="MPX_PAYMENT('extension20')">Pay $4</button>
     </div>
 
-    <div class="mpx-plan">
-      <h3>90-Minute Extension</h3>
+    <div class="mpx-pay-card">
+      <h3>90 Extra Minutes</h3>
       <strong>$6</strong>
       <p>Additional 90 minutes</p>
-      <button onclick="MPX_PAY('extension90')">
-        Pay $6
-      </button>
+      <button onclick="MPX_PAYMENT('extension90')">Pay $6</button>
     </div>
-
   </div>
 
-  <div id="mpx-payment-status">
-    Secure payment powered by PayPal.
+  <div class="mpx-custom-payment">
+    <h3>Pay for a Service or Product</h3>
+    <label>Service or product name</label>
+    <input id="mpx-product-name" type="text"
+      placeholder="Enter service or product name">
+
+    <label>Amount (USD)</label>
+    <input id="mpx-product-amount" type="number"
+      min="0.01" step="0.01" placeholder="Enter amount">
+
+    <label>Payment method</label>
+    <select id="mpx-product-method">
+      <option value="paypal">PayPal</option>
+    </select>
+
+    <button onclick="MPX_CUSTOM_PAYMENT()">
+      Continue to Payment
+    </button>
+  </div>
+
+  <div id="mpx-pay-status">
+    Secure payment center.
   </div>
 </section>
 
 <script>
-async function MPX_PAY(plan) {
-  const status = document.getElementById(
-    'mpx-payment-status'
-  );
-
-  status.textContent = 'Connecting to secure payment...';
+async function MPX_SEND_PAYMENT(payload) {
+  const status = document.getElementById('mpx-pay-status');
+  status.textContent = 'Connecting to payment service...';
 
   try {
-    const key = 'mpx_' + crypto.randomUUID();
-
     const response = await fetch(
       '/api/browse/create-checkout',
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Idempotency-Key': key
+          'Idempotency-Key': 'mpx_' + crypto.randomUUID()
         },
-        body: JSON.stringify({
-          method: 'paypal',
-          plan: plan
-        })
+        body: JSON.stringify(payload)
       }
     );
 
     const data = await response.json();
 
     if (!response.ok || !data.success || !data.checkoutUrl) {
-      throw new Error('Payment service unavailable');
+      throw new Error(data.error || 'Payment unavailable');
     }
 
-    window.location.href = data.checkoutUrl;
+    window.location.assign(data.checkoutUrl);
 
   } catch (error) {
     status.textContent =
@@ -2855,7 +2872,29 @@ async function MPX_PAY(plan) {
     console.error(error);
   }
 }
-</script>
 
-<!-- END MPX PAYMENT CENTER -->
+function MPX_PAYMENT(plan) {
+  MPX_SEND_PAYMENT({
+    method: 'paypal',
+    plan: plan
+  });
+}
+
+function MPX_CUSTOM_PAYMENT() {
+  const name = document.getElementById('mpx-product-name').value.trim();
+  const amount = document.getElementById('mpx-product-amount').value;
+
+  if (!name || !amount || Number(amount) <= 0 ||
+      !Number.isFinite(Number(amount))) {
+    document.getElementById('mpx-pay-status').textContent =
+      'Please enter a valid product name and amount.';
+    return;
+  }
+
+  document.getElementById('mpx-pay-status').textContent =
+    'Custom purchases require a separately configured and verified checkout.';
+}
+</script>
+<!-- END MARRAKECHPIXIM PAYMENT CENTER -->
+    
 </body></html>
