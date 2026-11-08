@@ -4132,244 +4132,518 @@ $('xis-ask').addEventListener('click',async()=>{const q=$('xis-question').value.
 <script id="mpx-volunteer-payment-ui-20261030">
 (()=>{const form=document.getElementById('mpx-volunteer-form');if(!form)return;const status=document.getElementById('mpx-vol-payment-status');const amount=document.getElementById('mpx-vol-contribution');form.querySelectorAll('input[name="mpx-volunteer-payment"]').forEach(r=>r.addEventListener('change',()=>{const labels={paypal:'PayPal Business selected. Secure provider checkout must be configured before a payment can be taken.',card:'Visa / Mastercard selected. An approved card processor must be connected before a payment can be taken.',interac:'Canadian Interac selected. Transfer instructions and confirmation remain subject to account verification.'};status.textContent=labels[r.value]+' Your volunteer registration remains free.';}));amount.addEventListener('input',()=>{if(Number(amount.value)>0&&!form.querySelector('input[name="mpx-volunteer-payment"]:checked'))status.textContent='Choose an optional contribution method, or clear the amount to submit a free volunteer application.';else if(!amount.value||Number(amount.value)===0)status.textContent='No contribution amount entered. You can submit your free volunteer application.';});})();
 </script>
+
+    <!-- MARRAKECHPIXIM XSTAR - CLEAN HTML INSERTION -->
+
 <style>
-.mpx-payment {
-  max-width: 850px;
-  margin: 35px auto;
-  padding: 25px;
-  font-family: Arial, sans-serif;
-  color: #172b23;
-}
-.mpx-payment .mpx-card {
-  background: #fff;
-  border: 1px solid #e1e9e3;
-  border-radius: 20px;
-  padding: 25px;
-  margin-bottom: 25px;
-  box-shadow: 0 10px 30px rgba(7,91,70,.08);
-}
-.mpx-payment h2,
-.mpx-payment h3 {
-  color: #10243f;
-}
-.mpx-payment .mpx-group {
-  margin-bottom: 16px;
-}
-.mpx-payment label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 7px;
-  font-size: 14px;
-}
-.mpx-payment input,
-.mpx-payment select {
-  width: 100%;
-  padding: 13px;
-  border: 1px solid #cbd8e8;
-  border-radius: 10px;
-  background: #fdfdfd;
-  font-size: 14px;
-}
-.mpx-payment button {
-  width: 100%;
-  padding: 15px;
-  border: none;
-  border-radius: 11px;
-  background: linear-gradient(135deg,#087fbd,#18b7b0);
-  color: white;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-}
-.mpx-payment .mpx-status {
-  display: none;
-  margin-top: 14px;
-  padding: 12px;
-  border-radius: 10px;
-  background: #eef8f2;
-  color: #075b46;
-  text-align: center;
-  font-size: 13px;
-  font-weight: bold;
-}
-.mpx-payment .mpx-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-@media(max-width:600px) {
-  .mpx-payment .mpx-row {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
+.mpx{--green:#075b46;--dark:#043d2f;--navy:#10243f;--blue:#087fbd;--teal:#18b7b0;--gold:#c9a34a;--ink:#172b23;--muted:#607268;--line:#e1e9e3;font-family:"DM Sans",Arial,sans-serif;color:var(--ink);line-height:1.6}
+.mpx *{box-sizing:border-box}
+.mpx .container{width:min(1240px,calc(100% - 32px));margin:auto}
+.mpx .section{padding:40px 0}
+.mpx .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.mpx .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.mpx .card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:25px;box-shadow:0 10px 30px #075b4610}
+.mpx h2,.mpx h3,.mpx h4{color:var(--navy);line-height:1.3}
+.mpx .muted{color:var(--muted)}
+.mpx .btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:11px;padding:12px 18px;font-weight:800;cursor:pointer;text-decoration:none}
+.mpx .primary{background:linear-gradient(135deg,var(--blue),var(--teal));color:white}
+.mpx .paypal{background:#0070ba;color:white}
+.mpx .green{background:#238636;color:white}
+.mpx .field{margin-bottom:14px}
+.mpx .field label{display:block;font-size:13px;font-weight:800;margin-bottom:6px;color:var(--navy)}
+.mpx input,.mpx select,.mpx textarea{width:100%;padding:12px;border:1px solid #cbd8e8;border-radius:10px;background:#fff;font:inherit;font-size:14px}
+.mpx .formrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mpx .notice{padding:14px;border-radius:12px;background:#fff8e8;border:1px solid var(--gold);font-size:13px}
+.mpx .topbar{background:#05241b;color:#e2f5ee;padding:10px;font-size:13px}
+.mpx .ticker{background:#061c14;color:#e2f5ee;padding:12px;overflow:hidden;font-weight:700;font-size:13px}
+.mpx .ticker span{margin-right:35px}
+.mpx .hero-box{background:linear-gradient(135deg,var(--navy),var(--green));color:white;border-radius:20px;padding:30px}
+.mpx .hero-box h3{color:var(--gold)}
+.mpx .barcode-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;max-height:400px;overflow:auto;padding:10px;background:#fafdfc;border:1px solid var(--line);border-radius:14px}
+.mpx .barcode-item{display:flex;justify-content:space-between;gap:8px;background:white;padding:11px;border:1px solid var(--line);border-radius:9px;font-size:12px}
+.mpx .barcode-code{font-family:monospace;color:var(--green);font-weight:800}
+.mpx .dark-card{background:#161b22;color:white;border:1px solid #30363d;border-radius:18px;padding:22px}
+.mpx .dark-card h3,.mpx .dark-card h4{color:var(--gold)}
+.mpx .finance{background:linear-gradient(135deg,var(--navy),#173b63);color:white;border-radius:20px;padding:25px}
+.mpx .finance h3{color:var(--gold)}
+.mpx .stat{background:#ffffff14;padding:15px;border-radius:12px;text-align:center;overflow-wrap:anywhere}
+.mpx .status{display:none;margin-top:12px;padding:12px;border-radius:10px;background:#eef7f4;color:var(--green);font-size:13px;font-weight:700}
+.mpx .section-heading{text-align:center;max-width:800px;margin:0 auto 30px}
+.mpx .section-heading p{color:var(--muted)}
+@media(max-width:760px){
+ .mpx .grid2,.mpx .grid3,.mpx .formrow{grid-template-columns:1fr}
+ .mpx .card{padding:18px}
 }
 </style>
 
-<div class="mpx-payment">
+<div class="mpx">
 
-  <!-- STANDARD BROWSING PAYMENT -->
-  <section class="mpx-card" id="browsing-section">
-    <h2>Marrakechpixim Standard Browsing ($3.00)</h2>
-    <p>Complete the form to submit your browsing access request.</p>
+<!-- PUBLIC INFORMATION -->
+<div class="topbar">
+  <strong>🌤️ Marrakechpixim Public Information Hub</strong>
+  <p>Marrakech | Casablanca | Rome — Public information and platform services.</p>
+</div>
 
-    <form id="browsingForm">
-      <div class="mpx-row">
-        <div class="mpx-group">
-          <label for="browseName">Full Name:</label>
-          <input type="text" id="browseName" required>
-        </div>
+<div class="ticker">
+  <span>🌟 Marrakechpixim Global Ecosystem</span>
+  <span>📦 Commercial Brokerage & 65 Barcode Fields</span>
+  <span>🤝 Humanitarian Solidarity & Animal Welfare</span>
+  <span>⚖️ Equal Opportunities Worldwide</span>
+  <span>💳 International Payment Options</span>
+</div>
 
-        <div class="mpx-group">
-          <label for="browseEmail">Email Address:</label>
-          <input type="email" id="browseEmail" required>
-        </div>
-      </div>
+<!-- HERO -->
+<section class="section container">
+ <div class="grid2" style="align-items:center">
+  <div>
+   <span style="color:var(--green);font-weight:800">MARRAKECHPIXIM XSTAR</span>
+   <h2 style="font-size:36px">Connecting Businesses, Customers & Humanitarian Solidarity.</h2>
+   <p class="muted">An international commercial platform connecting customers, suppliers, services and humanitarian initiatives.</p>
+  </div>
+  <div class="hero-box">
+   <h3>🛡️ Secure Financial Ecosystem</h3>
+   <p>Payment requests are subject to confirmation through the selected payment provider.</p>
+  </div>
+ </div>
+</section>
 
-      <div class="mpx-group">
-        <label for="paymentMethod">Select Payment Method:</label>
-        <select id="paymentMethod" required>
-          <option value="paypal_secure">PayPal Secure Checkout</option>
-          <option value="paypal_business">PayPal Business</option>
-          <option value="interac">Interac Canada Transfer</option>
-          <option value="bbva">BBVA México Transfer</option>
-          <option value="card">Visa / Mastercard</option>
-        </select>
-      </div>
+<!-- FORM 1: PAYMENT REQUEST -->
+<section class="section container" id="mpx-payment">
+ <div class="section-heading">
+  <h2>International Payment Center</h2>
+  <p>Choose a payment method and submit your transaction reference for verification.</p>
+ </div>
 
-      <div class="mpx-group">
-        <label>Browsing Fee:</label>
-        <input type="text" value="$3.00 USD" readonly>
-      </div>
+ <div class="card">
+  <h3>FORM 1: Platform Access Payment Request</h3>
+  <div class="notice">Initial access fee: $3.00 USD. Submitting this form does not itself confirm payment or unlock paid services.</div>
 
-      <button type="submit">Submit Browsing Request ($3.00)</button>
+  <form id="mpx-form1">
+   <div class="formrow">
+    <div class="field">
+     <label>Full Name</label>
+     <input id="f1_name" required>
+    </div>
+    <div class="field">
+     <label>Email</label>
+     <input type="email" id="f1_email" required>
+    </div>
+   </div>
 
-        <a href="#overview-section" style="display:block;text-align:center;margin-top:15px;padding:14px;background:#075b46;color:white;border-radius:10px;font-weight:bold;">
-Enter Platform for Free
-</a>
-      <div class="mpx-status" id="browsingStatus"></div>
+   <div class="field">
+    <label>Payment Method</label>
+    <select id="f1_gateway" required>
+     <option value="PayPal Business">PayPal Business</option>
+     <option value="Interac Canada">Interac Canada</option>
+     <option value="American Express">American Express</option>
+     <option value="BBVA Mexico">BBVA Mexico</option>
+     <option value="Visa / Mastercard">Visa / Mastercard</option>
+     <option value="Wise">Wise</option>
+     <option value="SWIFT">SWIFT</option>
+     <option value="Attijariwafa Bank">Attijariwafa Bank</option>
+     <option value="Banque Populaire">Banque Populaire</option>
+     <option value="CDG Capital">CDG Capital</option>
+     <option value="CIH Bank">CIH Bank</option>
+     <option value="USDT / Crypto">USDT / Crypto</option>
+     <option value="Other Bank">Other Bank</option>
+    </select>
+   </div>
+
+   <div class="notice" id="mpx-payment-info">
+    PayPal Business: Abdelghafour.laatour@gmail.com
+   </div>
+
+   <div class="field" style="margin-top:15px">
+    <label>Transaction Reference</label>
+    <input id="f1_ref" placeholder="Enter your transaction reference" required>
+   </div>
+
+   <button class="btn primary" type="submit">Submit Payment for Verification</button>
+   <div class="status" id="f1_status"></div>
+  </form>
+ </div>
+</section>
+
+<!-- FORM 2: SESSION EXTENSION -->
+<section class="section container">
+ <div class="card">
+  <h3>FORM 2: Session Extension Request</h3>
+  <p class="muted">Extension fee: $4.00 USD for 1.5 hours, subject to payment verification.</p>
+  <form id="mpx-form2">
+   <div class="field">
+    <label>Payment Reference</label>
+    <input id="f2_ref" required>
+   </div>
+   <button class="btn primary" type="submit">Submit Extension Request</button>
+   <div class="status" id="f2_status"></div>
+  </form>
+ </div>
+</section>
+
+<!-- HUMANITARIAN SECTION -->
+<section class="section container" id="humanitarian-section">
+ <div class="section-heading">
+  <h2>Marrakechpixim Solidarity Foundation</h2>
+  <p>Humanitarian causes, animal welfare and inclusive community support.</p>
+ </div>
+
+ <div class="grid2">
+  <div class="card">
+   <h3>❤️ Dedicated Humanitarian Pillars</h3>
+   <ul>
+    <li><strong>Medical Aid:</strong> Support for people with chronic illnesses.</li>
+    <li><strong>Children Support:</strong> Assistance for children with congenital conditions.</li>
+    <li><strong>Animal Welfare:</strong> Animal protection, rescue and feeding initiatives.</li>
+    <li><strong>Universal Inclusivity:</strong> Equal opportunities without discrimination.</li>
+   </ul>
+
+   <h4>FORM 3: Humanitarian Aid / Volunteer Application</h4>
+   <form id="mpx-form3">
+    <div class="field"><input id="f3_name" placeholder="Applicant Name" required></div>
+    <div class="field">
+     <select id="f3_category">
+      <option value="Medical Aid">Chronic Illness Aid</option>
+      <option value="Children Support">Children Support</option>
+      <option value="Animal Welfare">Animal Welfare</option>
+      <option value="Volunteer">Volunteer Support</option>
+     </select>
+    </div>
+    <button class="btn primary" type="submit">Submit Application</button>
+   </form>
+  </div>
+
+  <div>
+   <div class="card" style="background:linear-gradient(135deg,#075b46,#043d2f);color:white">
+    <h3 style="color:var(--gold)">🌟 Ethical & Universal Principles</h3>
+    <p>Transparency, equal opportunities, non-discrimination and professional excellence.</p>
+   </div>
+
+   <div class="card" style="margin-top:18px;background:#fff8e8">
+    <h3>FORM 4: Solidarity Contribution</h3>
+    <form id="mpx-form4">
+     <div class="field">
+      <label>Contribution Amount (USD)</label>
+      <input type="number" id="f4_amount" min="1" step="0.01" required>
+     </div>
+     <button class="btn paypal" type="submit">Submit Donation Request ❤️</button>
     </form>
-  </section>
+   </div>
+  </div>
+ </div>
+</section>
 
-  <!-- 65 FIELDS PRICING -->
-  <section class="mpx-card" id="pricing-section">
-    <h2>65-Field Pricing & Packages</h2>
-    <p>Choose your preferred service package.</p>
+<!-- BARCODE CATALOG -->
+<section class="section container" id="catalog-section">
+ <div class="section-heading">
+  <h2>65 Barcode Fields & Sector Audit</h2>
+  <p>Commercial categories covering logistics, industrial equipment, advertising, real estate and services.</p>
+ </div>
 
-    <form id="mpxPricingForm">
-      <div class="mpx-group">
-        <label for="serviceCategory">Select Service Package:</label>
-        <select id="serviceCategory" required>
-          <option value="3">Basic Category Inquiry — $3.00</option>
-          <option value="5" selected>Standard Business Support — $5.00</option>
-          <option value="8">Advanced Brokerage & Catalog Audit — $8.00</option>
-          <option value="14">Executive Priority Service — $14.00</option>
-          <option value="30">Premium Plus Global Ecosystem — $30.00+</option>
-        </select>
-      </div>
+ <div class="card">
+  <h3>📊 Full 65 Barcode Catalog</h3>
+  <div class="barcode-grid" id="mpxBarcodeGrid"></div>
+ </div>
 
-      <div class="mpx-row">
-        <div class="mpx-group">
-          <label for="clientName">Full Name / Company:</label>
-          <input type="text" id="clientName" required>
-        </div>
+ <div class="grid2" style="margin-top:22px">
+  <div class="card">
+   <h3>FORM 5: Barcode Package & Tier Audit</h3>
+   <form id="mpx-form5">
+    <div class="field">
+     <label>Service Tier</label>
+     <select id="f5_tier">
+      <option value="3">Basic Inquiry — $3</option>
+      <option value="5" selected>Standard Support — $5</option>
+      <option value="8">Advanced Audit — $8</option>
+      <option value="14">Executive Service — $14</option>
+      <option value="30">Premium Package — $30+</option>
+     </select>
+    </div>
+    <div class="field"><input id="f5_company" placeholder="Company Name" required></div>
+    <button class="btn primary" type="submit">Submit Audit Order</button>
+   </form>
+  </div>
 
-        <div class="mpx-group">
-          <label for="clientEmail">Email Address:</label>
-          <input type="email" id="clientEmail" required>
-        </div>
-      </div>
+  <div class="card">
+   <h3>FORM 6: Direct Barcode Lookup</h3>
+   <form id="mpx-form6">
+    <div class="field"><input id="f6_code" placeholder="Barcode Code (e.g. MPX-01)" required></div>
+    <div class="field"><textarea id="f6_query" rows="3" placeholder="Product specifications or requirements"></textarea></div>
+    <button class="btn paypal" type="submit">Submit Barcode Search</button>
+   </form>
+  </div>
+ </div>
+</section>
 
-      <button type="submit">
-        Submit Package Request ($<span id="tierAmount">5</span>.00)
-      </button>
+<!-- GAMING -->
+<section class="section container" id="gaming-section">
+ <div class="dark-card">
+  <h2 style="color:white">🎮 MPX E-SPORTS & GAMING HUB</h2>
+  <p>Interactive mini-games and tournament registration.</p>
 
-      <div class="mpx-status" id="pricingStatus"></div>
+  <div class="grid2">
+   <div class="dark-card">
+    <h3>💎 Pixem Gem Catcher</h3>
+    <p>Click to collect digital game points.</p>
+    <div id="mpxGameScore" style="font-size:22px;font-weight:800;color:#58a6ff">Score: 0 Gems</div>
+    <button type="button" class="btn primary" id="mpxCatchGem">✨ Catch Digital Gem (+1)</button>
+   </div>
+
+   <div class="dark-card">
+    <h3>FORM 7: Tournament Registration</h3>
+    <form id="mpx-form7">
+     <div class="field"><input id="f7_gamerTag" placeholder="Gamer Tag" required></div>
+     <div class="field">
+      <select id="f7_league">
+       <option value="Arcade Gem League">Arcade Gem League</option>
+       <option value="Pro E-Sports Tournament">Pro E-Sports Tournament</option>
+      </select>
+     </div>
+     <button class="btn green" type="submit">Register Tournament</button>
     </form>
-  </section>
+   </div>
+  </div>
+ </div>
+</section>
 
-  <!-- CONTACT INFORMATION -->
-  <section class="mpx-card">
-    <h3>Payment & Contact Information</h3>
-    <p>PayPal: laatour73@gmail.com</p>
-    <p>Business Email: Business.marrakechpixim@gmail.com</p>
-    <p>WhatsApp Italy: +39 329 982 5844</p>
-    <p>WhatsApp Morocco: +212 666 73 05 25</p>
-  </section>
+<!-- ENTERPRISE -->
+<section class="section container" id="brokerage-section">
+ <div class="section-heading">
+  <h2>Connecting Clients & Global Enterprises</h2>
+  <p>Commercial brokerage and connections between buyers and suppliers.</p>
+ </div>
+
+ <div class="grid2">
+  <div class="card">
+   <h3>FORM 8: Enterprise & Supplier Registration</h3>
+   <form id="mpx-form8">
+    <div class="field"><input id="f8_company" placeholder="Company Legal Name" required></div>
+    <div class="field"><input id="f8_sector" placeholder="Business Sector" required></div>
+    <div class="field"><textarea id="f8_details" rows="3" placeholder="Products or Services"></textarea></div>
+    <button class="btn primary" type="submit">Register Company</button>
+   </form>
+  </div>
+
+  <div class="card">
+   <h3>FORM 9: Client Custom Order & Sourcing</h3>
+   <form id="mpx-form9">
+    <div class="field"><input id="f9_client" placeholder="Client Name" required></div>
+    <div class="field"><input id="f9_item" placeholder="Requested Item" required></div>
+    <button class="btn paypal" type="submit">Submit Sourcing Request</button>
+   </form>
+  </div>
+ </div>
+</section>
+
+<!-- FINANCE & CONTACT -->
+<section class="section container" id="finance-section">
+ <div class="grid2">
+  <div class="finance">
+   <h3>💼 Department of Finance</h3>
+   <p>Payment information and corporate contact details.</p>
+
+   <div class="grid3">
+    <div class="stat">
+     <strong>13</strong><br>Payment Options
+    </div>
+    <div class="stat">
+     <strong>PayPal</strong><br>Business
+    </div>
+    <div class="stat">
+     <strong>Interac</strong><br>Canada
+    </div>
+   </div>
+
+   <p style="margin-top:20px;font-size:13px;overflow-wrap:anywhere">
+    📧 Corporate Email: business.marrakechpixim@gmail.com<br>
+    📱 Italian WhatsApp: +39 329 982 5844<br>
+    📱 Moroccan Contact: +212 666 73 05 25<br>
+    💳 PayPal: Abdelghafour.laatour@gmail.com<br>
+    💳 Interac: Laatour73@gmail.com
+   </p>
+  </div>
+
+  <div class="card">
+   <h3>FORM 10: Corporate Inquiry & Support</h3>
+   <form id="mpx-form10">
+    <div class="field"><input id="f10_name" placeholder="Your Name" required></div>
+    <div class="field"><input type="email" id="f10_email" placeholder="Your Email" required></div>
+    <div class="field"><textarea id="f10_msg" rows="4" placeholder="Your Message" required></textarea></div>
+    <button class="btn primary" type="submit">Submit Corporate Inquiry</button>
+   </form>
+  </div>
+ </div>
+</section>
 
 </div>
 
 <script>
-(function () {
-  const whatsappNumber = "393299825844";
+(function(){
+ "use strict";
 
-  function submitRequest(formId, statusId, type, getDetails) {
-    const form = document.getElementById(formId);
-    if (!form) return;
+ const robot={
+  whatsapp:"393299825844",
+  email:"business.marrakechpixim@gmail.com",
 
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const details = getDetails();
-      const status = document.getElementById(statusId);
-
-      status.style.display = "block";
-      status.textContent = "Your request has been prepared. No payment has been confirmed.";
-
-      const message = [
-        "Marrakechpixim - New Payment Request",
-        "Type: " + type,
-        "Name: " + details.name,
-        "Email: " + details.email,
-        "Amount: $" + details.amount + " USD",
-        "Payment Method: " + details.method,
-        "Status: Request submitted - payment not confirmed."
-      ].join("\n");
-
-      const whatsappUrl =
-        "https://wa.me/" + whatsappNumber +
-        "?text=" + encodeURIComponent(message);
-
-      window.open(whatsappUrl, "_blank");
-    });
+  send(title,data){
+   let message="MPX REQUEST - "+title+"\n\n";
+   Object.entries(data).forEach(([key,value])=>{
+    message+=key+": "+value+"\n";
+   });
+   message+="\nCorporate Email: "+this.email;
+   const url="https://wa.me/"+this.whatsapp+"?text="+encodeURIComponent(message);
+   window.open(url,"_blank","noopener,noreferrer");
   }
+ };
 
-  const category = document.getElementById("serviceCategory");
-  const tierAmount = document.getElementById("tierAmount");
+ // PAYMENT METHOD INSTRUCTIONS
+ const gateway=document.getElementById("f1_gateway");
+ const paymentInfo=document.getElementById("mpx-payment-info");
 
-  if (category && tierAmount) {
-    category.addEventListener("change", function () {
-      tierAmount.textContent = this.value;
-    });
-  }
+ const paymentDetails={
+  "PayPal Business":"PayPal Business: Abdelghafour.laatour@gmail.com",
+  "Interac Canada":"Interac: Laatour73@gmail.com",
+  "American Express":"Use an authorized AMEX merchant checkout.",
+  "BBVA Mexico":"Use verified BBVA banking details.",
+  "Visa / Mastercard":"Use a secure card payment gateway.",
+  "Wise":"Use verified Wise transfer details.",
+  "SWIFT":"Use verified international bank details.",
+  "Attijariwafa Bank":"Use verified Attijariwafa bank details.",
+  "Banque Populaire":"Use verified Banque Populaire details.",
+  "CDG Capital":"Use verified CDG Capital details.",
+  "CIH Bank":"Use verified CIH bank details.",
+  "USDT / Crypto":"Use a verified wallet and payment process.",
+  "Other Bank":"Contact the company for verified payment instructions."
+ };
 
-  submitRequest(
-    "browsingForm",
-    "browsingStatus",
-    "Standard Browsing",
-    function () {
-      return {
-        name: document.getElementById("browseName").value,
-        email: document.getElementById("browseEmail").value,
-        amount: "3.00",
-        method: document.getElementById("paymentMethod").value
-      };
-    }
-  );
+ gateway.addEventListener("change",function(){
+  paymentInfo.textContent=paymentDetails[this.value];
+ });
 
-  submitRequest(
-    "mpxPricingForm",
-    "pricingStatus",
-    "65-Field Package",
-    function () {
-      return {
-        name: document.getElementById("clientName").value,
-        email: document.getElementById("clientEmail").value,
-        amount: document.getElementById("serviceCategory").value,
-        method: "Selected package - contact for payment"
-      };
-    }
-  );
+ // BARCODE CATALOG
+ const categories=[
+ "Commercial Brokerage","Logistics & Transport","Industrial Supply",
+ "Stainless Processing","Ceramic Equipment","Real Estate Services",
+ "General Services (Travaux Divers)","Technical Quality Control",
+ "Import & Export","Digital Advertising","Automotive Engineering",
+ "Heavy Vehicle Fleet","Infrastructure Contracting","Automated Messaging",
+ "Multi-Currency Gateway","Medical Relief Logistics",
+ "Child Healthcare Sponsoring","Animal Protection Funds",
+ "E-Sports Gaming Tournament","E-Commerce Cataloging",
+ "Agricultural Supply","Solar & Energy Tech","Water Treatment Systems",
+ "Security & Surveillance","Warehouse Management","Packaging & Barcoding",
+ "Cold Chain Refrigeration","Hotel & Tourism Services",
+ "Press & Media Card Audit","Legal & Corporate Consulting",
+ "Food Industry Machinery","Dairy Logistics","Metal Fabrication",
+ "Super Heavy Vehicle Transport","Construction Site Coordination",
+ "Public Infrastructure","Charity Distribution","Emergency Response",
+ "Refugee Relief Support","Veterinary Care Aid","Mobile Tech Integration",
+ "Software Architecture","Database Cataloging","Barcode Verification API",
+ "QR Payment Routing","Global Trade Audit","Customs Clearance Brokerage",
+ "Maritime Freight","Air Cargo Logistics","International Flight Routing",
+ "Urban Infrastructure Planning","Sanitation Services",
+ "Electrical Installation","Plumbing & Hydraulics","HVAC Systems",
+ "Security Badging","Trade Show Management","Volunteer Operations",
+ "Hospitality Logistics","Retail Distribution","Wholesale Sourcing",
+ "Supply Chain Audit","Financial Escrow Routing","Automated Accounting",
+ "Ecosystem Security"
+ ];
+
+ const grid=document.getElementById("mpxBarcodeGrid");
+ categories.forEach((category,index)=>{
+  const item=document.createElement("div");
+  item.className="barcode-item";
+
+  const name=document.createElement("span");
+  name.textContent=(index+1)+". "+category;
+
+  const code=document.createElement("span");
+  code.className="barcode-code";
+  code.textContent="MPX-"+String(index+1).padStart(2,"0");
+
+  item.append(name,code);
+  grid.appendChild(item);
+ });
+
+ // GAME
+ let score=0;
+ document.getElementById("mpxCatchGem").addEventListener("click",function(){
+  score++;
+  document.getElementById("mpxGameScore").textContent="Score: "+score+" Gems";
+ });
+
+ // FORM HANDLER
+ function handleForm(id,title,getData,statusId){
+  const form=document.getElementById(id);
+  form.addEventListener("submit",function(event){
+   event.preventDefault();
+
+   const data=getData();
+   robot.send(title,data);
+
+   if(statusId){
+    const status=document.getElementById(statusId);
+    status.style.display="block";
+    status.textContent="Request prepared. Please complete the WhatsApp submission. Payment or registration is not yet confirmed.";
+   }
+  });
+ }
+
+ handleForm("mpx-form1","Platform Access Payment Request",()=>({
+  Name:document.getElementById("f1_name").value,
+  Email:document.getElementById("f1_email").value,
+  Gateway:gateway.value,
+  Amount:"3.00 USD",
+  Reference:document.getElementById("f1_ref").value
+ }),"f1_status");
+
+ handleForm("mpx-form2","Session Extension Request",()=>({
+  Amount:"4.00 USD",
+  Reference:document.getElementById("f2_ref").value
+ }),"f2_status");
+
+ handleForm("mpx-form3","Humanitarian Application",()=>({
+  Applicant:document.getElementById("f3_name").value,
+  Category:document.getElementById("f3_category").value
+ }));
+
+ handleForm("mpx-form4","Solidarity Contribution Request",()=>({
+  Amount:document.getElementById("f4_amount").value+" USD"
+ }));
+
+ handleForm("mpx-form5","Barcode Tier Audit",()=>({
+  Tier:document.getElementById("f5_tier").value+" USD",
+  Company:document.getElementById("f5_company").value
+ }));
+
+ handleForm("mpx-form6","Barcode Lookup",()=>({
+  Code:document.getElementById("f6_code").value,
+  Requirements:document.getElementById("f6_query").value
+ }));
+
+ handleForm("mpx-form7","E-Sports Registration",()=>({
+  GamerTag:document.getElementById("f7_gamerTag").value,
+  League:document.getElementById("f7_league").value
+ }));
+
+ handleForm("mpx-form8","Enterprise Registration",()=>({
+  Company:document.getElementById("f8_company").value,
+  Sector:document.getElementById("f8_sector").value,
+  Details:document.getElementById("f8_details").value
+ }));
+
+ handleForm("mpx-form9","Client Sourcing Request",()=>({
+  Client:document.getElementById("f9_client").value,
+  RequestedItem:document.getElementById("f9_item").value
+ }));
+
+ handleForm("mpx-form10","Corporate Support Inquiry",()=>({
+  Name:document.getElementById("f10_name").value,
+  Email:document.getElementById("f10_email").value,
+  Message:document.getElementById("f10_msg").value
+ }));
+
 })();
 </script>
-    
+
+<!-- END OF MARRAKECHPIXIM INSERTION -->
 </body></html>
