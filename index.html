@@ -4540,4 +4540,168 @@ $('xis-ask').addEventListener('click',async()=>{const q=$('xis-question').value.
   <div class="robot-dot"></div>
   <span id="timerDisplay">🤖 MPX Robot: 20:00 Remaining</span>
 </div>
+    <!-- MARRAKECHPIXIM GLOBAL - ACCESS & PAYMENT FORM -->
+<section id="mpx-access" class="mpx-access">
+  <div class="mpx-panel">
+
+    <div class="mpx-brand">
+      <div class="mpx-logo">MPX</div>
+      <h2>MARRAKECHPIXIM GLOBAL</h2>
+      <p>MPX DIDOO — Secure Platform Access</p>
+    </div>
+
+    <h3>Platform Access Registration</h3>
+
+    <form id="mpx-payment-form">
+
+      <label for="mpx-name">Full Name</label>
+      <input id="mpx-name" name="name"
+        type="text" autocomplete="name"
+        required placeholder="Enter your full name">
+
+      <label for="mpx-email">Email Address</label>
+      <input id="mpx-email" name="email"
+        type="email" autocomplete="email"
+        required placeholder="Enter your email">
+
+      <label for="mpx-plan">Subscription Plan</label>
+      <select id="mpx-plan" required>
+        <option value="3">$3 — Access Plan</option>
+        <option value="4">$4 — Extended Access Plan</option>
+      </select>
+
+      <label for="mpx-method">Payment Method</label>
+      <select id="mpx-method" required>
+        <option value="">Select payment method</option>
+        <option value="paypal">PayPal Business</option>
+        <option value="interac">Interac e-Transfer / KOHO</option>
+        <option value="bbva">BBVA México / CLABE</option>
+        <option value="visa">Visa</option>
+        <option value="mastercard">Mastercard</option>
+        <option value="amex">American Express</option>
+      </select>
+
+      <div id="mpx-payment-details">
+        Select a payment method to continue.
+      </div>
+
+      <div id="paypal-button-container"></div>
+
+      <button type="submit" id="mpx-submit">
+        Continue to Payment
+      </button>
+
+      <p id="mpx-status" role="status" aria-live="polite">
+        Complete your registration to continue.
+      </p>
+
+    </form>
+
+    <div id="mpx-access-result" hidden>
+      <h3>Payment Verified</h3>
+      <p>Your platform access has been confirmed.</p>
+      <button type="button" id="mpx-enter">
+        ENTER PLATFORM
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.mpx-access {
+  background: #071d18;
+  color: #f4e6bd;
+  padding: 35px 15px;
+  font-family: Arial, sans-serif;
+}
+
+.mpx-panel {
+  max-width: 520px;
+  margin: auto;
+  padding: 25px;
+  background: linear-gradient(145deg,#103b2e,#071d18);
+  border: 1px solid #c9a34b;
+  border-radius: 18px;
+  box-shadow: 0 10px 35px #0008;
+}
+
+.mpx-brand {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.mpx-logo {
+  width: 65px;
+  height: 65px;
+  display: grid;
+  place-items: center;
+  margin: auto;
+  border: 2px solid #d9b65c;
+  border-radius: 50%;
+  color: #e8c66d;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.mpx-panel h2,
+.mpx-panel h3 {
+  color: #e8c66d;
+  text-align: center;
+}
+
+.mpx-panel label {
+  display: block;
+  margin: 16px 0 7px;
+  font-weight: bold;
+}
+
+.mpx-panel input,
+.mpx-panel select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #b99b53;
+  border-radius: 8px;
+  background: #09251e;
+  color: white;
+  box-sizing: border-box;
+}
+
+#mpx-submit,
+#mpx-enter {
+  width: 100%;
+  padding: 15px;
+  margin-top: 20px;
+  border: 0;
+  border-radius: 9px;
+  background: linear-gradient(90deg,#b68b32,#edcf78);
+  color: #10251c;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#mpx-payment-details,
+#mpx-status {
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #061710;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+#paypal-button-container {
+  margin-top: 18px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media(max-width:480px) {
+  .mpx-panel { padding: 18px; }
+}
+</style>
+
 </body></html>
